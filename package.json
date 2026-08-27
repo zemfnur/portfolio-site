@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-site",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Personal portfolio site for Zemfira Nurgaleeva — static HTML/CSS/JS, no build step",
+  "scripts": {
+    "lint": "npm run lint:html && npm run lint:css",
+    "lint:html": "html-validate index.html",
+    "lint:css": "stylelint styles.css"
+  },
+  "devDependencies": {
+    "html-validate": "^9.7.1",
+    "stylelint": "^16.23.1",
+    "stylelint-config-standard": "^39.0.0"
+  }
+}

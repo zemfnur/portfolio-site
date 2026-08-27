@@ -1,0 +1,448 @@
+/* ============================================================
+   Portfolio — Zemfira Nurgaleeva
+   Desktop-first, faithful to Figma "Main-1920" (1920×2740).
+   Tokens mirror the Figma variables.
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
+:root {
+  /* color */
+  --text-primary: #1c1e21;
+  --text-secondary: #6b7280;
+  --text-disabled: #9ca3af;
+  --border: #9ca3af;
+  --accent: #776ef8;      /* Figma variable "Aquamarine" */
+  --copyright: #6d6d6d;
+  --bg-primary: #fffefc;  /* Figma variable "Neatral primary" */
+
+  /* type */
+  --font-display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* layout */
+  --container: 1840px;
+  --page-pad: 40px;
+  --gutter: 40px;
+
+  /* hero geometry — single source of truth for the two clamps, so the
+     video's viewport cap (.hero__media max-height) always tracks the
+     exact space the hero chrome occupies above and below the grid */
+  --hero-title-size: clamp(56px, 11.5vw, 220px); /* 220px at 1920 */
+  --hero-block-gap: clamp(48px, 5.3vw, 102px);   /* 102px at 1920 */
+}
+
+/* Barlow Semi Condensed has no Cyrillic subset — swap the display
+   font wholesale in Russian mode (Oswald is the closest condensed
+   grotesque that does). Inter already covers Cyrillic. */
+[lang="ru"] {
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+}
+
+/* Oswald runs ~7% wider than Barlow Semi Condensed — tighten tracking
+   so the Russian display title stays on one line (measured 1862px →
+   ~1787px vs the 1840px container). */
+[lang="ru"] .hero__display {
+  letter-spacing: -0.08em;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(100% - 2 * var(--page-pad), var(--container));
+  margin-inline: auto;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hero-block-gap);
+  padding-top: 20px;
+  min-height: 100vh;  /* fallback for browsers without svh */
+  min-height: 100svh; /* hero fills the first viewport; grows if content needs more */
+}
+
+.hero__title-row {
+  padding-inline: var(--page-pad);
+}
+
+/* Display title — 220px Barlow Semi Condensed SemiBold, ls -6% */
+.hero__display {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--hero-title-size);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.hero__content {
+  flex: 1;
+  min-height: 0; /* let the hero compress the media below its intrinsic size */
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 48px;
+}
+
+/* Flex (not grid) so the column heights stay definite through the chain:
+   the video scales to the hero height instead of its intrinsic size
+   stretching the page beyond 100svh. Columns keep the 1170/750 ratio. */
+.hero__grid {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Left column — role title on top, list centered, links at the bottom.
+   No bottom padding: the links sit flush against the grid's bottom edge,
+   the same edge the video is anchored to, so both stay aligned at any size. */
+.hero__profile {
+  flex: 1170 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  padding: 0 0 0 var(--page-pad);
+}
+
+.hero__role {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(36px, 3.33vw, 64px); /* 64px at 1920 */
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero__text {
+  flex: 1; /* fills the column between the role title and the hero bottom */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero__list-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;     /* vertically centers the services list */
+  justify-content: center; /* horizontally centered, as in Figma */
+}
+
+.hero__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 1.9vw, 36px); /* 36px at 1920 */
+  line-height: 1.4;                   /* Figma "Quotes" style */
+  color: var(--text-secondary);
+}
+
+.hero__links {
+  display: flex;
+  gap: 48px;
+  white-space: nowrap;
+}
+
+.hero__link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+button.hero__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.hero__link:hover {
+  color: var(--accent);
+}
+
+/* Right column — showreel video, flush to the hero's bottom border
+   (624×781 at the 1920 design). Height-driven: the clip scales with the
+   hero (100svh) instead of stretching the page. The poster frame shows
+   until the mp4 exists. */
+.hero__media-wrap {
+  flex: 750 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: var(--page-pad);
+}
+
+.hero__media {
+  display: block;
+  flex: 1;              /* fills the hero height, keeps the 624/781 ratio */
+  min-height: 0;        /* may shrink below the intrinsic video height */
+  width: auto;
+  aspect-ratio: 624 / 781;
+  max-width: 100%;
+
+  /* Cap at the space left inside one viewport — title + gap + the 69px of
+     fixed hero chrome (20px top pad, 48px content bottom pad, 1px border).
+     Without this cap the clip's intrinsic 781px height wins in the auto
+     -height flex chain and pushes the hero past 100svh (initial scrolling). */
+  max-height: calc(100vh - var(--hero-title-size) - var(--hero-block-gap) - 69px);
+  max-height: calc(100svh - var(--hero-title-size) - var(--hero-block-gap) - 69px);
+  object-fit: cover;
+  background: var(--text-primary); /* dark frame while the poster loads */
+}
+
+/* ============================================================
+   Projects
+   ============================================================ */
+.projects {
+  padding-top: 184px;   /* 152 + 32 from the design */
+  padding-bottom: 200px;
+}
+
+.projects__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(36px, 3.33vw, 64px); /* 64px at 1920 */
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.projects__grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-decoration: none;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card__number {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em; /* 0.24px at 12px */
+  color: var(--text-secondary);
+}
+
+.card__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.card__description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.card__image img {
+  width: 100%;
+  aspect-ratio: 900 / 545; /* 545px tall at the 900px card width */
+  object-fit: cover;
+}
+
+.card:hover .card__title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 64px 120px;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(40px, 27.2vw, 523px); /* 523px at 1920 */
+}
+
+.footer__logo {
+  flex-shrink: 0;
+}
+
+.footer__logo img {
+  width: 100px;
+  height: 100px;
+}
+
+.footer__links {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 74px;
+}
+
+.footer__links a {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+}
+
+.footer__links a:hover {
+  color: var(--accent);
+}
+
+.footer__copyright {
+  margin-left: auto;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-align: right;
+  color: var(--copyright);
+}
+
+/* ============================================================
+   Responsive — desktop-first, largest breakpoint first
+   ============================================================ */
+
+/* ---- ≤ 1024px: hero stacks, cards and footer go single-column ---- */
+@media (max-width: 1024px) {
+  .hero__grid {
+    flex-direction: column; /* hero stacks */
+  }
+
+  .hero__profile {
+    flex: none;
+    padding-right: var(--page-pad);
+  }
+
+  .hero__text {
+    margin-top: 32px;
+  }
+
+  .hero__media-wrap {
+    flex: none;
+    padding: 40px var(--page-pad) 0;
+  }
+
+  .hero__media {
+    flex: none;         /* width-driven when stacked below the hero */
+    width: 100%;
+    max-width: 624px;
+    max-height: none;   /* the viewport cap only applies side-by-side */
+  }
+
+  .projects {
+    padding-top: 96px;
+    padding-bottom: 120px;
+  }
+
+  .projects__grid {
+    grid-template-columns: 1fr; /* card titles overflow a half-width column */
+    margin-top: 48px;
+  }
+
+  .footer {
+    padding: 40px var(--page-pad);
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .footer__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .footer__copyright {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+/* ---- ≤ 720px: cards and footer stack ---- */
+@media (max-width: 720px) {
+  :root {
+    --page-pad: 24px;
+  }
+
+  .hero {
+    gap: 40px;
+  }
+
+  .hero__display {
+    font-size: 12.5vw;
+    letter-spacing: -0.04em;
+  }
+
+  .hero__links {
+    gap: 24px;
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+}

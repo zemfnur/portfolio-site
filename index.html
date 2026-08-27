@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zemfira Nurgaleeva — UX/UI Designer</title>
+  <meta name="description" content="Portfolio of Zemfira Nurgaleeva, a UX/UI designer focused on design systems and complex digital products.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&family=Inter:wght@400;600;700&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <!-- ===================== Hero ===================== -->
+  <header class="hero">
+    <div class="hero__title-row">
+      <h1 class="hero__display" data-i18n="displayTitle">Zemfira Nurgaleeva</h1>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__grid">
+        <div class="hero__profile" id="about">
+          <h2 class="hero__role" data-i18n="role">designer</h2>
+
+          <div class="hero__text">
+            <div class="hero__list-wrap">
+              <ul class="hero__list">
+                <li data-i18n="svc1">Product UX &amp; UI Design</li>
+                <li data-i18n="svc2">Complex B2B &amp; SaaS Interfaces</li>
+                <li data-i18n="svc3">User Flows &amp; Information Architecture</li>
+                <li data-i18n="svc4">Design Systems &amp; UI Libraries</li>
+                <li data-i18n="svc5">Prototyping &amp; Interaction Design</li>
+              </ul>
+            </div>
+
+            <div class="hero__links">
+              <button type="button" class="hero__link" id="lang-switch" data-i18n="langSwitch">Русский язык</button>
+              <a class="hero__link" href="#about" data-i18n="aboutMe">About me</a>
+              <a class="hero__link" href="mailto:EMAIL@EXAMPLE.COM" data-i18n="contactMe">Contact me</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__media-wrap">
+          <!-- Showreel — poster frame exported from Figma. Drop the real clip
+               at assets/video/hero.mp4 and it will autoplay over the poster. -->
+          <!-- muted decorative showreel: autoplay is the point; the aria-label carries the i18n name -->
+          <!-- [html-validate-disable-next no-autoplay, aria-label-misuse] -->
+          <video class="hero__media" muted loop playsinline autoplay preload="metadata"
+                 poster="assets/images/hero-video-poster.png"
+                 aria-label="Showreel" data-i18n-arialabel="heroMediaAria">
+            <source src="assets/video/hero.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== Projects =====================
+       Planned case-study pages (create them, then point each card's
+       href at its data-page value and remove the data-page attribute):
+         projects/public-library.html  — Case-public-library-1920
+         projects/topaz-logistic.html  — TOPAZ-logistic                    -->
+  <main class="projects">
+    <div class="container">
+      <h2 class="projects__title" data-i18n="projectsTitle">My projects</h2>
+
+      <div class="projects__grid">
+        <a class="card" href="#" data-page="projects/public-library.html">
+          <div class="card__content">
+            <p class="card__number">01</p>
+            <h3 class="card__title" data-i18n="card1Title">Public library service</h3>
+            <p class="card__description" data-i18n="card1Desc">I design systems, not just screens &mdash; from research to scalable UI</p>
+          </div>
+          <div class="card__image">
+            <img src="assets/images/card-public-library.png" alt="Public library service project preview" data-i18n-alt="card1Alt">
+          </div>
+        </a>
+
+        <a class="card" href="#" data-page="projects/topaz-logistic.html">
+          <div class="card__content">
+            <p class="card__number">01</p>
+            <h3 class="card__title" data-i18n="card2Title">Public library service</h3>
+            <p class="card__description" data-i18n="card2Desc">I design systems, not just screens &mdash; from research to scalable UI</p>
+          </div>
+          <div class="card__image">
+            <img src="assets/images/card-public-library.png" alt="Public library service project preview" data-i18n-alt="card2Alt">
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== Footer =====================
+       Social placeholders — replace HANDLE / EMAIL with real values:
+         LinkedIn: https://www.linkedin.com/in/HANDLE
+         Telegram: https://t.me/HANDLE
+         Email:    mailto:EMAIL@example.com                              -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a class="footer__logo" href="./" aria-label="Zemfira Nurgaleeva — home">
+        <img src="assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="100" height="100">
+      </a>
+
+      <nav class="footer__links" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/HANDLE" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://t.me/HANDLE" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="mailto:EMAIL@EXAMPLE.COM">Email</a>
+        <span class="footer__copyright" data-i18n="copyright">&copy; 2026 Zemfira Nurgaleeva</span>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

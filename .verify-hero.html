@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- Temporary verification harness — loads index.html in an iframe of the
+     exact viewport size and reports hero-fit + link/video alignment.
+     Usage: msedge --headless=new --dump-dom --allow-file-access-from-files
+            --window-size=<W>,<H> .verify-hero.html?w=<W>&h=<H>&lang=<en|ru> -->
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  html, body { margin: 0; height: 100%; }
+  iframe { border: 0; display: block; }
+  pre#result { position: fixed; top: 0; left: 0; z-index: 99; background: #fff; font: 12px monospace; }
+</style>
+</head>
+<body>
+<iframe id="site"></iframe>
+<pre id="result">measuring…</pre>
+<script>
+  var q = new URLSearchParams(location.search);
+  var W = +q.get('w') || 1920;
+  var H = +q.get('h') || 1080;
+  var lang = q.get('lang') || 'en';
+
+  var frame = document.getElementById('site');
+  frame.style.width = W + 'px';
+  frame.style.height = H + 'px';
+
+  frame.src = 'index.html';
+  frame.addEventListener('load', function () {
+    setTimeout(function () {
+      var doc = frame.contentDocument;
+      if (lang === 'ru' && frame.dataset.ru !== '1') {
+        try { frame.contentWindow.localStorage.setItem('lang', 'ru'); } catch (e) {}
+        frame.dataset.ru = '1';
+        frame.src = 'index.html?ru=1';
+        return;
+      }
+      measure(doc);
+    }, 400);
+  });
+
+  function measure(doc) {
+    var win = frame.contentWindow;
+    var out = [];
+    var hero = doc.querySelector('.hero');
+    var video = doc.querySelector('.hero__media');
+    var hb = hero.getBoundingClientRect().bottom;
+    var vBottom = video.getBoundingClientRect().bottom;
+
+    out.push('viewport ' + W + 'x' + H + ' lang=' + doc.documentElement.lang);
+    out.push('hero bottom: ' + hb.toFixed(1) + '  height: ' + hero.getBoundingClientRect().height.toFixed(1));
+    out.push('FITS FIRST VIEWPORT: ' + (hb <= win.innerHeight + 0.5 ? 'yes' : 'NO — overflows by ' + (hb - win.innerHeight).toFixed(1) + 'px'));
+    out.push('video h: ' + video.getBoundingClientRect().height.toFixed(1) + ' bottom: ' + vBottom.toFixed(1));
+
+    var links = doc.querySelectorAll('.hero__link');
+    var deltas = [];
+    links.forEach(function (a) {
+      deltas.push((vBottom - a.getBoundingClientRect().bottom));
+    });
+    var maxAbs = Math.max.apply(null, deltas.map(Math.abs));
+    out.push('align deltas (video-link): ' + deltas.map(function (d) { return d.toFixed(1); }).join(', '));
+    out.push('VERDICT: ' + ((hb <= win.innerHeight + 0.5) && maxAbs <= 1 ? 'PASS' : 'FAIL'));
+
+    document.getElementById('result').textContent = '<<RESULT>>\n' + out.join('\n') + '\n<</RESULT>>';
+  }
+</script>
+</body>
+</html>
