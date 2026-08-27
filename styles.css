@@ -127,15 +127,17 @@ button:focus-visible {
   align-items: stretch;
 }
 
-/* Left column — role title on top, list centered, links at the bottom.
-   No bottom padding: the links sit flush against the grid's bottom edge,
-   the same edge the video is anchored to, so both stay aligned at any size. */
+/* Left column — the text block (role title + services list) vertically
+   centered in the height available above the links; the gap below it adds
+   breathing room before the link row. No bottom padding: the links sit
+   flush against the grid's bottom edge, the same edge the video is
+   anchored to, so both stay aligned at any size. */
 .hero__profile {
   flex: 1170 1 0;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 41px;
+  gap: 96px;
   padding: 0 0 0 var(--page-pad);
 }
 
@@ -150,16 +152,15 @@ button:focus-visible {
 }
 
 .hero__text {
-  flex: 1; /* fills the column between the role title and the hero bottom */
+  flex: 1; /* fills the column above the link row */
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  justify-content: center; /* vertically centers the text block in the available hero height */
+  gap: 41px;               /* role title → services list */
 }
 
 .hero__list-wrap {
-  flex: 1;
   display: flex;
-  align-items: center;     /* vertically centers the services list */
   justify-content: center; /* horizontally centered, as in Figma */
 }
 
@@ -373,11 +374,20 @@ button.hero__link {
 
   .hero__profile {
     flex: none;
+    gap: 8px; /* stacked: back to the old list→links spacing; the links margin adds the rest */
     padding-right: var(--page-pad);
   }
 
   .hero__text {
-    margin-top: 32px;
+    gap: 73px; /* keeps the old role→list distance: 41px gap + 32px margin */
+  }
+
+  /* Stacked hero: the links no longer sit flush with the video's bottom
+     edge, so separate them from the services list — the 8px hero__profile
+     gap alone reads as attached at mobile sizes. Scales with viewport
+     height so short phones stay compact while tall ones get air. */
+  .hero__links {
+    margin-top: clamp(40px, 6vh, 72px);
   }
 
   .hero__media-wrap {
