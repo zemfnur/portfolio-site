@@ -14,10 +14,14 @@
   --accent: #776ef8;      /* Figma variable "Aquamarine" */
   --copyright: #6d6d6d;
   --bg-primary: #fffefc;  /* Figma variable "Neatral primary" */
+  --border-soft: #d8d5fd; /* Figma variable "Neatral Aquamarine" (case-study cards) */
+  --surface-tint: #f0eee9; /* Figma variable "Neatral light" (compare "before" rows) */
+  --surface-dark: #1c1e21; /* case-study result blocks */
 
   /* type */
   --font-display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
+  --font-label: "DM Mono", "Courier New", monospace; /* case-study kickers/labels */
 
   /* layout */
   --container: 1840px;
@@ -454,5 +458,970 @@ button.hero__link {
     gap: 24px;
     white-space: normal;
     flex-wrap: wrap;
+  }
+}
+
+/* ============================================================
+   Case study — Logistics CRM (projects/logistics-crm.html)
+   Faithful to Figma "Portfolio-case1" (1920×11806).
+   ============================================================ */
+
+/* In-page anchor navigation: smooth scrolling, and section targets
+   offset below the sticky page header. */
+html:has(.case-study) {
+  scroll-behavior: smooth;
+}
+
+.case-study main section {
+  scroll-margin-top: 160px; /* sticky .page-header (106px) + breathing room */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.case-study) {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- Page header ---------- */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px var(--page-pad) 24px;
+
+  /* Figma: rgba(255,255,255,0.2) + blur(50). Alpha raised to 0.55 so the
+     dark result blocks scrolling under the frosted bar stay readable. */
+  background: rgb(255 254 252 / 55%);
+  backdrop-filter: blur(50px);
+}
+
+.page-header__logo {
+  flex-shrink: 0;
+}
+
+.page-header__logo img {
+  width: 50px;
+  height: 50px;
+}
+
+.page-header__nav {
+  display: flex;
+  gap: 40px;
+}
+
+.page-header__link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+button.page-header__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.page-header__link:hover {
+  color: var(--accent);
+}
+
+/* ---------- Shared: section title + kicker label ---------- */
+.case-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(36px, 3.33vw, 64px); /* 64px at 1920 */
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.kicker {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.5;        /* 16.5px */
+  letter-spacing: 0.1em;   /* 1.1px at 11px */
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.kicker--bar {
+  border-left: 2px solid var(--accent);
+  padding-left: 16px;
+}
+
+/* Section rhythm: 200px between the content of consecutive sections,
+   as measured in the Figma frame. */
+.case-section {
+  padding-top: 200px;
+}
+
+/* ---------- "← Back to solutions" control (each scenario section) ---------- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Hero ---------- */
+.case-hero {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.case-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 900px) minmax(300px, 1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.case-hero__eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--accent);
+}
+
+.case-hero__title {
+  margin-top: 24px;
+}
+
+.case-hero__lead {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.case-hero__goal {
+  margin-top: 32px;
+  border-left: 2px solid var(--accent);
+  padding-left: 16px;
+}
+
+.case-hero__goal-text {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.case-hero__media-wrap {
+  position: relative;
+}
+
+.case-hero__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 900 / 722;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* annotation chips pinned onto the hero screenshot (design positions) */
+.case-hero__chip {
+  position: absolute;
+  padding: 4px 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 7%);
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.case-hero__chip--status {
+  left: 0;
+  top: 23%;
+  transform: translateX(-35%);
+}
+
+.case-hero__chip--workspace {
+  left: 0;
+  top: 41%;
+  transform: translateX(-75%);
+}
+
+.case-hero__chip--card {
+  left: 76%;
+  top: 34%;
+}
+
+/* ---------- Project overview (my role) ---------- */
+.overview {
+  padding-top: 72px;
+}
+
+.overview__grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.role {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.role__label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.12em; /* 1.32px at 11px */
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.role__list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.role__item {
+  display: flex;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.role__dash {
+  color: var(--accent);
+}
+
+/* ---------- Cards (solutions + outcomes) ---------- */
+.solutions__grid,
+.outcomes__grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.case-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px 24px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+}
+
+.case-card__number {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.4;
+  color: var(--accent);
+}
+
+.case-card__title {
+  margin: 16px 0 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.case-card__image {
+  margin-top: 16px;
+  padding: 12px 0;
+  width: 100%;
+}
+
+.case-card__image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 537 / 273;
+  object-fit: cover;
+}
+
+.case-card__text {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* image card: 12px wrapper padding + 8px = the design's 20px gap */
+.case-card__image + .case-card__text {
+  margin-top: 8px;
+}
+
+a.case-card {
+  text-decoration: none;
+}
+
+a.case-card:hover {
+  border-color: var(--accent);
+}
+
+a.case-card:hover .case-card__title {
+  color: var(--accent);
+}
+
+/* ---------- Scenario sections ---------- */
+.scenario__intro {
+  margin-top: 56px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.scenario__text {
+  flex: 0 1 900px; /* exactly 900px when there is room; shrinks between 1024 and ~1100 */
+  min-width: 0;
+}
+
+.scenario__lead {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.scenario__subhead {
+  margin: 16px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.scenario__figure {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.scenario__figure .shot {
+  aspect-ratio: 900 / 722;
+  object-fit: cover;
+}
+
+.scenario__figure .shot--wide {
+  aspect-ratio: 928 / 394;
+  object-fit: cover;
+}
+
+.scenario__shots {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 40px;
+}
+
+.scenario__shots .shot {
+  aspect-ratio: 900 / 722;
+  object-fit: cover;
+}
+
+/* numbered "What I designed" steps */
+.steps {
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.steps__item {
+  display: flex;
+  gap: 14px;
+}
+
+.steps__num {
+  flex: 0 0 16px;
+  padding-top: 1px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em; /* 0.24px at 12px */
+  color: var(--accent);
+}
+
+.steps__name {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.steps__text {
+  margin: 3px 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+.steps__text--multi {
+  margin-bottom: 6px;
+}
+
+/* workflow / status-transition rows */
+.scenario__extra {
+  margin-top: 56px;
+}
+
+.flow {
+  margin-top: 24px;
+  display: flex;
+  align-items: stretch;
+}
+
+.flow__step {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 18px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.flow__num {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--accent);
+}
+
+.flow__name {
+  margin: 6px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.flow__arrow {
+  align-self: center;
+  padding: 0 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* status transition diagram (scenario 3) */
+.stateflow {
+  margin-top: 24px;
+  display: flex;
+  align-items: stretch;
+}
+
+.stateflow__card {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stateflow__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-inline: auto;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.stateflow__icon--current {
+  background: #fef9c3;
+  color: #f59e0b;
+}
+
+.stateflow__icon--action {
+  background: var(--border-soft);
+  color: var(--accent);
+}
+
+.stateflow__icon--new {
+  background: var(--border-soft);
+  color: #10b981;
+}
+
+.stateflow__type {
+  margin: 8px 0 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.stateflow__value {
+  margin: 4px 0 0;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.stateflow__connector {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+}
+
+.stateflow__line {
+  width: 20px;
+  height: 1px;
+  background: var(--border-soft);
+}
+
+.stateflow__glyph {
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--accent);
+}
+
+/* ---------- Before / Solution comparison ---------- */
+.compare {
+  margin-top: 160px;
+}
+
+.compare__inner {
+  max-width: 1152px;
+  margin: 24px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
+  align-items: center;
+}
+
+.compare__box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.compare__box--solution {
+  border: 2px solid var(--accent);
+}
+
+.compare__label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.compare__title {
+  margin: 16px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.compare__rows {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.compare__row {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.compare__row--tint {
+  background: var(--surface-tint);
+}
+
+.compare__arrow {
+  text-align: center;
+  font-size: 24px;
+  color: var(--text-secondary);
+}
+
+/* mini UI mockup inside the solution box */
+.miniui {
+  margin-top: 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+}
+
+.miniui__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.miniui__id {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.miniui__badge {
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: #fef9c3;
+  color: #854d0e;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.miniui__tabs {
+  display: flex;
+  gap: 2px;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.miniui__tab {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.miniui__tab--active {
+  background: var(--border-soft);
+  color: #2b4ecc;
+  font-weight: 500;
+}
+
+.miniui__content {
+  margin: 0;
+  padding: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ---------- Result block (end of each scenario) ---------- */
+.result {
+  margin: 64px clamp(0px, 2.6vw, 48px) 0; /* inset 48px at 1920 */
+  padding: 40px clamp(24px, 2.6vw, 48px);
+  background: var(--surface-dark);
+  border-radius: 16px;
+  color: #fff;
+}
+
+.result__label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.12em; /* 1.32px at 11px */
+  text-transform: uppercase;
+  color: var(--border-soft);
+}
+
+.result__title {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.result__grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.result__item {
+  border-top: 1px solid rgb(255 255 255 / 12%);
+  padding-top: 20px;
+}
+
+.result__name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: #fff;
+}
+
+.result__text {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: rgb(255 255 255 / 50%);
+}
+
+/* ---------- Constraints ---------- */
+.constraints__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 720px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.constraints__text {
+  margin: 24px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.constraints__lead {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.constraints__list {
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.constraints__item {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.constraints__num {
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--accent);
+}
+
+.constraints__value {
+  margin-top: 6px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   Case study — responsive
+   ============================================================ */
+
+/* ---- ≤ 1024px: columns stack, grids go single-column ---- */
+@media (max-width: 1024px) {
+  .case-section {
+    padding-top: 96px;
+  }
+
+  .case-hero {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .case-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* keep the overhanging chips inside the viewport once the hero stacks */
+  .case-hero__chip--status {
+    transform: translateX(-15%);
+  }
+
+  .case-hero__chip--workspace {
+    transform: translateX(-25%);
+  }
+
+  .overview__grid,
+  .solutions__grid,
+  .outcomes__grid,
+  .result__grid,
+  .scenario__shots {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .scenario__intro {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .scenario__text {
+    flex: none;
+  }
+
+  .flow {
+    flex-wrap: wrap;
+    gap: 12px 0;
+  }
+
+  .flow__step {
+    flex: 1 1 160px;
+  }
+
+  .stateflow {
+    flex-wrap: wrap;
+    gap: 16px 0;
+  }
+
+  .stateflow__card {
+    flex: 1 1 240px;
+  }
+
+  .compare {
+    margin-top: 96px;
+  }
+
+  .compare__inner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .compare__arrow {
+    transform: rotate(90deg);
+  }
+
+  .constraints__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .constraints__list {
+    margin-top: 24px;
+  }
+
+  .result {
+    margin-inline: 0;
+  }
+}
+
+/* ---- ≤ 720px: header and flows compact ---- */
+@media (max-width: 720px) {
+  .page-header {
+    padding-top: 20px;
+    padding-bottom: 16px;
+  }
+
+  .page-header__logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .page-header__nav {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .page-header__link {
+    font-size: 16px;
+  }
+
+  .case-hero__goal {
+    margin-top: 24px;
+  }
+
+  .case-card__title {
+    font-size: 24px;
+  }
+
+  .flow {
+    gap: 0;
+  }
+
+  .flow__step {
+    flex: 1 1 100%;
+  }
+
+  .flow__arrow {
+    display: none;
+  }
+
+  .stateflow {
+    gap: 12px;
+  }
+
+  .stateflow__card {
+    flex: 1 1 100%;
+  }
+
+  .stateflow__connector {
+    display: none;
   }
 }

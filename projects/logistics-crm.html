@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logistics CRM — Zemfira Nurgaleeva</title>
+  <meta name="description" content="Logistics CRM case study — a CRM for managing transportation operations, designed by Zemfira Nurgaleeva.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400&family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700&family=Oswald:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../main.js" defer></script>
+</head>
+<!-- data-i18n-title/-description select this page's <title>/<meta> strings in main.js -->
+<body class="case-study" data-i18n-title="caseDocTitle" data-i18n-description="caseDocDescription">
+
+  <!-- ===================== Page header (sticky) ===================== -->
+  <header class="page-header">
+    <a class="page-header__logo" href="../" aria-label="Zemfira Nurgaleeva — home">
+      <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="50" height="50">
+    </a>
+
+    <nav class="page-header__nav" aria-label="Case study menu">
+      <button type="button" class="page-header__link" id="lang-switch" data-i18n="langSwitch">Русский язык</button>
+      <a class="page-header__link" href="../#about" data-i18n="aboutMe">About me</a>
+      <a class="page-header__link" href="mailto:EMAIL@EXAMPLE.COM" data-i18n="contactMe">Contact me</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== Hero ===================== -->
+    <section class="case-hero">
+      <div class="container case-hero__grid">
+        <div class="case-hero__content">
+          <p class="case-hero__eyebrow" data-i18n="caseEyebrow">Product Design · UX/UI</p>
+          <h1 class="case-title case-hero__title" data-i18n="caseTitle">Logistics CRM</h1>
+          <p class="case-hero__lead" data-i18n="caseLead">A CRM for managing transportation operations and the day-to-day workflow of a logistics team.</p>
+
+          <div class="case-hero__goal">
+            <p class="kicker" data-i18n="caseGoalLabel">Goal</p>
+            <p class="case-hero__goal-text" data-i18n="caseGoal">Create a practical working interface for processing shipments and handling multiple tasks in parallel.</p>
+          </div>
+        </div>
+
+        <div class="case-hero__media-wrap">
+          <img class="case-hero__media" src="../assets/images/logistics-crm/hero-main.png"
+               alt="Logistics CRM transportation card interface" data-i18n-alt="caseMediaAlt">
+          <span class="case-hero__chip case-hero__chip--status" data-i18n="chipStatus">Status</span>
+          <span class="case-hero__chip case-hero__chip--workspace" data-i18n="chipWorkspace">Workspace</span>
+          <span class="case-hero__chip case-hero__chip--card" data-i18n="chipCard">Transportation card</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Project overview (my role) ===================== -->
+    <section class="overview">
+      <div class="container">
+        <p class="kicker kicker--bar" data-i18n="caseRoleLabel">my role</p>
+
+        <div class="overview__grid">
+          <div class="role">
+            <p class="role__label" data-i18n="roleUxLabel">UX</p>
+            <ul class="role__list">
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleUx1">Requirements analysis</span></li>
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleUx2">User flows</span></li>
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleUx3">Transportation workflow structure</span></li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <p class="role__label" data-i18n="roleUiLabel">UI</p>
+            <ul class="role__list">
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleUi1">Transportation card</span></li>
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleUi2">Working tabs</span></li>
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleUi3">Interaction patterns</span></li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <p class="role__label" data-i18n="roleCollabLabel">Collaboration</p>
+            <ul class="role__list">
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleCollab1">UI Kit &amp; components</span></li>
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleCollab2">Interactive prototypes</span></li>
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="roleCollab3">Iterations based on team and stakeholder feedback</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Solutions — the three cards ===================== -->
+    <section class="solutions case-section" id="solutions">
+      <div class="container">
+        <h2 class="case-title" data-i18n="solutionsTitle">What I designed</h2>
+
+        <div class="solutions__grid">
+          <a class="case-card" href="#transportation-card">
+            <p class="case-card__number">01</p>
+            <h3 class="case-card__title" data-i18n="sol1Title">Transportation card</h3>
+            <div class="case-card__image">
+              <img src="../assets/images/logistics-crm/card-transportation.png"
+                   alt="Transportation card with working tabs" data-i18n-alt="sol1Alt">
+            </div>
+            <p class="case-card__text" data-i18n="sol1Desc">Organize a large amount of information and operations into a compact working space.</p>
+          </a>
+
+          <a class="case-card" href="#multiple-transports">
+            <p class="case-card__number">02</p>
+            <h3 class="case-card__title" data-i18n="sol2Title">Multiple transports</h3>
+            <div class="case-card__image">
+              <img src="../assets/images/logistics-crm/card-multiple.png"
+                   alt="Panel of open transports" data-i18n-alt="sol2Alt">
+            </div>
+            <p class="case-card__text" data-i18n="sol2Desc">Allow users to work with several active transports without losing context.</p>
+          </a>
+
+          <a class="case-card" href="#status-updates">
+            <p class="case-card__number">03</p>
+            <h3 class="case-card__title" data-i18n="sol3Title">Status updates</h3>
+            <div class="case-card__image">
+              <img src="../assets/images/logistics-crm/card-status.png"
+                   alt="Transports table with a status filter" data-i18n-alt="sol3Alt">
+            </div>
+            <p class="case-card__text" data-i18n="sol3Desc">Make transportation status changes clear, predictable and visible.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Scenario 1 — Transportation card ===================== -->
+    <section class="scenario case-section" id="transportation-card">
+      <div class="container">
+        <a class="back-link" href="#solutions">
+          <span class="back-link__arrow" aria-hidden="true">←</span>
+          <span data-i18n="backToSolutions">Back to solutions</span>
+        </a>
+        <h2 class="case-title" data-i18n="s1Title">Transportation card</h2>
+
+        <div class="scenario__intro">
+          <div class="scenario__text">
+            <p class="kicker kicker--bar" data-i18n="challengeLabel">Challenge</p>
+            <p class="scenario__lead" data-i18n="s1Challenge">A transportation card contains a large amount of information and operations. The goal was to make it practical for everyday work, while keeping the interface compact and focused.</p>
+            <p class="scenario__subhead" data-i18n="whatDesigned">What I designed</p>
+
+            <ol class="steps">
+              <li class="steps__item">
+                <span class="steps__num">01</span>
+                <div class="steps__body">
+                  <p class="steps__name" data-i18n="s1Step1Name">Structured tabs</p>
+                  <p class="steps__text" data-i18n="s1Step1Text">Each working area is organized into a dedicated tab.</p>
+                </div>
+              </li>
+              <li class="steps__item">
+                <span class="steps__num">02</span>
+                <div class="steps__body">
+                  <p class="steps__name" data-i18n="s1Step2Name">Compact overview</p>
+                  <p class="steps__text" data-i18n="s1Step2Text">Key transportation information and current status remain visible regardless of the active tab.</p>
+                </div>
+              </li>
+              <li class="steps__item">
+                <span class="steps__num">03</span>
+                <div class="steps__body">
+                  <p class="steps__name" data-i18n="s1Step3Name">Contextual actions</p>
+                  <p class="steps__text" data-i18n="s1Step3Text">Actions are placed next to the information they relate to.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="scenario__figure">
+            <img class="shot" src="../assets/images/logistics-crm/s1-intro.png" alt="Transportation card interface with working tabs and a progress bar">
+          </div>
+        </div>
+
+        <div class="scenario__shots">
+          <img class="shot" src="../assets/images/logistics-crm/s1-shot-1.png" alt="Transports list with status badges">
+          <img class="shot" src="../assets/images/logistics-crm/s1-shot-2.png" alt="New transport creation dialog">
+          <img class="shot" src="../assets/images/logistics-crm/s1-shot-3.png" alt="Comments tab of the transportation card">
+          <img class="shot" src="../assets/images/logistics-crm/s1-shot-4.png" alt="Route plan tab of the transportation card">
+        </div>
+
+        <div class="compare">
+          <p class="kicker kicker--bar" data-i18n="designLogicLabel">Design logic</p>
+
+          <div class="compare__inner">
+            <div class="compare__box">
+              <p class="compare__label" data-i18n="beforeLabel">Before</p>
+              <h3 class="compare__title" data-i18n="beforeTitle">Information-heavy screen</h3>
+              <ul class="compare__rows">
+                <li class="compare__row compare__row--tint" data-i18n="beforeRow1">Route &amp; dates</li>
+                <li class="compare__row" data-i18n="beforeRow2">Driver &amp; vehicle</li>
+                <li class="compare__row" data-i18n="beforeRow3">Cargo details</li>
+                <li class="compare__row compare__row--tint" data-i18n="beforeRow4">Documents list</li>
+                <li class="compare__row" data-i18n="beforeRow5">Payment info</li>
+                <li class="compare__row" data-i18n="beforeRow6">Notes &amp; history</li>
+                <li class="compare__row compare__row--tint" data-i18n="beforeRow7">Status actions</li>
+                <li class="compare__row" data-i18n="beforeRow8">Contact details</li>
+              </ul>
+            </div>
+
+            <span class="compare__arrow" aria-hidden="true">→</span>
+
+            <div class="compare__box compare__box--solution">
+              <p class="compare__label" data-i18n="solutionLabel">Solution</p>
+              <h3 class="compare__title" data-i18n="solutionTitle">Structured transportation workspace</h3>
+              <!-- illustrative mini-mockup of the redesigned card -->
+              <div class="miniui" aria-hidden="true">
+                <div class="miniui__head">
+                  <span class="miniui__id">TRN-004</span>
+                  <span class="miniui__badge">In Transit</span>
+                </div>
+                <div class="miniui__tabs">
+                  <span class="miniui__tab miniui__tab--active">Overview</span>
+                  <span class="miniui__tab">Documents</span>
+                  <span class="miniui__tab">Notes</span>
+                  <span class="miniui__tab">History</span>
+                </div>
+                <p class="miniui__content">Focused content for active tab</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="result">
+          <p class="result__label" data-i18n="resultLabel">Result</p>
+          <p class="result__title" data-i18n="s1ResultTitle">The transportation card became a working space rather than just a place to store information.</p>
+          <div class="result__grid">
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s1Result1Name">Preserved context</h3>
+              <p class="result__text" data-i18n="s1Result1Text">Users can move between tasks without losing the main transportation context.</p>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s1Result2Name">Contextual actions</h3>
+              <p class="result__text" data-i18n="s1Result2Text">Actions can be performed directly within the relevant section.</p>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s1Result3Name">Scalable structure</h3>
+              <p class="result__text" data-i18n="s1Result3Text">New information can be added to dedicated areas without increasing screen complexity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Scenario 2 — Multiple transports ===================== -->
+    <section class="scenario case-section" id="multiple-transports">
+      <div class="container">
+        <a class="back-link" href="#solutions">
+          <span class="back-link__arrow" aria-hidden="true">←</span>
+          <span data-i18n="backToSolutions">Back to solutions</span>
+        </a>
+        <h2 class="case-title" data-i18n="s2Title">Working with multiple transports</h2>
+
+        <div class="scenario__intro">
+          <div class="scenario__text">
+            <p class="kicker kicker--bar" data-i18n="challengeLabel">Challenge</p>
+            <p class="scenario__lead" data-i18n="s2Challenge">Operational work rarely involves a single transport at a time. Users may need to open multiple transports, compare information, switch between tasks, and return to something they were working on earlier. With standard list-based navigation, this can lead to repeated searching and loss of working context.</p>
+            <p class="scenario__subhead" data-i18n="whatDesigned">What I designed</p>
+
+            <ol class="steps">
+              <li class="steps__item">
+                <span class="steps__num">01</span>
+                <div class="steps__body">
+                  <p class="steps__name" data-i18n="s2Step1Name">Open Transports Panel</p>
+                  <p class="steps__text steps__text--multi" data-i18n="s2Step1TextA">I introduced a dedicated navigation layer that displays all currently open transports and allows users to switch between them quickly.</p>
+                  <p class="steps__text" data-i18n="s2Step1TextB">The panel keeps active work accessible and separates finding a transport from switching between transports that are already open.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="scenario__figure">
+            <img class="shot shot--wide" src="../assets/images/logistics-crm/s2-intro.png" alt="Open transports panel with pill tabs">
+          </div>
+        </div>
+
+        <div class="scenario__extra">
+          <p class="kicker kicker--bar" data-i18n="workflowLabel">Workflow</p>
+          <div class="flow">
+            <div class="flow__step">
+              <p class="flow__num">01</p>
+              <p class="flow__name" data-i18n="flow1">Search</p>
+            </div>
+            <span class="flow__arrow" aria-hidden="true">→</span>
+            <div class="flow__step">
+              <p class="flow__num">02</p>
+              <p class="flow__name" data-i18n="flow2">Open transport</p>
+            </div>
+            <span class="flow__arrow" aria-hidden="true">→</span>
+            <div class="flow__step">
+              <p class="flow__num">03</p>
+              <p class="flow__name" data-i18n="flow3">Work</p>
+            </div>
+            <span class="flow__arrow" aria-hidden="true">→</span>
+            <div class="flow__step">
+              <p class="flow__num">04</p>
+              <p class="flow__name" data-i18n="flow4">Switch</p>
+            </div>
+            <span class="flow__arrow" aria-hidden="true">→</span>
+            <div class="flow__step">
+              <p class="flow__num">05</p>
+              <p class="flow__name" data-i18n="flow5">Continue</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario__shots">
+          <img class="shot" src="../assets/images/logistics-crm/s2-shot-1.png" alt="Transport card with the transports table tab active">
+          <img class="shot" src="../assets/images/logistics-crm/s2-shot-2.png" alt="Transport card with several open transports">
+        </div>
+
+        <div class="result">
+          <p class="result__label" data-i18n="resultLabel">Result</p>
+          <p class="result__title" data-i18n="s2ResultTitle">Users can work with multiple transports while keeping their working context.</p>
+          <div class="result__grid">
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s2Result1Name">Open transports</h3>
+              <p class="result__text" data-i18n="s2Result1Text">Users can work with multiple transports without repeatedly returning to the main list.</p>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s2Result2Name">Preserved context</h3>
+              <p class="result__text" data-i18n="s2Result2Text">The current working context remains available.</p>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s2Result3Name">Fast switching</h3>
+              <p class="result__text" data-i18n="s2Result3Text">Users can switch between active transports without returning to the main list.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Scenario 3 — Status updates ===================== -->
+    <section class="scenario case-section" id="status-updates">
+      <div class="container">
+        <a class="back-link" href="#solutions">
+          <span class="back-link__arrow" aria-hidden="true">←</span>
+          <span data-i18n="backToSolutions">Back to solutions</span>
+        </a>
+        <h2 class="case-title" data-i18n="s3Title">Transportation status update</h2>
+
+        <div class="scenario__intro">
+          <div class="scenario__text">
+            <p class="kicker kicker--bar" data-i18n="challengeLabel">Challenge</p>
+            <p class="scenario__lead" data-i18n="s3Challenge">A transport status represents its current operational state and determines what the team can do next. Changing the status therefore needs to be clear and predictable. Users should immediately understand which state is active and what happened after the change.</p>
+            <p class="scenario__subhead" data-i18n="whatDesigned">What I designed</p>
+
+            <ol class="steps">
+              <li class="steps__item">
+                <span class="steps__num">01</span>
+                <div class="steps__body">
+                  <p class="steps__name" data-i18n="s3Step1Name">State transition flow</p>
+                  <p class="steps__text steps__text--multi" data-i18n="s3Step1TextA">I defined the interaction around a simple sequence</p>
+                  <p class="steps__text" data-i18n="s3Step1TextB">The interface clearly displays the current status and allows users to change it directly within the transportation context.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="scenario__figure">
+            <img class="shot shot--wide" src="../assets/images/logistics-crm/s3-intro.png" alt="Transports table with colored status badges">
+          </div>
+        </div>
+
+        <div class="scenario__extra">
+          <p class="kicker kicker--bar" data-i18n="statusTransitionLabel">Status transition</p>
+          <div class="stateflow">
+            <div class="stateflow__card">
+              <span class="stateflow__icon stateflow__icon--current" aria-hidden="true">●</span>
+              <p class="stateflow__type" data-i18n="sf1Type">Current state</p>
+              <p class="stateflow__value" data-i18n="sf1Value">In Transit</p>
+            </div>
+            <div class="stateflow__connector" aria-hidden="true">
+              <span class="stateflow__line"></span>
+              <span class="stateflow__glyph">→</span>
+            </div>
+            <div class="stateflow__card">
+              <span class="stateflow__icon stateflow__icon--action" aria-hidden="true">▶</span>
+              <p class="stateflow__type" data-i18n="sf2Type">Available action</p>
+              <p class="stateflow__value" data-i18n="sf2Value">Update status</p>
+            </div>
+            <div class="stateflow__connector" aria-hidden="true">
+              <span class="stateflow__line"></span>
+              <span class="stateflow__glyph">→</span>
+            </div>
+            <div class="stateflow__card">
+              <span class="stateflow__icon stateflow__icon--new" aria-hidden="true">●</span>
+              <p class="stateflow__type" data-i18n="sf3Type">New state</p>
+              <p class="stateflow__value" data-i18n="sf3Value">Delivered</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario__shots">
+          <img class="shot" src="../assets/images/logistics-crm/s3-shot-1.png" alt="Transports list with an open status filter">
+          <img class="shot" src="../assets/images/logistics-crm/s3-shot-2.png" alt="Filtered transports table">
+        </div>
+
+        <div class="result">
+          <p class="result__label" data-i18n="resultLabel">Result</p>
+          <p class="result__title" data-i18n="s3ResultTitle">Users understand the current state, the available action and what happened after the change.</p>
+          <div class="result__grid">
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s3Result1Name">Transparent status changes</h3>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s3Result2Name">Immediate feedback</h3>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="s3Result3Name">Predictable next actions</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Outcomes ===================== -->
+    <section class="outcomes case-section" id="outcomes">
+      <div class="container">
+        <h2 class="case-title" data-i18n="outcomesTitle">What changed in the workflow</h2>
+
+        <div class="outcomes__grid">
+          <div class="case-card">
+            <p class="case-card__number">01</p>
+            <h3 class="case-card__title" data-i18n="out1Title">Structured workspace</h3>
+            <p class="case-card__text" data-i18n="out1Text">The transportation card became a unified working space — not a flat list of fields.</p>
+          </div>
+
+          <div class="case-card">
+            <p class="case-card__number">02</p>
+            <h3 class="case-card__title" data-i18n="out2Title">Parallel work</h3>
+            <p class="case-card__text" data-i18n="out2Text">Users can work with multiple transports without repeatedly searching for them.</p>
+          </div>
+
+          <div class="case-card">
+            <p class="case-card__number">03</p>
+            <h3 class="case-card__title" data-i18n="out3Title">Predictable status flow</h3>
+            <p class="case-card__text" data-i18n="out3Text">Status changes became a clear and controlled interaction with immediate feedback.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Constraints ===================== -->
+    <section class="constraints case-section" id="constraints">
+      <div class="container">
+        <div class="constraints__grid">
+          <div class="constraints__intro">
+            <h2 class="case-title" data-i18n="constraintsTitle">Constraints</h2>
+            <p class="constraints__text" data-i18n="constraintsText">The project was at the MVP stage, so full UX research and quantitative metrics were not conducted.</p>
+            <p class="constraints__lead" data-i18n="constraintsLead">Design decisions were based on:</p>
+          </div>
+
+          <ul class="constraints__list">
+            <li class="constraints__item">
+              <span class="constraints__num">01</span>
+              <span class="constraints__value" data-i18n="cons1">Business requirements</span>
+            </li>
+            <li class="constraints__item">
+              <span class="constraints__num">02</span>
+              <span class="constraints__value" data-i18n="cons2">Process analysis</span>
+            </li>
+            <li class="constraints__item">
+              <span class="constraints__num">03</span>
+              <span class="constraints__value" data-i18n="cons3">Team discussions</span>
+            </li>
+            <li class="constraints__item">
+              <span class="constraints__num">04</span>
+              <span class="constraints__value" data-i18n="cons4">Stakeholder feedback</span>
+            </li>
+            <li class="constraints__item">
+              <span class="constraints__num">05</span>
+              <span class="constraints__value" data-i18n="cons5">Iterative design</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== Footer =====================
+       Social placeholders — replace HANDLE / EMAIL with real values
+       (kept in sync with the homepage footer).                        -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a class="footer__logo" href="../" aria-label="Zemfira Nurgaleeva — home">
+        <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="100" height="100">
+      </a>
+
+      <nav class="footer__links" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/HANDLE" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://t.me/HANDLE" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="mailto:EMAIL@EXAMPLE.COM">Email</a>
+        <span class="footer__copyright" data-i18n="copyright">&copy; 2026 Zemfira Nurgaleeva</span>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
