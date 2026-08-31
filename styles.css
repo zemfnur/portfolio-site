@@ -79,6 +79,18 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* In-page anchor navigation (hero/footer → #projects, #about) scrolls
+   smoothly on every page; reduced-motion users get the default jump. */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 .container {
   width: min(100% - 2 * var(--page-pad), var(--container));
   margin-inline: auto;
@@ -182,6 +194,12 @@ button:focus-visible {
 .hero__links {
   display: flex;
   gap: 48px;
+
+  /* Four links now share the row — wrap instead of overflowing the text
+     column on narrow desktops. row-gap only applies once it wraps, so the
+     1920 design (one line) is unaffected. */
+  flex-wrap: wrap;
+  row-gap: 16px;
   white-space: nowrap;
 }
 
@@ -341,6 +359,12 @@ button.hero__link {
   display: flex;
   align-items: flex-start;
   gap: 74px;
+
+  /* With the Projects link the row can outrun the 120px footer padding
+     on narrow desktops — wrap rather than overflow; row-gap only applies
+     once it wraps. */
+  flex-wrap: wrap;
+  row-gap: 16px;
 }
 
 .footer__links a {
@@ -466,20 +490,21 @@ button.hero__link {
    Faithful to Figma "Portfolio-case1" (1920×11806).
    ============================================================ */
 
-/* In-page anchor navigation: smooth scrolling, and section targets
-   offset below the sticky page header. */
-html:has(.case-study) {
-  scroll-behavior: smooth;
-}
-
+/* Section targets offset below the sticky page header (smooth scrolling
+   itself is global — see the Base section). */
 .case-study main section {
   scroll-margin-top: 160px; /* sticky .page-header (106px) + breathing room */
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html:has(.case-study) {
-    scroll-behavior: auto;
-  }
+/* RU copy carries long unbreakable words («спроектировала»,
+   «структурированное») that outrun the type clamp floors on narrow
+   screens. Both properties inherit — hyphenate when the lang
+   dictionary allows it, hard-break as a last resort. "anywhere" (not
+   "break-word") so the break also counts into min-content sizing and
+   grid/flex tracks can still shrink. */
+.case-study {
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 /* ---------- Page header ---------- */
@@ -565,19 +590,34 @@ button.page-header__link {
   padding-top: 200px;
 }
 
-/* ---------- "← Back to solutions" control (each scenario section) ---------- */
+/* ---------- "← Back to overview" control (end of each scenario section) ----------
+   Bottom-sticky: with the control placed at the section end, top-sticky
+   could never pin (an element below the viewport doesn't stick upward).
+   Sticky-from-bottom floats it near the viewport bottom while the user
+   scrolls through the section, settles into flow at the section end, and
+   is confined to its own section by the sticky containing block. */
 .back-link {
+  position: sticky;
+  bottom: 24px;
+  z-index: 5;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 32px;
+  width: fit-content;
+  margin-top: 48px;
+  padding: 10px 16px;
   font-family: var(--font-label);
-  font-size: 11px;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
   text-decoration: none;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(28 30 33 / 8%);
 }
 
 .back-link:hover {
@@ -673,6 +713,18 @@ button.page-header__link {
 .case-hero__chip--card {
   left: 76%;
   top: 34%;
+}
+
+/* The card chip's desktop left: 76% drifts past the viewport on narrower
+   desktops (nothing clips the absolutely-positioned chips). Anchor it to
+   the image's right edge with the same slight overhang the left chips
+   keep, until the two-column hero is wide enough for the Figma position. */
+@media (max-width: 1599px) {
+  .case-hero__chip--card {
+    left: auto;
+    right: 0;
+    transform: translateX(10%);
+  }
 }
 
 /* ---------- Project overview (my role) ---------- */
@@ -1141,6 +1193,7 @@ a.case-card:hover .case-card__title {
 
 .miniui__tabs {
   display: flex;
+  flex-wrap: wrap; /* the tab row is the compare box's min-content floor — let it wrap on narrow screens */
   gap: 2px;
   padding: 5px 8px;
   border-bottom: 1px solid var(--border-soft);
@@ -1278,6 +1331,85 @@ a.case-card:hover .case-card__title {
   line-height: 18px;
   letter-spacing: 0.02em;
   color: var(--text-primary);
+}
+
+/* ============================================================
+   Case study — illustration lightbox
+   ============================================================ */
+
+/* zoomable illustrations hint the interaction */
+img[data-lightbox] {
+  cursor: zoom-in;
+}
+
+/* The scrim is the overlay element itself, so a click that lands on it
+   (not on the image or the close button) closes the lightbox. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200; /* above the sticky page-header (100) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(48px, 6vw, 96px) clamp(20px, 4vw, 64px);
+  background: rgb(28 30 33 / 92%); /* --surface-dark, subdued scrim */
+  opacity: 0;
+  visibility: hidden;
+
+  /* closing: fade out first, then leave the accessibility tree */
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.lightbox--open {
+  opacity: 1;
+  visibility: visible;
+
+  /* opening: become visible at once, then fade in */
+  transition: opacity 0.3s ease, visibility 0s;
+}
+
+/* auto width/height + both max constraints = contain-fit: the image
+   scales to the available space without cropping or distortion */
+.lightbox__image {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px; /* matches .shot */
+  box-shadow: 0 32px 80px rgb(0 0 0 / 45%);
+  transform: scale(0.97);
+  transition: transform 0.3s ease;
+}
+
+.lightbox--open .lightbox__image {
+  transform: none;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: max(clamp(16px, 3vw, 40px), env(safe-area-inset-top));
+  right: max(clamp(16px, 3vw, 40px), env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 48px; /* >= 44px tap target on touch */
+  height: 48px;
+  padding: 0;
+  color: #fff;
+  background: rgb(255 255 255 / 6%);
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.lightbox__close:hover {
+  background: rgb(255 255 255 / 14%);
+  border-color: rgb(255 255 255 / 45%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .lightbox__image {
+    transition: none;
+  }
 }
 
 /* ============================================================

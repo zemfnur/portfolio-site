@@ -36,7 +36,7 @@ When a new HTML file is added (e.g. case-study pages), add it to the `lint:html`
 Three-file static site:
 
 - `index.html` — all markup; English copy lives as the default text in the markup itself.
-- `main.js` — the only script: the EN/RU language switch. Russian strings live in `STRINGS` there. To make text translatable: give the element `data-i18n="key"` (or `data-i18n-alt` / `data-i18n-arialabel` for attributes) and add the key to both language dicts. The switch button label always shows the language you'd switch *to*.
+- `main.js` — the only script: the EN/RU language switch plus the case-study illustration lightbox (`img[data-lightbox]` → `.lightbox` overlay). Russian strings live in `STRINGS` there. To make text translatable: give the element `data-i18n="key"` (or `data-i18n-alt` / `data-i18n-arialabel` for attributes) and add the key to both language dicts. The switch button label always shows the language you'd switch *to*.
 - `styles.css` — all styles. Desktop-first; breakpoints at 1024px (hero stacks, single column) and 720px. BEM class names (enforced by stylelint).
 
 Non-obvious constraints:

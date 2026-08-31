@@ -1,6 +1,9 @@
-/* Language switch (EN/RU) — the only script on the site.
-   EN text lives in index.html; RU equivalents live here.
-   The switch button label always shows the language you would switch TO. */
+/* The only script on the site.
+   1. Language switch (EN/RU): EN text lives in the markup, RU
+      equivalents live in STRINGS below. The switch button label always
+      shows the language you would switch TO.
+   2. Illustration lightbox (case-study pages): every img[data-lightbox]
+      opens in the .lightbox overlay defined at the end of the body. */
 (function () {
   'use strict';
 
@@ -16,8 +19,9 @@
       svc3: 'User Flows & Information Architecture',
       svc4: 'Design Systems & UI Libraries',
       svc5: 'Prototyping & Interaction Design',
+      projectsLink: 'Projects',
       aboutMe: 'About me',
-      contactMe: 'Contact me',
+      contactMe: 'Contacts',
       projectsTitle: 'My projects',
       card1Title: 'Logistics CRM',
       card1Desc: 'A CRM for managing transportation operations and the day-to-day workflow of a logistics team.',
@@ -65,7 +69,7 @@
       sol3Title: 'Status updates',
       sol3Desc: 'Make transportation status changes clear, predictable and visible.',
       sol3Alt: 'Transports table with a status filter',
-      backToSolutions: 'Back to solutions',
+      backToOverview: 'Back to overview',
       challengeLabel: 'Challenge',
       whatDesigned: 'What I designed',
       designLogicLabel: 'Design logic',
@@ -154,7 +158,9 @@
       cons2: 'Process analysis',
       cons3: 'Team discussions',
       cons4: 'Stakeholder feedback',
-      cons5: 'Iterative design'
+      cons5: 'Iterative design',
+      lightboxLabel: 'Illustration view',
+      lightboxClose: 'Close'
     },
     ru: {
       docTitle: 'Земфира Нургалеева — UX/UI-дизайнер',
@@ -167,8 +173,9 @@
       svc3: 'Пользовательские сценарии и информационная архитектура',
       svc4: 'Дизайн-системы и UI-библиотеки',
       svc5: 'Прототипирование и интерактивные сценарии',
+      projectsLink: 'Проекты',
       aboutMe: 'Обо мне',
-      contactMe: 'Связаться со мной',
+      contactMe: 'Контакты',
       projectsTitle: 'Мои проекты',
       card1Title: 'Logistics CRM',
       card1Desc: 'CRM для управления транспортными операциями и ежедневными задачами логистической команды.',
@@ -216,7 +223,7 @@
       sol3Title: 'Обновления статусов',
       sol3Desc: 'Сделать смену статуса перевозки понятной, предсказуемой и заметной.',
       sol3Alt: 'Таблица перевозок с фильтром по статусу',
-      backToSolutions: 'Назад к решениям',
+      backToOverview: 'Назад к обзору',
       challengeLabel: 'Задача',
       whatDesigned: 'Что я спроектировала',
       designLogicLabel: 'Логика решения',
@@ -303,7 +310,9 @@
       cons2: 'Анализ процессов',
       cons3: 'Обсуждения с командой',
       cons4: 'Обратная связь стейкхолдеров',
-      cons5: 'Итеративная проработка'
+      cons5: 'Итеративная проработка',
+      lightboxLabel: 'Просмотр иллюстрации',
+      lightboxClose: 'Закрыть'
     }
   };
 
@@ -360,4 +369,56 @@
       try { window.localStorage.setItem(STORAGE_KEY, next); } catch (e) { /* no storage */ }
     });
   }
+})();
+
+/* ============================================================
+   Illustration lightbox (case-study pages)
+   Opens the clicked img[data-lightbox] in the .lightbox overlay;
+   closed with the X button, a click on the scrim, or Esc.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var lightbox = document.querySelector('.lightbox');
+  if (!lightbox) return; /* page without the overlay markup (homepage) */
+
+  var image = lightbox.querySelector('.lightbox__image');
+  var lastTrigger = null;
+
+  function open(trigger) {
+    image.src = trigger.currentSrc || trigger.src;
+    image.alt = trigger.alt;
+    lastTrigger = trigger;
+    lightbox.classList.add('lightbox--open');
+
+    /* Freeze the page. Pad the layout by the scrollbar's width so the
+       sticky header does not jump when the scrollbar disappears. */
+    var scrollbar = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.paddingRight = scrollbar + 'px';
+
+    lightbox.querySelector('.lightbox__close').focus();
+  }
+
+  function close() {
+    lightbox.classList.remove('lightbox--open');
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.paddingRight = '';
+  }
+
+  document.querySelectorAll('img[data-lightbox]').forEach(function (img) {
+    img.addEventListener('click', function () {
+      open(img);
+    });
+  });
+
+  /* the scrim is the overlay itself — clicks that reach it (not the
+     image or the close button) close the lightbox */
+  lightbox.addEventListener('click', function (event) {
+    if (event.target === lightbox || event.target.closest('.lightbox__close')) close();
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') close();
+  });
 })();

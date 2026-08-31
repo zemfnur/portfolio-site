@@ -19,14 +19,15 @@
 
   <!-- ===================== Page header (sticky) ===================== -->
   <header class="page-header">
-    <a class="page-header__logo" href="../" aria-label="Zemfira Nurgaleeva — home">
+    <a class="page-header__logo" href="../index.html" aria-label="Zemfira Nurgaleeva — home">
       <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="50" height="50">
     </a>
 
     <nav class="page-header__nav" aria-label="Case study menu">
       <button type="button" class="page-header__link" id="lang-switch" data-i18n="langSwitch">Русский язык</button>
-      <a class="page-header__link" href="../#about" data-i18n="aboutMe">About me</a>
-      <a class="page-header__link" href="mailto:EMAIL@EXAMPLE.COM" data-i18n="contactMe">Contact me</a>
+      <a class="page-header__link" href="../index.html#projects" data-i18n="projectsLink">Projects</a>
+      <a class="page-header__link" href="../index.html#about" data-i18n="aboutMe">About me</a>
+      <a class="page-header__link" href="mailto:EMAIL@EXAMPLE.COM" data-i18n="contactMe">Contacts</a>
     </nav>
   </header>
 
@@ -47,7 +48,7 @@
         </div>
 
         <div class="case-hero__media-wrap">
-          <img class="case-hero__media" src="../assets/images/logistics-crm/hero-main.png"
+          <img class="case-hero__media" data-lightbox src="../assets/images/logistics-crm/hero-main.png"
                alt="Logistics CRM transportation card interface" data-i18n-alt="caseMediaAlt">
           <span class="case-hero__chip case-hero__chip--status" data-i18n="chipStatus">Status</span>
           <span class="case-hero__chip case-hero__chip--workspace" data-i18n="chipWorkspace">Workspace</span>
@@ -134,10 +135,6 @@
     <!-- ===================== Scenario 1 — Transportation card ===================== -->
     <section class="scenario case-section" id="transportation-card">
       <div class="container">
-        <a class="back-link" href="#solutions">
-          <span class="back-link__arrow" aria-hidden="true">←</span>
-          <span data-i18n="backToSolutions">Back to solutions</span>
-        </a>
         <h2 class="case-title" data-i18n="s1Title">Transportation card</h2>
 
         <div class="scenario__intro">
@@ -172,15 +169,15 @@
           </div>
 
           <div class="scenario__figure">
-            <img class="shot" src="../assets/images/logistics-crm/s1-intro.png" alt="Transportation card interface with working tabs and a progress bar">
+            <img class="shot" data-lightbox src="../assets/images/logistics-crm/s1-intro.png" alt="Transportation card interface with working tabs and a progress bar">
           </div>
         </div>
 
         <div class="scenario__shots">
-          <img class="shot" src="../assets/images/logistics-crm/s1-shot-1.png" alt="Transports list with status badges">
-          <img class="shot" src="../assets/images/logistics-crm/s1-shot-2.png" alt="New transport creation dialog">
-          <img class="shot" src="../assets/images/logistics-crm/s1-shot-3.png" alt="Comments tab of the transportation card">
-          <img class="shot" src="../assets/images/logistics-crm/s1-shot-4.png" alt="Route plan tab of the transportation card">
+          <img class="shot" data-lightbox src="../assets/images/logistics-crm/s1-shot-1.png" alt="Transports list with status badges">
+          <img class="shot" data-lightbox src="../assets/images/logistics-crm/s1-shot-2.png" alt="New transport creation dialog">
+          <img class="shot" data-lightbox src="../assets/images/logistics-crm/s1-shot-3.png" alt="Comments tab of the transportation card">
+          <img class="shot" data-lightbox src="../assets/images/logistics-crm/s1-shot-4.png" alt="Route plan tab of the transportation card">
         </div>
 
         <div class="compare">
@@ -243,16 +240,17 @@
             </div>
           </div>
         </div>
+
+        <a class="back-link" href="#solutions">
+          <span class="back-link__arrow" aria-hidden="true">←</span>
+          <span data-i18n="backToOverview">Back to overview</span>
+        </a>
       </div>
     </section>
 
     <!-- ===================== Scenario 2 — Multiple transports ===================== -->
     <section class="scenario case-section" id="multiple-transports">
       <div class="container">
-        <a class="back-link" href="#solutions">
-          <span class="back-link__arrow" aria-hidden="true">←</span>
-          <span data-i18n="backToSolutions">Back to solutions</span>
-        </a>
         <h2 class="case-title" data-i18n="s2Title">Working with multiple transports</h2>
 
         <div class="scenario__intro">
@@ -274,7 +272,7 @@
           </div>
 
           <div class="scenario__figure">
-            <img class="shot shot--wide" src="../assets/images/logistics-crm/s2-intro.png" alt="Open transports panel with pill tabs">
+            <img class="shot shot--wide" data-lightbox src="../assets/images/logistics-crm/s2-intro.png" alt="Open transports panel with pill tabs">
           </div>
         </div>
 
@@ -309,8 +307,8 @@
         </div>
 
         <div class="scenario__shots">
-          <img class="shot" src="../assets/images/logistics-crm/s2-shot-1.png" alt="Transport card with the transports table tab active">
-          <img class="shot" src="../assets/images/logistics-crm/s2-shot-2.png" alt="Transport card with several open transports">
+          <img class="shot" data-lightbox src="../assets/images/logistics-crm/s2-shot-1.png" alt="Transport card with the transports table tab active">
+          <img class="shot" data-lightbox src="../assets/images/logistics-crm/s2-shot-2.png" alt="Transport card with several open transports">
         </div>
 
         <div class="result">
@@ -331,16 +329,17 @@
             </div>
           </div>
         </div>
+
+        <a class="back-link" href="#solutions">
+          <span class="back-link__arrow" aria-hidden="true">←</span>
+          <span data-i18n="backToOverview">Back to overview</span>
+        </a>
       </div>
     </section>
 
     <!-- ===================== Scenario 3 — Status updates ===================== -->
     <section class="scenario case-section" id="status-updates">
       <div class="container">
-        <a class="back-link" href="#solutions">
-          <span class="back-link__arrow" aria-hidden="true">←</span>
-          <span data-i18n="backToSolutions">Back to solutions</span>
-        </a>
         <h2 class="case-title" data-i18n="s3Title">Transportation status update</h2>
 
         <div class="scenario__intro">
@@ -362,7 +361,7 @@
           </div>
 
           <div class="scenario__figure">
-            <img class="shot shot--wide" src="../assets/images/logistics-crm/s3-intro.png" alt="Transports table with colored status badges">
+            <img class="shot shot--wide" data-lightbox src="../assets/images/logistics-crm/s3-intro.png" alt="Transports table with colored status badges">
           </div>
         </div>
 
@@ -396,8 +395,8 @@
         </div>
 
         <div class="scenario__shots">
-          <img class="shot" src="../assets/images/logistics-crm/s3-shot-1.png" alt="Transports list with an open status filter">
-          <img class="shot" src="../assets/images/logistics-crm/s3-shot-2.png" alt="Filtered transports table">
+          <img class="shot" data-lightbox src="../assets/images/logistics-crm/s3-shot-1.png" alt="Transports list with an open status filter">
+          <img class="shot" data-lightbox src="../assets/images/logistics-crm/s3-shot-2.png" alt="Filtered transports table">
         </div>
 
         <div class="result">
@@ -415,6 +414,11 @@
             </div>
           </div>
         </div>
+
+        <a class="back-link" href="#solutions">
+          <span class="back-link__arrow" aria-hidden="true">←</span>
+          <span data-i18n="backToOverview">Back to overview</span>
+        </a>
       </div>
     </section>
 
@@ -488,11 +492,12 @@
        (kept in sync with the homepage footer).                        -->
   <footer class="footer">
     <div class="footer__inner">
-      <a class="footer__logo" href="../" aria-label="Zemfira Nurgaleeva — home">
+      <a class="footer__logo" href="../index.html" aria-label="Zemfira Nurgaleeva — home">
         <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="100" height="100">
       </a>
 
-      <nav class="footer__links" aria-label="Social links">
+      <nav class="footer__links" aria-label="Footer links">
+        <a href="../index.html#projects" data-i18n="projectsLink">Projects</a>
         <a href="https://www.linkedin.com/in/HANDLE" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://t.me/HANDLE" target="_blank" rel="noopener noreferrer">Telegram</a>
         <a href="mailto:EMAIL@EXAMPLE.COM">Email</a>
@@ -500,6 +505,24 @@
       </nav>
     </div>
   </footer>
+
+  <!-- ===================== Illustration lightbox =====================
+       Full-viewport overlay for examining the project illustrations in
+       detail. main.js copies the clicked img[data-lightbox] source and
+       alt in and toggles the --open modifier; closed with the X button,
+       a click on the darkened scrim, or Esc.                        -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Illustration view"
+       data-i18n-arialabel="lightboxLabel">
+    <!-- src/alt are filled in by main.js when an illustration is opened -->
+    <!-- [html-validate-disable-next element-required-attributes] -->
+    <img class="lightbox__image" alt="">
+    <button class="lightbox__close" type="button" aria-label="Close" data-i18n-arialabel="lightboxClose">
+      <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M4.5 4.5 15.5 15.5 M15.5 4.5 4.5 15.5" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
 
 </body>
 </html>
