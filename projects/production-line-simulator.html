@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Production Line Simulator — Zemfira Nurgaleeva</title>
+  <meta name="description" content="Production Line Simulator case study — a B2B simulation interface for configuring production lines, designed by Zemfira Nurgaleeva.">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/favicon/favicon.svg">
+  <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400&family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700&family=Oswald:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../main.js" defer></script>
+</head>
+<!-- data-i18n-title/-description select this page's <title>/<meta> strings in main.js -->
+<body class="case-study" data-i18n-title="case2DocTitle" data-i18n-description="case2DocDescription">
+
+  <!-- ===================== Page header (sticky) ===================== -->
+  <header class="page-header">
+    <a class="page-header__logo" href="../index.html" aria-label="Zemfira Nurgaleeva — home">
+      <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="50" height="50">
+    </a>
+
+    <nav class="page-header__nav" aria-label="Case study menu">
+      <button type="button" class="page-header__link" id="lang-switch" data-i18n="langSwitch">Русский язык</button>
+      <a class="page-header__link" href="../index.html#projects" data-i18n="projectsLink">Projects</a>
+      <a class="page-header__link" href="../index.html#about" data-i18n="aboutMe">About me</a>
+      <a class="page-header__link" href="mailto:EMAIL@EXAMPLE.COM" data-i18n="contactMe">Contacts</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== Hero ===================== -->
+    <section class="case-hero case-hero--band">
+      <div class="container case-hero__grid case-hero__grid--split">
+        <div class="case-hero__content">
+          <p class="case-hero__eyebrow" data-i18n="case2Eyebrow">UX/UI Design</p>
+          <h1 class="case-title case-hero__title" data-i18n="case2Title">Production Line Simulator</h1>
+          <p class="case-hero__lead" data-i18n="case2Lead">A B2B simulation interface for configuring production lines, analysing performance and comparing improvement scenarios.</p>
+
+          <div class="case-hero__goal">
+            <p class="kicker" data-i18n="caseGoalLabel">Goal</p>
+            <p class="case-hero__goal-text" data-i18n="case2Goal">Design a scalable simulation platform that helps production teams quickly configure production models, identify bottlenecks, evaluate key performance and cost metrics, and compare improvement scenarios</p>
+          </div>
+
+          <div class="case-hero__goal">
+            <p class="kicker" data-i18n="case2RoleLabel">role</p>
+            <p class="case-hero__goal-text" data-i18n="case2Role">My role was to translate the logic of the calculation model into a usable product experience — from information architecture and data input to analysis, scenario comparison and UI patterns.</p>
+          </div>
+        </div>
+
+        <div class="case-hero__media-wrap">
+          <div class="shot-frame">
+            <img class="shot" data-lightbox src="../assets/images/production-line-simulator/hero-main.png"
+                 alt="Production line simulator dashboard with KPI cards and a station capacity chart highlighting the bottleneck"
+                 data-i18n-alt="case2MediaAlt">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Project overview =====================
+         Closes the hero band; the hairline under it separates it from
+         the product context band, as in the Figma frame.            -->
+    <section class="overview overview--band">
+      <div class="container">
+        <div class="overview__grid overview__grid--two">
+          <div class="role">
+            <p class="role__label" data-i18n="ov2ProductLabel">Product</p>
+            <ul class="role__list">
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="ov2ProductItem">B2B / Industrial Software</span></li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <p class="role__label" data-i18n="ov2FormatLabel">Format</p>
+            <ul class="role__list">
+              <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="ov2FormatItem">Demo / MVP</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Product context & challenge ===================== -->
+    <section class="context case-section context--divided">
+      <div class="container">
+        <div class="context__grid">
+          <div class="context__heading">
+            <p class="case-hero__eyebrow" data-i18n="ctx2Eyebrow">Product Context &amp; Challenge</p>
+            <h2 class="case-title context__title" data-i18n="ctx2Title">From a calculation model to a decision-making product</h2>
+          </div>
+
+          <div class="context__body">
+            <p data-i18n="ctx2Body1">The underlying model combines a large number of interdependent parameters: production stations, operations, cycle time, personnel, shift settings and costs. Changes to one parameter can affect several outputs at once.</p>
+            <p data-i18n="ctx2Body2">The UX challenge was to create a workflow that makes this complexity understandable without exposing the full calculation model at once.</p>
+          </div>
+        </div>
+
+        <!-- inputs → calculation model → outputs, as in the Figma diagram -->
+        <div class="model" aria-label="Calculation model diagram" role="img" data-i18n-arialabel="modelDiagramLabel">
+          <div class="model__row">
+            <div class="model__inputs">
+              <div class="model__input">
+                <p class="model__input-name" data-i18n="mIn1Name">Production Line</p>
+                <p class="model__input-caption" data-i18n="mIn1Caption">Stations · Operations · Cycle Time</p>
+              </div>
+              <div class="model__input">
+                <p class="model__input-name" data-i18n="mIn2Name">People</p>
+                <p class="model__input-caption" data-i18n="mIn2Caption">Roles · Headcount · Rates</p>
+              </div>
+              <div class="model__input">
+                <p class="model__input-name" data-i18n="mIn3Name">Shift</p>
+                <p class="model__input-caption" data-i18n="mIn3Caption">Duration · Efficiency</p>
+              </div>
+              <div class="model__input">
+                <p class="model__input-name" data-i18n="mIn4Name">Costs</p>
+                <p class="model__input-caption" data-i18n="mIn4Caption">Labour · Fixed Costs · Margin</p>
+              </div>
+            </div>
+
+            <span class="model__arrow" aria-hidden="true">
+              <svg viewBox="0 0 36 20" width="36" height="20" focusable="false">
+                <path d="M1 10h25.3M21.6 3.6 34.2 10l-12.6 6.2" fill="none" stroke="currentColor"
+                      stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+
+            <div class="model__core">
+              <p class="model__core-label" data-i18n="mCoreLabel">Core</p>
+              <p class="model__core-name" data-i18n="mCoreName">Calculation Model</p>
+            </div>
+
+            <span class="model__arrow" aria-hidden="true">
+              <svg viewBox="0 0 36 20" width="36" height="20" focusable="false">
+                <path d="M1 10h25.3M21.6 3.6 34.2 10l-12.6 6.2" fill="none" stroke="currentColor"
+                      stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+
+            <ul class="model__outputs">
+              <li class="model__output" data-i18n="mOut1">Throughput</li>
+              <li class="model__output" data-i18n="mOut2">Bottleneck</li>
+              <li class="model__output" data-i18n="mOut3">Cost</li>
+              <li class="model__output" data-i18n="mOut4">Utilisation</li>
+              <li class="model__output" data-i18n="mOut5">Scenarios</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Scenario 1 — Structure before data ===================== -->
+    <section class="scenario case-section">
+      <div class="container">
+        <h2 class="case-title" data-i18n="c2s1Title">Structure before data</h2>
+
+        <div class="scenario__intro">
+          <div class="scenario__text">
+            <p class="scenario__lead scenario__lead--muted" data-i18n="c2s1Lead">I separated configuration, production data, analysis and decision-making into distinct working contexts instead of exposing the entire calculation model at once.</p>
+          </div>
+
+          <div class="scenario__text">
+            <p class="scenario__subhead" data-i18n="whatDesigned">What I designed</p>
+
+            <ol class="steps">
+              <li class="steps__item">
+                <span class="steps__num">01</span>
+                <div class="steps__body">
+                  <p class="steps__name" data-i18n="c2s1Step1Name">Structured tabs</p>
+                  <p class="steps__text" data-i18n="c2s1Step1Text">Each working area is organized into a dedicated tab.</p>
+                </div>
+              </li>
+              <li class="steps__item">
+                <span class="steps__num">02</span>
+                <div class="steps__body">
+                  <p class="steps__name" data-i18n="c2s1Step2Name">Compact overview</p>
+                  <p class="steps__text" data-i18n="c2s1Step2Text">Key line parameters and current results stay visible regardless of the active tab.</p>
+                </div>
+              </li>
+              <li class="steps__item">
+                <span class="steps__num">03</span>
+                <div class="steps__body">
+                  <p class="steps__name" data-i18n="c2s1Step3Name">Contextual actions</p>
+                  <p class="steps__text" data-i18n="c2s1Step3Text">Actions are placed next to the information they relate to.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="userflow">
+          <p class="userflow__label" data-i18n="userflowLabel">Core user flow</p>
+
+          <div class="userflow__row">
+            <div class="userflow__step">
+              <span class="userflow__icon" aria-hidden="true">⊞</span>
+              <p class="userflow__num">01</p>
+              <p class="userflow__name" data-i18n="uf1">Select model</p>
+            </div>
+            <span class="userflow__arrow" aria-hidden="true">
+              <svg viewBox="0 0 22 13" width="22" height="13" focusable="false">
+                <path d="M1 6.05h15.06M13.2 2.2l7.7 3.85-7.7 3.85" fill="none" stroke="currentColor"
+                      stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="userflow__step">
+              <span class="userflow__icon" aria-hidden="true">⚙</span>
+              <p class="userflow__num">02</p>
+              <p class="userflow__name" data-i18n="uf2">Configure parameters</p>
+            </div>
+            <span class="userflow__arrow" aria-hidden="true">
+              <svg viewBox="0 0 22 13" width="22" height="13" focusable="false">
+                <path d="M1 6.05h15.06M13.2 2.2l7.7 3.85-7.7 3.85" fill="none" stroke="currentColor"
+                      stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="userflow__step">
+              <span class="userflow__icon" aria-hidden="true">▤</span>
+              <p class="userflow__num">03</p>
+              <p class="userflow__name" data-i18n="uf3">Configure line</p>
+            </div>
+            <span class="userflow__arrow" aria-hidden="true">
+              <svg viewBox="0 0 22 13" width="22" height="13" focusable="false">
+                <path d="M1 6.05h15.06M13.2 2.2l7.7 3.85-7.7 3.85" fill="none" stroke="currentColor"
+                      stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="userflow__step">
+              <span class="userflow__icon userflow__icon--dark" aria-hidden="true">▶</span>
+              <p class="userflow__num">04</p>
+              <p class="userflow__name" data-i18n="uf4">Recalculate</p>
+            </div>
+            <span class="userflow__arrow" aria-hidden="true">
+              <svg viewBox="0 0 22 13" width="22" height="13" focusable="false">
+                <path d="M1 6.05h15.06M13.2 2.2l7.7 3.85-7.7 3.85" fill="none" stroke="currentColor"
+                      stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="userflow__step">
+              <span class="userflow__icon userflow__icon--alert" aria-hidden="true">⚠</span>
+              <p class="userflow__num">05</p>
+              <p class="userflow__name" data-i18n="uf5">Find bottleneck</p>
+            </div>
+            <span class="userflow__arrow" aria-hidden="true">
+              <svg viewBox="0 0 22 13" width="22" height="13" focusable="false">
+                <path d="M1 6.05h15.06M13.2 2.2l7.7 3.85-7.7 3.85" fill="none" stroke="currentColor"
+                      stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="userflow__step">
+              <span class="userflow__icon" aria-hidden="true">◈</span>
+              <p class="userflow__num">06</p>
+              <p class="userflow__name" data-i18n="uf6">Analyse results</p>
+            </div>
+            <span class="userflow__arrow" aria-hidden="true">
+              <svg viewBox="0 0 22 13" width="22" height="13" focusable="false">
+                <path d="M1 6.05h15.06M13.2 2.2l7.7 3.85-7.7 3.85" fill="none" stroke="currentColor"
+                      stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="userflow__step">
+              <span class="userflow__icon" aria-hidden="true">⇄</span>
+              <p class="userflow__num">07</p>
+              <p class="userflow__name" data-i18n="uf7">Compare scenarios</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario__shots">
+          <div class="shot-frame">
+            <img class="shot" data-lightbox src="../assets/images/production-line-simulator/s1-shot-1.png"
+                 alt="Model configuration screen with sidebar navigation, Excel import and an editable tariff table"
+                 data-i18n-alt="c2s1Shot1Alt">
+          </div>
+          <div class="shot-frame">
+            <img class="shot" data-lightbox src="../assets/images/production-line-simulator/s1-shot-2.png"
+                 alt="Production line editor with an operations table and staff and shift summary panels"
+                 data-i18n-alt="c2s1Shot2Alt">
+          </div>
+          <div class="shot-frame">
+            <img class="shot" data-lightbox src="../assets/images/production-line-simulator/s1-shot-3.png"
+                 alt="Line configuration screen with a stations table and staff assignment panels"
+                 data-i18n-alt="c2s1Shot3Alt">
+          </div>
+          <div class="shot-frame">
+            <img class="shot" data-lightbox src="../assets/images/production-line-simulator/s1-shot-4.png"
+                 alt="Simulation results dashboard with KPI cards, station capacity chart and cost breakdown"
+                 data-i18n-alt="c2s1Shot4Alt">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Scenario 2 — Three decisions ===================== -->
+    <section class="case-section">
+      <div class="container">
+        <h2 class="case-title" data-i18n="c2s2Title">Three decisions that shaped the product experience</h2>
+
+        <div class="decision">
+          <div class="decision__row">
+            <div class="decision__text">
+              <p class="kicker kicker--bar" data-i18n="c2d1Label">Decision 01</p>
+              <h3 class="decision__title" data-i18n="c2d1Title">Edit where you see the data</h3>
+              <p class="decision__body" data-i18n="c2d1Text">Production-line configuration contains many interdependent values. I used inline editing so users could modify data directly in context instead of opening separate dialogs.</p>
+            </div>
+
+            <div class="decision__figure shot-frame">
+              <img class="shot" data-lightbox src="../assets/images/production-line-simulator/d1-inline-editing.png"
+                   alt="Operations table with inline editing and a contractor resources panel"
+                   data-i18n-alt="c2d1Alt">
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <div class="decision__row decision__row--reverse">
+            <div class="decision__text">
+              <p class="kicker kicker--bar" data-i18n="c2d2Label">Decision 02</p>
+              <h3 class="decision__title" data-i18n="c2d2Title">Shorten the distance between action and result</h3>
+              <p class="decision__body" data-i18n="c2d2TextA">Because the model is intended for rapid experimentation, the workflow was designed around automatic recalculation.</p>
+              <p class="decision__body" data-i18n="c2d2TextB">Every change triggers an immediate update across KPIs, bottleneck indicators and charts.</p>
+            </div>
+
+            <div class="decision__figure shot-frame">
+              <img class="shot" data-lightbox src="../assets/images/production-line-simulator/d2-recalc.png"
+                   alt="KPI cards and station throughput chart with the bottleneck highlighted after recalculation"
+                   data-i18n-alt="c2d2Alt">
+            </div>
+          </div>
+        </div>
+
+        <div class="decision">
+          <div class="decision__row">
+            <div class="decision__text">
+              <p class="kicker kicker--bar" data-i18n="c2d3Label">Decision 03</p>
+              <h3 class="decision__title" data-i18n="c2d3Title">Make the bottleneck visible</h3>
+              <p class="decision__body" data-i18n="c2d3Text">The bottleneck is a key output of the model: the station with the lowest throughput determines the production capacity. I surfaced it at three levels simultaneously — table, KPI and chart — so it becomes a visual anchor rather than a value hidden inside a calculation.</p>
+            </div>
+
+            <div class="decision__figure shot-frame">
+              <img class="shot" data-lightbox src="../assets/images/production-line-simulator/d3-bottleneck.png"
+                   alt="Bottleneck highlighted across utilisation bars, KPI cards and the shift cost chart"
+                   data-i18n-alt="c2d3Alt">
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario__shots">
+          <div class="shot-frame">
+            <img class="shot" data-lightbox src="../assets/images/production-line-simulator/s2-shot-1.png"
+                 alt="Line dashboard with KPI cards, station capacity chart and staffing and cost breakdowns"
+                 data-i18n-alt="c2s2Shot1Alt">
+          </div>
+          <div class="shot-frame">
+            <img class="shot" data-lightbox src="../assets/images/production-line-simulator/s2-shot-2.png"
+                 alt="Production line editor with an operations table and staff and shift summary panels"
+                 data-i18n-alt="c2s2Shot2Alt">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Scenario 3 — Result ===================== -->
+    <section class="case-section">
+      <div class="container">
+        <h2 class="case-title" data-i18n="c2s3Title">The result should explain what to do next</h2>
+
+        <div class="case-figure shot-frame">
+          <img class="shot" data-lightbox src="../assets/images/production-line-simulator/results-main.png"
+               alt="Scenario comparison dashboard with KPI summary cards, a comparison table and per-scenario charts"
+               data-i18n-alt="c2s3MediaAlt">
+        </div>
+
+        <div class="result result--flush">
+          <p class="result__label" data-i18n="resultLabel">Result</p>
+          <p class="result__title" data-i18n="c2s3ResultTitle">Product Outcome</p>
+          <div class="result__grid result__grid--four">
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="c2r1Name">Demo launched</h3>
+              <p class="result__text" data-i18n="c2r1Text">The production line simulator was designed, built and released as a working demo in production.</p>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="c2r2Name">Bottlenecks became visible</h3>
+              <p class="result__text" data-i18n="c2r2Text">The production bottleneck became a clear visual element across the interface, helping users quickly identify the limiting station and understand its impact.</p>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="c2r3Name">Production data became actionable</h3>
+              <p class="result__text" data-i18n="c2r3Text">Structured large volumes of interconnected production data into clear tables, KPIs and visualisations, making key performance indicators easier to interpret.</p>
+            </div>
+            <div class="result__item">
+              <h3 class="result__name" data-i18n="c2r4Name">Predictable next actions</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Constraints ===================== -->
+    <section class="constraints case-section">
+      <div class="container">
+        <div class="constraints__grid">
+          <div class="constraints__intro">
+            <h2 class="case-title" data-i18n="constraintsTitle">Constraints</h2>
+            <p class="constraints__text" data-i18n="c2ConstraintsText">The product was developed as a demo/MVP, so some calculation and optimisation mechanics were simplified. The interface still had to support realistic workflows, including large editable tables, Excel import, validation and automatic recalculation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== Footer =====================
+       Social placeholders — replace HANDLE / EMAIL with real values
+       (kept in sync with the homepage footer).                        -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a class="footer__logo" href="../index.html" aria-label="Zemfira Nurgaleeva — home">
+        <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="100" height="100">
+      </a>
+
+      <nav class="footer__links" aria-label="Footer links">
+        <a href="../index.html#projects" data-i18n="projectsLink">Projects</a>
+        <a href="https://www.linkedin.com/in/zemfira-nurgaleeva-32ba96295/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://t.me/zeffiria" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <span class="footer__email">
+          <button type="button" class="footer__copy" data-email="nzemfira33@gmail.com" aria-label="Copy email address" data-i18n="mailLabel" data-i18n-arialabel="copyEmailAria">Mail</button>
+          <span class="footer__copied" role="status" data-i18n="copiedLabel">Copied!</span>
+        </span>
+        <span class="footer__copyright" data-i18n="copyright">&copy; 2026 Zemfira Nurgaleeva</span>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===================== Illustration lightbox =====================
+       Full-viewport overlay for examining the project illustrations in
+       detail. main.js copies the clicked img[data-lightbox] source and
+       alt in and toggles the --open modifier; closed with the X button,
+       a click on the darkened scrim, or Esc.                        -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Illustration view"
+       data-i18n-arialabel="lightboxLabel">
+    <!-- src/alt are filled in by main.js when an illustration is opened -->
+    <!-- [html-validate-disable-next element-required-attributes] -->
+    <img class="lightbox__image" alt="">
+    <button class="lightbox__close" type="button" aria-label="Close" data-i18n-arialabel="lightboxClose">
+      <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M4.5 4.5 15.5 15.5 M15.5 4.5 4.5 15.5" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+</body>
+</html>

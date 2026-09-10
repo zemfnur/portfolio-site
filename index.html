@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zemfira Nurgaleeva — UX/UI Designer</title>
   <meta name="description" content="Portfolio of Zemfira Nurgaleeva, a UX/UI designer focused on design systems and complex digital products.">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +45,7 @@
             <button type="button" class="hero__link" id="lang-switch" data-i18n="langSwitch">Русский язык</button>
             <a class="hero__link" href="#projects" data-i18n="projectsLink">Projects</a>
             <a class="hero__link" href="#about" data-i18n="aboutMe">About me</a>
-            <a class="hero__link" href="mailto:EMAIL@EXAMPLE.COM" data-i18n="contactMe">Contacts</a>
+            <a class="hero__link" href="#contacts" data-i18n="contactMe">Contacts</a>
           </div>
         </div>
 
@@ -64,9 +66,8 @@
 
   <!-- ===================== Projects =====================
        Card 1 opens the Logistics CRM case study (Figma "Portfolio-case1").
-       Card 2 still awaits its page (create it, then point the href at the
-       data-page value and remove the data-page attribute):
-         projects/topaz-logistic.html  — TOPAZ-logistic                     -->
+       Card 2 opens the Production Line Simulator case study
+       (Figma "Portfolio-2").                                            -->
   <main class="projects" id="projects">
     <div class="container">
       <h2 class="projects__title" data-i18n="projectsTitle">My projects</h2>
@@ -83,14 +84,14 @@
           </div>
         </a>
 
-        <a class="card" href="#" data-page="projects/topaz-logistic.html">
+        <a class="card" href="projects/production-line-simulator.html">
           <div class="card__content">
-            <p class="card__number">01</p>
-            <h3 class="card__title" data-i18n="card2Title">Public library service</h3>
-            <p class="card__description" data-i18n="card2Desc">I design systems, not just screens &mdash; from research to scalable UI</p>
+            <p class="card__number">02</p>
+            <h3 class="card__title" data-i18n="card2Title">Production Line Simulator</h3>
+            <p class="card__description" data-i18n="card2Desc">A B2B simulation interface for configuring production lines, analysing performance and comparing improvement scenarios.</p>
           </div>
           <div class="card__image">
-            <img src="assets/images/card-public-library.png" alt="Public library service project preview" data-i18n-alt="card2Alt">
+            <img src="assets/images/card-production-line.png" alt="Production Line Simulator project preview" data-i18n-alt="card2Alt">
           </div>
         </a>
       </div>
@@ -98,11 +99,9 @@
   </main>
 
   <!-- ===================== Footer =====================
-       Social placeholders — replace HANDLE / EMAIL with real values:
-         LinkedIn: https://www.linkedin.com/in/HANDLE
-         Telegram: https://t.me/HANDLE
-         Email:    mailto:EMAIL@example.com                              -->
-  <footer class="footer">
+       Email is not a mailto: .footer__copy (main.js) copies the address
+       to the clipboard and shows the "Copied!" pill.                    -->
+  <footer class="footer" id="contacts">
     <div class="footer__inner">
       <a class="footer__logo" href="index.html" aria-label="Zemfira Nurgaleeva — home">
         <img src="assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="100" height="100">
@@ -110,9 +109,12 @@
 
       <nav class="footer__links" aria-label="Footer links">
         <a href="#projects" data-i18n="projectsLink">Projects</a>
-        <a href="https://www.linkedin.com/in/HANDLE" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://t.me/HANDLE" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <a href="mailto:EMAIL@EXAMPLE.COM">Email</a>
+        <a href="https://www.linkedin.com/in/zemfira-nurgaleeva-32ba96295/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://t.me/zeffiria" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <span class="footer__email">
+          <button type="button" class="footer__copy" data-email="nzemfira33@gmail.com" aria-label="Copy email address" data-i18n="mailLabel" data-i18n-arialabel="copyEmailAria">Mail</button>
+          <span class="footer__copied" role="status" data-i18n="copiedLabel">Copied!</span>
+        </span>
         <span class="footer__copyright" data-i18n="copyright">&copy; 2026 Zemfira Nurgaleeva</span>
       </nav>
     </div>

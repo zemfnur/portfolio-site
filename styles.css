@@ -79,8 +79,8 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-/* In-page anchor navigation (hero/footer → #projects, #about) scrolls
-   smoothly on every page; reduced-motion users get the default jump. */
+/* In-page anchor navigation (hero/footer → #projects, #about, #contacts)
+   scrolls smoothly on every page; reduced-motion users get the default jump. */
 html {
   scroll-behavior: smooth;
 }
@@ -367,7 +367,10 @@ button.hero__link {
   row-gap: 16px;
 }
 
-.footer__links a {
+/* The email "link" is a button (it copies to the clipboard instead of
+   navigating), so it shares the anchor styling to stay indistinguishable. */
+.footer__links a,
+.footer__copy {
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 18px;
@@ -377,8 +380,47 @@ button.hero__link {
   text-decoration: none;
 }
 
-.footer__links a:hover {
+.footer__copy {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.footer__email {
+  position: relative; /* anchor for the "Copied!" pill */
+  display: inline-flex;
+}
+
+.footer__links a:hover,
+.footer__copy:hover {
   color: var(--accent);
+}
+
+/* "Copied!" pill — hidden until .is-copied is toggled by main.js. */
+.footer__copied {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  pointer-events: none;
+}
+
+.footer__copy.is-copied + .footer__copied {
+  visibility: visible;
+  opacity: 1;
 }
 
 .footer__copyright {
@@ -1555,5 +1597,425 @@ img[data-lightbox] {
 
   .stateflow__connector {
     display: none;
+  }
+}
+
+/* ============================================================
+   Case study — Production Line Simulator (projects/production-line-simulator.html)
+   Faithful to Figma "Portfolio-2" (1920×10877).
+   ============================================================ */
+
+/* Hero band: two equal 900px columns with the design's 40px gutter;
+   no bottom padding — the overview cards close the band before the
+   hairline (case 1's 80px gap hero does not apply here). */
+.case-hero--band {
+  padding-bottom: 0;
+}
+
+.case-hero__grid--split {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+/* Overview closes the first band: two meta cards + hairline below. */
+.overview--band {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.overview__grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ---------- Framed screenshots ----------
+   Case 2 wraps every screenshot in a 16px padded, 16px-rounded frame
+   with the design's light grid texture (a diagonal off-white wash +
+   ~90px white grid), the shot itself rounding at 14px inside. */
+.shot-frame {
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #f4f4f6;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 90%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 90%) 1px, transparent 1px),
+    linear-gradient(135deg, #fafafc, #f4f4f6 55%, #efeef0);
+  background-size: 90px 90px, 90px 90px, auto;
+}
+
+.shot-frame .shot {
+  border-radius: 14px;
+}
+
+/* ---------- Product context band ---------- */
+.context__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+.context__title {
+  margin-top: 24px;
+}
+
+/* The paragraphs sit level with the big title's cap height (eyebrow
+   28px + 16px breathing room), as measured in the frame. */
+.context__body {
+  padding-top: 44px;
+}
+
+.context__body p {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.context__body p:first-child {
+  margin-top: 0;
+}
+
+.context--divided {
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* ---------- Calculation-model diagram ----------
+   inputs (2×2) → core model → outputs, centered on a hairline card. */
+.model {
+  margin-top: 80px;
+  padding: 48px 40px;
+  background: var(--bg-primary);
+  border: 1px solid var(--surface-tint);
+  border-radius: 16px;
+}
+
+.model__row {
+  max-width: 1070px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.model__inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 184px);
+  gap: 12px;
+}
+
+.model__input {
+  padding: 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.model__input-name {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-primary);
+}
+
+.model__input-caption {
+  margin: 4px 0 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--text-disabled);
+}
+
+.model__arrow {
+  flex-shrink: 0;
+  color: var(--text-disabled);
+}
+
+.model__core {
+  padding: 28px 24px;
+  background: var(--surface-dark);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.model__core-label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.model__core-name {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
+}
+
+.model__outputs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 180px;
+}
+
+.model__output {
+  padding: 8px 14px;
+  background: rgb(26 86 219 / 6%);
+  border: 1px solid rgb(26 86 219 / 25%);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--accent);
+}
+
+/* ---------- Core user flow (scenario 1) ----------
+   A full-width hairline, a mono label, then seven icon tiles —
+   the "Recalculate" tile inverted, "Find bottleneck" in alert red. */
+.userflow {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.userflow__label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-disabled);
+}
+
+.userflow__row {
+  max-width: 1136px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.userflow__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  text-align: center;
+}
+
+.userflow__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-primary);
+  border: 1px solid var(--surface-tint);
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.userflow__icon--dark {
+  background: var(--surface-dark);
+  border-color: var(--surface-dark);
+  color: #fff;
+}
+
+.userflow__icon--alert {
+  background: #fef2f2;
+  border-color: #ffc9c9;
+  color: #fb2c36;
+}
+
+.userflow__num {
+  margin: 10px 0 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--text-disabled);
+}
+
+.userflow__name {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.userflow__arrow {
+  align-self: flex-start;
+  margin-top: 16px; /* optically centered on the 44px icon tile */
+  color: var(--surface-tint);
+}
+
+/* Muted variant of the scenario lead (the design sets this copy in
+   Text/Secondary rather than primary). */
+.scenario__lead--muted {
+  color: var(--text-secondary);
+}
+
+/* ---------- Decision blocks (scenario 2) ----------
+   Text column + framed figure, alternating sides; 16px gutter and
+   56px between blocks, as in the frame. */
+.decision {
+  margin-top: 56px;
+}
+
+.decision__row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.decision__row--reverse {
+  flex-direction: row-reverse;
+}
+
+.decision__text {
+  flex: 1 1 412px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 16px;
+}
+
+.decision__title {
+  margin: 12px 0 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.decision__body {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.decision__figure {
+  flex: 1 1 55%;
+  min-width: 0;
+}
+
+/* Full-width framed figure (scenario 3's wide shot above the result). */
+.case-figure {
+  margin-top: 56px;
+}
+
+/* Case 2's result band spans the full container (no side inset) and
+   carries four outcome columns. */
+.result--flush {
+  margin-inline: 0;
+}
+
+.result__grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* ============================================================
+   Case study — Production Line Simulator, responsive
+   ============================================================ */
+
+/* ---- ≤ 1024px: diagram, flow and decision rows stack ---- */
+@media (max-width: 1024px) {
+  .case-hero__grid--split {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .overview--band {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .overview__grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .context__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .context__body {
+    padding-top: 0;
+  }
+
+  /* the diagram wraps: arrows point down the stacked column */
+  .model__row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .model__arrow {
+    transform: rotate(90deg);
+  }
+
+  .userflow__row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 16px;
+  }
+
+  .userflow__step {
+    flex: 0 1 140px;
+    width: auto;
+  }
+
+  .userflow__arrow {
+    display: none; /* connectors misread once the row wraps */
+  }
+
+  .decision__row,
+  .decision__row--reverse {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .decision__text {
+    flex: none;
+    padding-top: 0;
+  }
+
+  .decision__figure {
+    flex: none;
+  }
+
+  .result__grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- ≤ 720px: diagram inputs stretch, outcomes go single-column ---- */
+@media (max-width: 720px) {
+  .model {
+    padding: 32px 24px;
+  }
+
+  .model__inputs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .model__outputs {
+    width: 100%;
+  }
+
+  .result__grid--four {
+    grid-template-columns: 1fr;
   }
 }

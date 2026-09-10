@@ -38,6 +38,7 @@ Three-file static site:
 - `index.html` — all markup; English copy lives as the default text in the markup itself.
 - `main.js` — the only script: the EN/RU language switch plus the case-study illustration lightbox (`img[data-lightbox]` → `.lightbox` overlay). Russian strings live in `STRINGS` there. To make text translatable: give the element `data-i18n="key"` (or `data-i18n-alt` / `data-i18n-arialabel` for attributes) and add the key to both language dicts. The switch button label always shows the language you'd switch *to*.
 - `styles.css` — all styles. Desktop-first; breakpoints at 1024px (hero stacks, single column) and 720px. BEM class names (enforced by stylelint).
+- `projects/*.html` — case-study pages (`logistics-crm.html` implements Figma "Portfolio-case1", `production-line-simulator.html` implements "Portfolio-2"). Both share the case-study component styles in `styles.css` (`.case-hero`, `.scenario`, `.result`, …). i18n keys in `main.js` are global: case-1 keys are unprefixed (`caseTitle`…), case-2 keys are prefixed (`case2…`, `c2…`, `m…`, `uf…`) — a future case 3 needs its own prefix.
 
 Non-obvious constraints:
 
@@ -48,9 +49,8 @@ Non-obvious constraints:
 
 Don't "fix" these; they're awaiting real content:
 
-- Footer social links + `mailto:EMAIL@EXAMPLE.COM` still carry `HANDLE` / `EMAIL` placeholders (see comment in `index.html`).
+- The "Contacts" link in the case-study page headers still points at `mailto:EMAIL@EXAMPLE.COM` (the footer contacts are real: LinkedIn/Telegram links plus the clipboard-copy email button — `.footer__copy` in `main.js`).
 - Hero showreel is poster-only: `assets/video/hero.mp4` doesn't exist yet, so the exported poster shows. Keep the `<video>` and its `autoplay`/`muted` (there's an inline html-validate disable for it).
-- Both project cards reuse card 1's copy/image until case-study pages exist. Cards point at `href="#"` with a `data-page="projects/<slug>.html"` hint — when a page is created, move the value into `href` and delete `data-page`.
 
 ## Tooling notes
 

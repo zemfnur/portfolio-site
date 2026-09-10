@@ -26,11 +26,15 @@
       card1Title: 'Logistics CRM',
       card1Desc: 'A CRM for managing transportation operations and the day-to-day workflow of a logistics team.',
       card1Alt: 'Logistics CRM project preview',
-      card2Title: 'Public library service',
-      card2Desc: 'I design systems, not just screens — from research to scalable UI',
-      card2Alt: 'Public library service project preview',
+      card2Title: 'Production Line Simulator',
+      card2Desc:
+        'A B2B simulation interface for configuring production lines, analysing performance and comparing improvement scenarios.',
+      card2Alt: 'Production Line Simulator project preview',
       heroMediaAria: 'Showreel',
       copyright: '© 2026 Zemfira Nurgaleeva',
+      copiedLabel: 'Copied!',
+      mailLabel: 'Mail',
+      copyEmailAria: 'Copy email address',
 
       /* ----- case study: Logistics CRM (projects/logistics-crm.html) ----- */
       caseDocTitle: 'Logistics CRM — Zemfira Nurgaleeva',
@@ -159,6 +163,102 @@
       cons3: 'Team discussions',
       cons4: 'Stakeholder feedback',
       cons5: 'Iterative design',
+
+      /* ----- case study: Production Line Simulator (projects/production-line-simulator.html) ----- */
+      case2DocTitle: 'Production Line Simulator — Zemfira Nurgaleeva',
+      case2DocDescription:
+        'Production Line Simulator case study — a B2B simulation interface for configuring production lines, designed by Zemfira Nurgaleeva.',
+      case2Eyebrow: 'UX/UI Design',
+      case2Title: 'Production Line Simulator',
+      case2Lead:
+        'A B2B simulation interface for configuring production lines, analysing performance and comparing improvement scenarios.',
+      case2Goal:
+        'Design a scalable simulation platform that helps production teams quickly configure production models, identify bottlenecks, evaluate key performance and cost metrics, and compare improvement scenarios',
+      case2RoleLabel: 'role',
+      case2Role:
+        'My role was to translate the logic of the calculation model into a usable product experience — from information architecture and data input to analysis, scenario comparison and UI patterns.',
+      case2MediaAlt:
+        'Production line simulator dashboard with KPI cards and a station capacity chart highlighting the bottleneck',
+      ov2ProductLabel: 'Product',
+      ov2ProductItem: 'B2B / Industrial Software',
+      ov2FormatLabel: 'Format',
+      ov2FormatItem: 'Demo / MVP',
+      ctx2Eyebrow: 'Product Context & Challenge',
+      ctx2Title: 'From a calculation model to a decision-making product',
+      ctx2Body1:
+        'The underlying model combines a large number of interdependent parameters: production stations, operations, cycle time, personnel, shift settings and costs. Changes to one parameter can affect several outputs at once.',
+      ctx2Body2:
+        'The UX challenge was to create a workflow that makes this complexity understandable without exposing the full calculation model at once.',
+      modelDiagramLabel: 'Calculation model: inputs, core model and outputs',
+      mIn1Name: 'Production Line',
+      mIn1Caption: 'Stations · Operations · Cycle Time',
+      mIn2Name: 'People',
+      mIn2Caption: 'Roles · Headcount · Rates',
+      mIn3Name: 'Shift',
+      mIn3Caption: 'Duration · Efficiency',
+      mIn4Name: 'Costs',
+      mIn4Caption: 'Labour · Fixed Costs · Margin',
+      mCoreLabel: 'Core',
+      mCoreName: 'Calculation Model',
+      mOut1: 'Throughput',
+      mOut2: 'Bottleneck',
+      mOut3: 'Cost',
+      mOut4: 'Utilisation',
+      mOut5: 'Scenarios',
+      c2s1Title: 'Structure before data',
+      c2s1Lead:
+        'I separated configuration, production data, analysis and decision-making into distinct working contexts instead of exposing the entire calculation model at once.',
+      c2s1Step1Name: 'Structured tabs',
+      c2s1Step1Text: 'Each working area is organized into a dedicated tab.',
+      c2s1Step2Name: 'Compact overview',
+      c2s1Step2Text: 'Key line parameters and current results stay visible regardless of the active tab.',
+      c2s1Step3Name: 'Contextual actions',
+      c2s1Step3Text: 'Actions are placed next to the information they relate to.',
+      userflowLabel: 'Core user flow',
+      uf1: 'Select model',
+      uf2: 'Configure parameters',
+      uf3: 'Configure line',
+      uf4: 'Recalculate',
+      uf5: 'Find bottleneck',
+      uf6: 'Analyse results',
+      uf7: 'Compare scenarios',
+      c2s1Shot1Alt: 'Model configuration screen with sidebar navigation, Excel import and an editable tariff table',
+      c2s1Shot2Alt: 'Production line editor with an operations table and staff and shift summary panels',
+      c2s1Shot3Alt: 'Line configuration screen with a stations table and staff assignment panels',
+      c2s1Shot4Alt: 'Simulation results dashboard with KPI cards, station capacity chart and cost breakdown',
+      c2s2Title: 'Three decisions that shaped the product experience',
+      c2d1Label: 'Decision 01',
+      c2d1Title: 'Edit where you see the data',
+      c2d1Text:
+        'Production-line configuration contains many interdependent values. I used inline editing so users could modify data directly in context instead of opening separate dialogs.',
+      c2d1Alt: 'Operations table with inline editing and a contractor resources panel',
+      c2d2Label: 'Decision 02',
+      c2d2Title: 'Shorten the distance between action and result',
+      c2d2TextA:
+        'Because the model is intended for rapid experimentation, the workflow was designed around automatic recalculation.',
+      c2d2TextB: 'Every change triggers an immediate update across KPIs, bottleneck indicators and charts.',
+      c2d2Alt: 'KPI cards and station throughput chart with the bottleneck highlighted after recalculation',
+      c2d3Label: 'Decision 03',
+      c2d3Title: 'Make the bottleneck visible',
+      c2d3Text:
+        'The bottleneck is a key output of the model: the station with the lowest throughput determines the production capacity. I surfaced it at three levels simultaneously — table, KPI and chart — so it becomes a visual anchor rather than a value hidden inside a calculation.',
+      c2d3Alt: 'Bottleneck highlighted across utilisation bars, KPI cards and the shift cost chart',
+      c2s2Shot1Alt: 'Line dashboard with KPI cards, station capacity chart and staffing and cost breakdowns',
+      c2s2Shot2Alt: 'Production line editor with an operations table and staff and shift summary panels',
+      c2s3Title: 'The result should explain what to do next',
+      c2s3MediaAlt: 'Scenario comparison dashboard with KPI summary cards, a comparison table and per-scenario charts',
+      c2s3ResultTitle: 'Product Outcome',
+      c2r1Name: 'Demo launched',
+      c2r1Text: 'The production line simulator was designed, built and released as a working demo in production.',
+      c2r2Name: 'Bottlenecks became visible',
+      c2r2Text:
+        'The production bottleneck became a clear visual element across the interface, helping users quickly identify the limiting station and understand its impact.',
+      c2r3Name: 'Production data became actionable',
+      c2r3Text:
+        'Structured large volumes of interconnected production data into clear tables, KPIs and visualisations, making key performance indicators easier to interpret.',
+      c2r4Name: 'Predictable next actions',
+      c2ConstraintsText:
+        'The product was developed as a demo/MVP, so some calculation and optimisation mechanics were simplified. The interface still had to support realistic workflows, including large editable tables, Excel import, validation and automatic recalculation.',
       lightboxLabel: 'Illustration view',
       lightboxClose: 'Close'
     },
@@ -180,11 +280,15 @@
       card1Title: 'Logistics CRM',
       card1Desc: 'CRM для управления транспортными операциями и ежедневными задачами логистической команды.',
       card1Alt: 'Превью проекта «Logistics CRM»',
-      card2Title: 'Сервис публичной библиотеки',
-      card2Desc: 'Я проектирую системы, а не отдельные экраны — от исследований до масштабируемого интерфейса',
-      card2Alt: 'Превью проекта «Сервис публичной библиотеки»',
+      card2Title: 'Production Line Simulator',
+      card2Desc:
+        'B2B-интерфейс симуляции: настройка производственных линий, анализ показателей и сравнение сценариев улучшений.',
+      card2Alt: 'Превью проекта «Production Line Simulator»',
       heroMediaAria: 'Шоурил',
       copyright: '© 2026 Земфира Нургалеева',
+      copiedLabel: 'Скопировано!',
+      mailLabel: 'Почта',
+      copyEmailAria: 'Скопировать адрес электронной почты',
 
       /* ----- case study: Logistics CRM (projects/logistics-crm.html) ----- */
       caseDocTitle: 'Logistics CRM — Земфира Нургалеева',
@@ -311,6 +415,101 @@
       cons3: 'Обсуждения с командой',
       cons4: 'Обратная связь стейкхолдеров',
       cons5: 'Итеративная проработка',
+
+      /* ----- case study: Production Line Simulator (projects/production-line-simulator.html) ----- */
+      case2DocTitle: 'Production Line Simulator — Земфира Нургалеева',
+      case2DocDescription:
+        'Кейс Production Line Simulator — B2B-интерфейс симуляции производственных линий, дизайн: Земфира Нургалеева.',
+      case2Eyebrow: 'UX/UI-дизайн',
+      case2Title: 'Production Line Simulator',
+      case2Lead:
+        'B2B-интерфейс симуляции: настройка производственных линий, анализ показателей и сравнение сценариев улучшений.',
+      case2Goal:
+        'Спроектировать масштабируемую платформу симуляции, которая помогает производственным командам быстро настраивать модели производства, находить узкие места, оценивать ключевые показатели и затраты и сравнивать сценарии улучшений',
+      case2RoleLabel: 'роль',
+      case2Role:
+        'Моя задача — перевести логику расчётной модели в удобный продуктовый опыт: от информационной архитектуры и ввода данных до анализа, сравнения сценариев и UI-паттернов.',
+      case2MediaAlt:
+        'Дашборд симулятора производственной линии: KPI-карточки и диаграмма загрузки станций с выделенным узким местом',
+      ov2ProductLabel: 'Продукт',
+      ov2ProductItem: 'B2B / промышленное ПО',
+      ov2FormatLabel: 'Формат',
+      ov2FormatItem: 'Демо / MVP',
+      ctx2Eyebrow: 'Контекст продукта и задача',
+      ctx2Title: 'От расчётной модели — к продукту для принятия решений',
+      ctx2Body1:
+        'В основе модели — большое количество взаимозависимых параметров: производственные станции, операции, время цикла, персонал, настройки смен и затраты. Изменение одного параметра влияет сразу на несколько результатов.',
+      ctx2Body2:
+        'UX-задача — построить рабочий процесс, который делает эту сложность понятной, не раскрывая всю расчётную модель сразу.',
+      modelDiagramLabel: 'Схема расчётной модели: входные данные, ядро и результаты',
+      mIn1Name: 'Производственная линия',
+      mIn1Caption: 'Станции · Операции · Время цикла',
+      mIn2Name: 'Персонал',
+      mIn2Caption: 'Роли · Штат · Ставки',
+      mIn3Name: 'Смена',
+      mIn3Caption: 'Длительность · Эффективность',
+      mIn4Name: 'Затраты',
+      mIn4Caption: 'Оплата труда · Постоянные затраты · Маржа',
+      mCoreLabel: 'Ядро',
+      mCoreName: 'Расчётная модель',
+      mOut1: 'Производительность',
+      mOut2: 'Узкое место',
+      mOut3: 'Стоимость',
+      mOut4: 'Загрузка',
+      mOut5: 'Сценарии',
+      c2s1Title: 'Сначала структура — потом данные',
+      c2s1Lead:
+        'Я разделила настройку, производственные данные, анализ и принятие решений на отдельные рабочие контексты, вместо того чтобы показывать всю расчётную модель сразу.',
+      c2s1Step1Name: 'Структурированные вкладки',
+      c2s1Step1Text: 'Каждая рабочая зона вынесена в отдельную вкладку.',
+      c2s1Step2Name: 'Компактный обзор',
+      c2s1Step2Text: 'Ключевые параметры линии и текущие результаты остаются на виду независимо от активной вкладки.',
+      c2s1Step3Name: 'Контекстные действия',
+      c2s1Step3Text: 'Действия расположены рядом с информацией, к которой относятся.',
+      userflowLabel: 'Основной пользовательский сценарий',
+      uf1: 'Выбрать модель',
+      uf2: 'Настроить параметры',
+      uf3: 'Настроить линию',
+      uf4: 'Пересчитать',
+      uf5: 'Найти узкое место',
+      uf6: 'Проанализировать результаты',
+      uf7: 'Сравнить сценарии',
+      c2s1Shot1Alt: 'Экран настройки модели: навигация, импорт из Excel и редактируемая таблица тарифов',
+      c2s1Shot2Alt: 'Редактор производственной линии: таблица операций и панели персонала и смены',
+      c2s1Shot3Alt: 'Экран настройки линии: таблица станций и панели распределения персонала',
+      c2s1Shot4Alt: 'Дашборд результатов симуляции: KPI-карточки, диаграмма загрузки станций и структура затрат',
+      c2s2Title: 'Три решения, которые сформировали продуктовый опыт',
+      c2d1Label: 'Решение 01',
+      c2d1Title: 'Редактирование там, где видны данные',
+      c2d1Text:
+        'Настройка производственной линии содержит много взаимозависимых значений. Я использовала инлайн-редактирование, чтобы менять данные прямо в контексте, не открывая отдельные диалоги.',
+      c2d1Alt: 'Таблица операций с инлайн-редактированием и панель ресурсов контрагентов',
+      c2d2Label: 'Решение 02',
+      c2d2Title: 'Сократить путь от действия до результата',
+      c2d2TextA: 'Модель создана для быстрых экспериментов, поэтому процесс построен вокруг автоматического пересчёта.',
+      c2d2TextB: 'Каждое изменение сразу обновляет KPI, индикаторы узких мест и графики.',
+      c2d2Alt: 'KPI-карточки и диаграмма производительности станций с выделенным узким местом после пересчёта',
+      c2d3Label: 'Решение 03',
+      c2d3Title: 'Сделать узкое место видимым',
+      c2d3Text:
+        'Узкое место — ключевой результат модели: станция с минимальной производительностью определяет мощность всей линии. Я показала его одновременно на трёх уровнях — в таблице, KPI и графике, — превратив в визуальный якорь, а не значение внутри расчёта.',
+      c2d3Alt: 'Узкое место выделено в шкалах загрузки, KPI-карточках и диаграмме затрат смены',
+      c2s2Shot1Alt: 'Дашборд линии: KPI-карточки, диаграмма загрузки станций, структура персонала и затрат',
+      c2s2Shot2Alt: 'Редактор производственной линии: таблица операций и панели персонала и смены',
+      c2s3Title: 'Результат должен подсказывать, что делать дальше',
+      c2s3MediaAlt: 'Дашборд сравнения сценариев: KPI-карточки, таблица сравнения и графики по сценариям',
+      c2s3ResultTitle: 'Продуктовый результат',
+      c2r1Name: 'Демо запущено',
+      c2r1Text: 'Симулятор производственной линии спроектирован, разработан и выпущен в виде рабочего демо.',
+      c2r2Name: 'Узкие места стали видимыми',
+      c2r2Text:
+        'Узкое место стало заметным визуальным элементом интерфейса: пользователь сразу видит ограничивающую станцию и её влияние.',
+      c2r3Name: 'Данные стали основой для решений',
+      c2r3Text:
+        'Большие объёмы взаимозависимых производственных данных структурированы в понятные таблицы, KPI и визуализации.',
+      c2r4Name: 'Предсказуемые дальнейшие действия',
+      c2ConstraintsText:
+        'Продукт разрабатывался как демо/MVP, поэтому часть расчётных и оптимизационных механик упрощена. При этом интерфейс должен был поддерживать реалистичные сценарии работы: большие редактируемые таблицы, импорт из Excel, валидацию и автоматический пересчёт.',
       lightboxLabel: 'Просмотр иллюстрации',
       lightboxClose: 'Закрыть'
     }
@@ -369,6 +568,51 @@
       try { window.localStorage.setItem(STORAGE_KEY, next); } catch (e) { /* no storage */ }
     });
   }
+})();
+
+/* ============================================================
+   Footer email link — not a mailto: clicking copies the address
+   to the clipboard and shows a brief "Copied!" pill above it.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  function copyWithFallback(text) {
+    /* navigator.clipboard requires a secure context (https/localhost);
+       execCommand keeps the link working on plain-http hosts. */
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function () {
+        return legacyCopy(text);
+      });
+    }
+    return Promise.resolve(legacyCopy(text));
+  }
+
+  function legacyCopy(text) {
+    var field = document.createElement('textarea');
+    field.value = text;
+    field.setAttribute('readonly', '');
+    field.style.position = 'fixed';
+    field.style.opacity = '0';
+    document.body.appendChild(field);
+    field.select();
+    try { document.execCommand('copy'); } catch (e) { /* nothing more to try */ }
+    document.body.removeChild(field);
+  }
+
+  document.querySelectorAll('.footer__copy').forEach(function (link) {
+    var timer = null;
+
+    link.addEventListener('click', function () {
+      var email = link.getAttribute('data-email');
+
+      copyWithFallback(email).then(function () {
+        link.classList.add('is-copied');
+        clearTimeout(timer);
+        timer = setTimeout(function () { link.classList.remove('is-copied'); }, 1800);
+      });
+    });
+  });
 })();
 
 /* ============================================================
