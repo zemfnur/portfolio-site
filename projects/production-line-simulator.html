@@ -28,8 +28,8 @@
     <nav class="page-header__nav" aria-label="Case study menu">
       <button type="button" class="page-header__link" id="lang-switch" data-i18n="langSwitch">Русский язык</button>
       <a class="page-header__link" href="../index.html#projects" data-i18n="projectsLink">Projects</a>
-      <a class="page-header__link" href="../index.html#about" data-i18n="aboutMe">About me</a>
-      <a class="page-header__link" href="mailto:EMAIL@EXAMPLE.COM" data-i18n="contactMe">Contacts</a>
+      <a class="page-header__link" href="../about.html" data-i18n="aboutMe">About me</a>
+      <a class="page-header__link" href="#contacts" data-i18n="contactMe">Contacts</a>
     </nav>
   </header>
 
@@ -416,9 +416,9 @@
   </main>
 
   <!-- ===================== Footer =====================
-       Social placeholders — replace HANDLE / EMAIL with real values
-       (kept in sync with the homepage footer).                        -->
-  <footer class="footer">
+       Contact options live here; the header "Contacts" link anchors
+       to it (kept in sync with the homepage footer).                  -->
+  <footer class="footer" id="contacts">
     <div class="footer__inner">
       <a class="footer__logo" href="../index.html" aria-label="Zemfira Nurgaleeva — home">
         <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="100" height="100">
@@ -454,6 +454,16 @@
       </svg>
     </button>
   </div>
+
+  <!-- ===================== Back to top =====================
+       Floating button, revealed by main.js while the footer is on
+       screen; scrolls back to the very top of the page.          -->
+  <button class="to-top" type="button" aria-label="Back to top" data-i18n-arialabel="backToTopAria">
+    <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+      <path d="M10 16 V5 M4.5 10.5 10 5 15.5 10.5" fill="none" stroke="currentColor"
+            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
 
 </body>
 </html>

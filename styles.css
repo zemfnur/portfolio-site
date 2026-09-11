@@ -331,6 +331,176 @@ button.hero__link {
 }
 
 /* ============================================================
+   About page (about.html — Figma "About-1920", 1920×1342)
+   ============================================================ */
+
+/* The page fills the viewport: the about section grows above the
+   shared footer, so the columns' vertical centering always works
+   against the actual viewport height. */
+.about-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  /* fallback for browsers without svh */
+  min-height: 100svh;
+}
+
+.about {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px; /* hero top pad, as in Figma */
+}
+
+/* Two 940px columns at 1920: 900px of content each, 40px gutter. */
+.about__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--gutter);
+}
+
+/* Left column — title at the top, pull quote centered in the height
+   below it (title → quote gap 41px, as in Figma). */
+.about__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  padding-bottom: 40px;
+}
+
+/* Same display type as .hero__display, but pinned to Barlow: the text
+   is English in both languages, so the [lang="ru"] Oswald swap (which
+   exists for Cyrillic display text) must not apply here. */
+.about__title {
+  margin: 0;
+  font-family: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  font-weight: 600;
+  font-size: var(--hero-title-size); /* 220px at 1920 */
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* Figma "Quotes" style — same face and size as the hero services list. */
+.about__quote {
+  margin-block: auto; /* centers between the title and the column bottom */
+  font-family: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 1.9vw, 36px); /* 36px at 1920 */
+  line-height: 1.4;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* Right column — links row at the top, body copy below a 240px offset
+   at 1920 (40px below the links row + the design's pt-200 on the text
+   container). */
+.about__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__links {
+  display: flex;
+  justify-content: flex-end; /* right-aligned, as in Figma */
+  gap: 48px;
+  white-space: nowrap;
+}
+
+.about__link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+button.about__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.about__link:hover {
+  color: var(--accent);
+}
+
+.about__text-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(136px, 12.5vw, 240px); /* 240px at 1920: 40px links gap + the design's pt-200 */
+  padding-bottom: 40px;
+}
+
+/* Auto margins (not justify-content) center the copy when there is room
+   and simply let it sit high on short viewports — no clipping. */
+.about__text {
+  margin-block: auto;
+}
+
+.about__text p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* The body copy is three groups — intro, dash list, paragraphs — with
+   32px between groups; the dash lines sit 12px apart (as in Figma). */
+.about__text > p:first-child {
+  margin-bottom: 32px;
+}
+
+.about__list {
+  margin-bottom: 32px;
+}
+
+.about__list p {
+  margin-bottom: 12px;
+}
+
+.about__list p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- ≤ 1024px: columns stack ---- */
+@media (max-width: 1024px) {
+  .about {
+    padding-bottom: 64px;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__links {
+    justify-content: flex-start;
+  }
+
+  .about__text-wrap {
+    padding-top: 48px; /* the 200px desktop offset is page air here */
+  }
+}
+
+/* ---- ≤ 720px: links tighten like the hero links ---- */
+@media (max-width: 720px) {
+  .about__links {
+    gap: 24px;
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+}
+
+/* ============================================================
    Footer
    ============================================================ */
 .footer {
@@ -433,6 +603,62 @@ button.hero__link {
 }
 
 /* ============================================================
+   Back to top — floating button (all pages)
+   main.js reveals it via .to-top--visible while the footer is on
+   screen (IntersectionObserver); the click scrolls to the top.
+   ============================================================ */
+.to-top {
+  position: fixed;
+  right: max(32px, env(safe-area-inset-right));
+  bottom: max(32px, env(safe-area-inset-bottom));
+  z-index: 150; /* above the sticky page-header (100), under the lightbox (200) */
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px; /* >= 44px tap target on touch */
+  padding: 0;
+  color: var(--accent);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgb(28 30 33 / 8%);
+  cursor: pointer;
+
+  /* hidden until the footer is reached — the "Copied!" pill's fade
+     idiom: visibility rides the opacity transition */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.to-top:hover {
+  border-color: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .to-top {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-top {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
    Responsive — desktop-first, largest breakpoint first
    ============================================================ */
 
@@ -525,6 +751,15 @@ button.hero__link {
     white-space: normal;
     flex-wrap: wrap;
   }
+
+  /* RU case titles: the longest words («производственной» = 410px,
+     «спроектировала» = 350px at 36px) outrun the clamp floor on phone
+     widths. Headings never hyphenate (see .case-title), so scale the
+     type fluidly until the word fits whole; min() pins 36px from
+     ~514px up, where those words already fit. */
+  [lang="ru"] .case-title {
+    font-size: min(36px, 7vw);
+  }
 }
 
 /* ============================================================
@@ -534,7 +769,8 @@ button.hero__link {
 
 /* Section targets offset below the sticky page header (smooth scrolling
    itself is global — see the Base section). */
-.case-study main section {
+.case-study main section,
+.case-study .footer {
   scroll-margin-top: 160px; /* sticky .page-header (106px) + breathing room */
 }
 
@@ -609,6 +845,12 @@ button.page-header__link {
   line-height: 1.1;
   text-transform: uppercase;
   color: var(--text-primary);
+
+  /* Headings opt out of the page-level hyphenation (.case-study above):
+     a word that does not fit moves to the next line whole —
+     "INFORMATION / ARCHITECTURE", never "INFORMATION-". */
+  hyphens: none;
+  overflow-wrap: normal;
 }
 
 .kicker {

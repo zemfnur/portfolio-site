@@ -36,8 +36,9 @@ When a new HTML file is added (e.g. case-study pages), add it to the `lint:html`
 Three-file static site:
 
 - `index.html` — all markup; English copy lives as the default text in the markup itself.
-- `main.js` — the only script: the EN/RU language switch plus the case-study illustration lightbox (`img[data-lightbox]` → `.lightbox` overlay). Russian strings live in `STRINGS` there. To make text translatable: give the element `data-i18n="key"` (or `data-i18n-alt` / `data-i18n-arialabel` for attributes) and add the key to both language dicts. The switch button label always shows the language you'd switch *to*.
+- `main.js` — the only script: the EN/RU language switch plus the case-study illustration lightbox (`img[data-lightbox]` → `.lightbox` overlay). Russian strings live in `STRINGS` there. To make text translatable: give the element `data-i18n="key"` (or `data-i18n-alt` / `data-i18n-arialabel` for attributes) and add the key to both language dicts; for strings that mix regular and bold runs use `data-i18n-html` (swaps `innerHTML`). The switch button label always shows the language you'd switch *to*.
 - `styles.css` — all styles. Desktop-first; breakpoints at 1024px (hero stacks, single column) and 720px. BEM class names (enforced by stylelint).
+- `about.html` — the About page (implements Figma "About-1920"). Its display title and pull quote are English in both languages (so `.about__title`/`.about__quote` pin Barlow explicitly — the `[lang="ru"]` Oswald swap must not apply); only the body copy translates (keys `aboutIntro`, `aboutList`, `aboutBody1`–`aboutBody5` — plain text except `aboutList`, which swaps as HTML for its dash lines). The mockup shows RU copy only; the EN text in the markup is a translation.
 - `projects/*.html` — case-study pages (`logistics-crm.html` implements Figma "Portfolio-case1", `production-line-simulator.html` implements "Portfolio-2"). Both share the case-study component styles in `styles.css` (`.case-hero`, `.scenario`, `.result`, …). i18n keys in `main.js` are global: case-1 keys are unprefixed (`caseTitle`…), case-2 keys are prefixed (`case2…`, `c2…`, `m…`, `uf…`) — a future case 3 needs its own prefix.
 
 Non-obvious constraints:
@@ -49,7 +50,6 @@ Non-obvious constraints:
 
 Don't "fix" these; they're awaiting real content:
 
-- The "Contacts" link in the case-study page headers still points at `mailto:EMAIL@EXAMPLE.COM` (the footer contacts are real: LinkedIn/Telegram links plus the clipboard-copy email button — `.footer__copy` in `main.js`).
 - Hero showreel is poster-only: `assets/video/hero.mp4` doesn't exist yet, so the exported poster shows. Keep the `<video>` and its `autoplay`/`muted` (there's an inline html-validate disable for it).
 
 ## Tooling notes

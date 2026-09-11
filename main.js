@@ -36,6 +36,28 @@
       mailLabel: 'Mail',
       copyEmailAria: 'Copy email address',
 
+      /* ----- about page (about.html — Figma "About-1920") -----
+         The display title and pull quote are English in both languages
+         (they live in the markup without i18n attributes). The EN body
+         copy is a translation of the Russian mockup text. */
+      aboutDocTitle: 'About me — Zemfira Nurgaleeva',
+      aboutDocDescription:
+        'About Zemfira Nurgaleeva — a UX/UI designer focused on design systems and complex digital products.',
+      aboutContactLink: 'Contact me',
+      aboutIntro:
+        'I am a Product UX/UI designer focused on complex digital products and design systems, with 2 years of commercial experience.',
+      aboutList:
+        '<p>— analyze requirements and constraints</p><p>— build user scenarios and information architecture</p><p>— design interfaces and states</p><p>— build prototypes</p><p>— design and develop design systems</p><p>— document components and their states</p><p>— work with typography, tokens and structure</p><p>— think about scalability and product maintenance</p><p>— simplify complex user journeys</p>',
+      aboutBody1:
+        'My work often involves products with a lot of logic: customer portals, verification services, tables, forms and many states. In projects like these I pay special attention to structure and consistency, so the interface stays manageable as it grows.',
+      aboutBody2:
+        'Before design, I worked as a Chinese-language translator and in international trade. It is experience far removed from design, but exactly this background lets me structure large volumes of information, notice details and get up to speed in unfamiliar domains.',
+      aboutBody3:
+        "I am currently in my second year of a Graphic Design bachelor's programme, working on commercial digital products in parallel.",
+      aboutBody4: 'I work with Figma and its products, Affinity, and know the basics of HTML/CSS',
+      aboutBody5:
+        'I enjoy building coherent systems: thinking through components, their states, logic and behaviour across scenarios. I treat interfaces as a construction kit — every detail must be clear, reusable and scalable.',
+
       /* ----- case study: Logistics CRM (projects/logistics-crm.html) ----- */
       caseDocTitle: 'Logistics CRM — Zemfira Nurgaleeva',
       caseDocDescription:
@@ -260,7 +282,8 @@
       c2ConstraintsText:
         'The product was developed as a demo/MVP, so some calculation and optimisation mechanics were simplified. The interface still had to support realistic workflows, including large editable tables, Excel import, validation and automatic recalculation.',
       lightboxLabel: 'Illustration view',
-      lightboxClose: 'Close'
+      lightboxClose: 'Close',
+      backToTopAria: 'Back to top'
     },
     ru: {
       docTitle: 'Земфира Нургалеева — UX/UI-дизайнер',
@@ -277,30 +300,49 @@
       aboutMe: 'Обо мне',
       contactMe: 'Контакты',
       projectsTitle: 'Мои проекты',
-      card1Title: 'Logistics CRM',
+      card1Title: 'Логистическая CRM',
       card1Desc: 'CRM для управления транспортными операциями и ежедневными задачами логистической команды.',
-      card1Alt: 'Превью проекта «Logistics CRM»',
-      card2Title: 'Production Line Simulator',
+      card1Alt: 'Превью проекта «Логистическая CRM»',
+      card2Title: 'Симулятор производственной линии',
       card2Desc:
         'B2B-интерфейс симуляции: настройка производственных линий, анализ показателей и сравнение сценариев улучшений.',
-      card2Alt: 'Превью проекта «Production Line Simulator»',
+      card2Alt: 'Превью проекта «Симулятор производственной линии»',
       heroMediaAria: 'Шоурил',
       copyright: '© 2026 Земфира Нургалеева',
       copiedLabel: 'Скопировано!',
       mailLabel: 'Почта',
       copyEmailAria: 'Скопировать адрес электронной почты',
 
+      /* ----- about page (about.html) — RU body copy verbatim from the design ----- */
+      aboutDocTitle: 'Обо мне — Земфира Нургалеева',
+      aboutDocDescription:
+        'Обо мне — Земфира Нургалеева, UX/UI-дизайнер, специализирующийся на дизайн-системах и сложных цифровых продуктах.',
+      aboutContactLink: 'Связаться со мной',
+      aboutIntro:
+        'Я — Product UX/UI-дизайнер с фокусом на сложные цифровые продукты и дизайн-системы, у меня 2 года коммерческого опыта.',
+      aboutList:
+        '<p>— разбираю требования и ограничения</p><p>— строю пользовательские сценарии и информационную архитектуру</p><p>— проектирую интерфейсы и состояния</p><p>— собираю прототипы</p><p>— проектирую и развиваю дизайн-системы</p><p>— описываю компоненты и их состояния</p><p>— работаю с типографикой, токенами и структурой</p><p>— думаю про масштабируемость и поддержку продукта</p><p>— упрощаю сложные пользовательские пути</p>',
+      aboutBody1:
+        'Часто мои задачи связаны с продуктами, в которых много логики: личные кабинеты, сервисы с верификацией, таблицы, формы и много состояний. В таких проектах я уделяю особое внимание структуре и консистентности, чтобы интерфейс оставался управляемым при росте.',
+      aboutBody2:
+        'До дизайна я работала переводчиком с китайского языка и в международной торговле. Это довольно далёкий от дизайна опыт, но именно благодаря этому опыту я могу структурировать большой объём информации, замечать детали и разбираться в незнакомой предметной области.',
+      aboutBody3:
+        'Сейчас я учусь на 2 курсе бакалавриата по направлению «Графический дизайн» и параллельно работаю над коммерческими цифровыми продуктами.',
+      aboutBody4: 'Знаю Figma и ее продукты, Affinity, основы HTML/CSS',
+      aboutBody5:
+        'Мне интересно выстраивать целостные системы: продумывать компоненты, их состояния, логику и поведение в разных сценариях. Я работаю с интерфейсами как с конструктором — где каждая деталь должна быть понятной, переиспользуемой и масштабируемой.',
+
       /* ----- case study: Logistics CRM (projects/logistics-crm.html) ----- */
-      caseDocTitle: 'Logistics CRM — Земфира Нургалеева',
+      caseDocTitle: 'Логистическая CRM — Земфира Нургалеева',
       caseDocDescription:
-        'Кейс Logistics CRM — CRM для управления транспортными операциями, дизайн: Земфира Нургалеева.',
+        'Кейс «Логистическая CRM» — CRM для управления транспортными операциями, дизайн: Земфира Нургалеева.',
       caseEyebrow: 'Продуктовый дизайн · UX/UI',
-      caseTitle: 'Logistics CRM',
+      caseTitle: 'Логистическая CRM',
       caseLead: 'CRM для управления транспортными операциями и ежедневными задачами логистической команды.',
       caseGoalLabel: 'Цель',
       caseGoal:
         'Создать практичный рабочий интерфейс для обработки перевозок и параллельной работы с несколькими задачами.',
-      caseMediaAlt: 'Интерфейс карточки перевозки в Logistics CRM',
+      caseMediaAlt: 'Интерфейс карточки перевозки в Логистической CRM',
       chipStatus: 'Статус',
       chipWorkspace: 'Рабочая зона',
       chipCard: 'Карточка перевозки',
@@ -417,11 +459,11 @@
       cons5: 'Итеративная проработка',
 
       /* ----- case study: Production Line Simulator (projects/production-line-simulator.html) ----- */
-      case2DocTitle: 'Production Line Simulator — Земфира Нургалеева',
+      case2DocTitle: 'Симулятор производственной линии — Земфира Нургалеева',
       case2DocDescription:
-        'Кейс Production Line Simulator — B2B-интерфейс симуляции производственных линий, дизайн: Земфира Нургалеева.',
+        'Кейс «Симулятор производственной линии» — B2B-интерфейс симуляции производственных линий, дизайн: Земфира Нургалеева.',
       case2Eyebrow: 'UX/UI-дизайн',
-      case2Title: 'Production Line Simulator',
+      case2Title: 'Симулятор производственной линии',
       case2Lead:
         'B2B-интерфейс симуляции: настройка производственных линий, анализ показателей и сравнение сценариев улучшений.',
       case2Goal:
@@ -511,7 +553,8 @@
       c2ConstraintsText:
         'Продукт разрабатывался как демо/MVP, поэтому часть расчётных и оптимизационных механик упрощена. При этом интерфейс должен был поддерживать реалистичные сценарии работы: большие редактируемые таблицы, импорт из Excel, валидацию и автоматический пересчёт.',
       lightboxLabel: 'Просмотр иллюстрации',
-      lightboxClose: 'Закрыть'
+      lightboxClose: 'Закрыть',
+      backToTopAria: 'Наверх'
     }
   };
 
@@ -529,6 +572,14 @@
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    /* data-i18n-html — same contract, but swaps innerHTML for strings
+       that mix regular and bold runs (<strong>). Only STRINGS values
+       (authored below) ever land here, never user input. */
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
     });
 
     document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
@@ -664,5 +715,34 @@
 
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') close();
+  });
+})();
+
+/* ============================================================
+   Back-to-top button (all pages)
+   The floating button is revealed only while the footer is on
+   screen: an IntersectionObserver on .footer toggles
+   .to-top--visible. Clicking scrolls to the very top of the page —
+   smoothness comes from the global html { scroll-behavior } (which
+   already honours prefers-reduced-motion), so no behavior is forced.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var button = document.querySelector('.to-top');
+  var footer = document.querySelector('.footer');
+  if (!button || !footer) return;
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      var entry = entries[entries.length - 1];
+      button.classList.toggle('to-top--visible', entry.isIntersecting);
+    }).observe(footer);
+  } else {
+    button.classList.add('to-top--visible'); /* ancient browser: keep it always available */
+  }
+
+  button.addEventListener('click', function () {
+    window.scrollTo({ top: 0 }); /* behavior "auto" defers to the CSS scroll-behavior */
   });
 })();

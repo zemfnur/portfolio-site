@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About me — Zemfira Nurgaleeva</title>
+  <meta name="description" content="About Zemfira Nurgaleeva — a UX/UI designer focused on design systems and complex digital products.">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+  <!-- Oswald is not loaded here: the display title and pull quote are
+       English-only, so the [lang="ru"] Cyrillic font swap never applies. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<!-- data-i18n-title/-description select this page's <title>/<meta> strings in main.js -->
+<body class="about-page" data-i18n-title="aboutDocTitle" data-i18n-description="aboutDocDescription">
+
+  <!-- ===================== About (Figma "About-1920", 1920×1342) =====================
+       Two 940px columns: display title + centered pull quote on the left,
+       links row + body copy on the right. The shared site footer closes
+       the page. The title and quote are English in both languages (as in
+       the design); only the body copy is translated.                     -->
+  <main class="about">
+    <div class="container about__grid">
+
+      <section class="about__intro">
+        <h1 class="about__title">About me</h1>
+        <p class="about__quote">&ldquo;I design systems<br>from research to scalable UI&rdquo;</p>
+      </section>
+
+      <section class="about__main">
+        <div class="about__links">
+          <button type="button" class="about__link" id="lang-switch" data-i18n="langSwitch">Русский язык</button>
+          <a class="about__link" href="index.html#projects" data-i18n="projectsLink">Projects</a>
+          <a class="about__link" href="#contacts" data-i18n="aboutContactLink">Contact me</a>
+        </div>
+
+        <div class="about__text-wrap">
+          <!-- The body copy is plain text in this design (no bold runs),
+               so paragraphs swap via data-i18n; only the dash list uses
+               data-i18n-html — main.js swaps its lines as markup. -->
+          <div class="about__text">
+            <p data-i18n="aboutIntro">I am a Product UX/UI designer focused on complex digital products and design systems, with 2 years of commercial experience.</p>
+            <div class="about__list" data-i18n-html="aboutList">
+              <p>— analyze requirements and constraints</p>
+              <p>— build user scenarios and information architecture</p>
+              <p>— design interfaces and states</p>
+              <p>— build prototypes</p>
+              <p>— design and develop design systems</p>
+              <p>— document components and their states</p>
+              <p>— work with typography, tokens and structure</p>
+              <p>— think about scalability and product maintenance</p>
+              <p>— simplify complex user journeys</p>
+            </div>
+            <p data-i18n="aboutBody1">My work often involves products with a lot of logic: customer portals, verification services, tables, forms and many states. In projects like these I pay special attention to structure and consistency, so the interface stays manageable as it grows.</p>
+            <p data-i18n="aboutBody2">Before design, I worked as a Chinese-language translator and in international trade. It is experience far removed from design, but exactly this background lets me structure large volumes of information, notice details and get up to speed in unfamiliar domains.</p>
+            <p data-i18n="aboutBody3">I am currently in my second year of a Graphic Design bachelor&rsquo;s programme, working on commercial digital products in parallel.</p>
+            <p data-i18n="aboutBody4">I work with Figma and its products, Affinity, and know the basics of HTML/CSS</p>
+            <p data-i18n="aboutBody5">I enjoy building coherent systems: thinking through components, their states, logic and behaviour across scenarios. I treat interfaces as a construction kit — every detail must be clear, reusable and scalable.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===================== Footer =====================
+       Kept in sync with the homepage footer.                    -->
+  <footer class="footer" id="contacts">
+    <div class="footer__inner">
+      <a class="footer__logo" href="index.html" aria-label="Zemfira Nurgaleeva — home">
+        <img src="assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="100" height="100">
+      </a>
+
+      <nav class="footer__links" aria-label="Footer links">
+        <a href="index.html#projects" data-i18n="projectsLink">Projects</a>
+        <a href="https://www.linkedin.com/in/zemfira-nurgaleeva-32ba96295/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://t.me/zeffiria" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <span class="footer__email">
+          <button type="button" class="footer__copy" data-email="nzemfira33@gmail.com" aria-label="Copy email address" data-i18n="mailLabel" data-i18n-arialabel="copyEmailAria">Mail</button>
+          <span class="footer__copied" role="status" data-i18n="copiedLabel">Copied!</span>
+        </span>
+        <span class="footer__copyright" data-i18n="copyright">&copy; 2026 Zemfira Nurgaleeva</span>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===================== Back to top =====================
+       Floating button, revealed by main.js while the footer is on
+       screen; scrolls back to the very top of the page.          -->
+  <button class="to-top" type="button" aria-label="Back to top" data-i18n-arialabel="backToTopAria">
+    <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+      <path d="M10 16 V5 M4.5 10.5 10 5 15.5 10.5" fill="none" stroke="currentColor"
+            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+</body>
+</html>
