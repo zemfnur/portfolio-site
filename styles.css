@@ -874,6 +874,14 @@ button.page-header__link {
   padding-top: 200px;
 }
 
+/* The last section (Constraints) closes the page before the footer
+   hairline. The frame leaves only its 80px band padding there, which
+   reads cramped — close the page with the same rhythm that separates
+   the sections above (deliberate deviation from the frame). */
+.case-section--last {
+  padding-bottom: 200px;
+}
+
 /* ---------- "← Back to overview" control (end of each scenario section) ----------
    Bottom-sticky: with the control placed at the section end, top-sticky
    could never pin (an element below the viewport doesn't stick upward).
@@ -1146,7 +1154,7 @@ a.case-card:hover .case-card__title {
 }
 
 .scenario__text {
-  flex: 0 1 900px; /* exactly 900px when there is room; shrinks between 1024 and ~1100 */
+  flex: 1 1 0; /* equal halves with the sibling column (figure, or the second text column in case 2), matching the decision rows */
   min-width: 0;
 }
 
@@ -1166,7 +1174,7 @@ a.case-card:hover .case-card__title {
 }
 
 .scenario__figure {
-  flex: 1 1 320px;
+  flex: 1 1 0; /* equal halves with the text column, as in case 2 */
   min-width: 0;
 }
 
@@ -1652,12 +1660,21 @@ img[data-lightbox] {
   transition: opacity 0.3s ease, visibility 0s;
 }
 
-/* auto width/height + both max constraints = contain-fit: the image
-   scales to the available space without cropping or distortion */
+/* The image is sized from main.js, not CSS: a full-box element
+   (width/height 100% + object-fit: contain) letterboxes the bitmap
+   inside a viewport-shaped box, which detaches the border-radius and
+   the box-shadow from the visible image — square corners, shadow cast
+   by the wrong rectangle. main.js instead measures the overlay's
+   content box on every open/load/resize and sets the element to the
+   contain-fitted pixel size, so the element box always equals the
+   painted bitmap: any aspect ratio, thumbnails scaled up as well as
+   full-size sources scaled down. The max-* clamp below is only the
+   pre-measure fallback (it keeps an undecoded src swap inside the
+   box); the fitted pixels never exceed it. */
 .lightbox__image {
   max-width: 100%;
   max-height: 100%;
-  border-radius: 12px; /* matches .shot */
+  border-radius: 16px;
   box-shadow: 0 32px 80px rgb(0 0 0 / 45%);
   transform: scale(0.97);
   transition: transform 0.3s ease;
@@ -1667,26 +1684,44 @@ img[data-lightbox] {
   transform: none;
 }
 
+/* The button itself stays a 48×48 hit target on every screen (the touch
+   minimum); the visible disc is a smaller ::before inside it, so the
+   control reads compact on desktop without shrinking the tap area. */
 .lightbox__close {
   position: absolute;
   top: max(clamp(16px, 3vw, 40px), env(safe-area-inset-top));
   right: max(clamp(16px, 3vw, 40px), env(safe-area-inset-right));
   display: grid;
   place-items: center;
-  width: 48px; /* >= 44px tap target on touch */
+  width: 48px;
   height: 48px;
   padding: 0;
   color: #fff;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.lightbox__close::before {
+  content: "";
+  position: absolute;
+  inset: 6px; /* 36px disc inside the 48px target on large screens */
   background: rgb(255 255 255 / 6%);
   border: 1px solid rgb(255 255 255 / 25%);
   border-radius: 50%;
-  cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.lightbox__close:hover {
+.lightbox__close:hover::before {
   background: rgb(255 255 255 / 14%);
   border-color: rgb(255 255 255 / 45%);
+}
+
+@media (max-width: 720px) {
+  .lightbox__close::before {
+    inset: 4px; /* 40px disc; the 48px button keeps the touch target */
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1704,6 +1739,10 @@ img[data-lightbox] {
 @media (max-width: 1024px) {
   .case-section {
     padding-top: 96px;
+  }
+
+  .case-section--last {
+    padding-bottom: 96px;
   }
 
   .case-hero {
@@ -1732,15 +1771,6 @@ img[data-lightbox] {
   .scenario__shots {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-
-  .scenario__intro {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .scenario__text {
-    flex: none;
   }
 
   .flow {
@@ -2122,7 +2152,7 @@ img[data-lightbox] {
 }
 
 .decision__text {
-  flex: 1 1 412px;
+  flex: 1 1 0; /* equal halves with the figure, as in the frame */
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -2148,7 +2178,7 @@ img[data-lightbox] {
 }
 
 .decision__figure {
-  flex: 1 1 55%;
+  flex: 1 1 0; /* equal halves with the text column, as in the frame */
   min-width: 0;
 }
 
@@ -2171,7 +2201,44 @@ img[data-lightbox] {
    Case study — Production Line Simulator, responsive
    ============================================================ */
 
-/* ---- ≤ 1024px: diagram, flow and decision rows stack ---- */
+/* ---- ≤ 1279px: medium screens — description+image rows stack ----
+   One shared rule set for both cases: case 1's scenario intros
+   (.scenario__intro) and case 2's decision rows (.decision__row).
+   ≥1280 the pairs sit side by side at 50/50 (flex: 1 1 0, set at the
+   base rules above); below 1280 the row becomes a column and both
+   children go full width. Lives here, after the .decision base rules,
+   so these equal-specificity overrides win the cascade. */
+@media (max-width: 1279px) {
+  .scenario__intro {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* stacked children go full width — flex: none, not the basis-0
+     of the side-by-side row (which would collapse in a column) */
+  .scenario__text,
+  .scenario__figure {
+    flex: none;
+  }
+
+  .decision__row,
+  .decision__row--reverse {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* no two-column optical alignment once stacked */
+  .decision__text {
+    flex: none;
+    padding-top: 0;
+  }
+
+  .decision__figure {
+    flex: none;
+  }
+}
+
+/* ---- ≤ 1024px: diagram and flows stack ---- */
 @media (max-width: 1024px) {
   .case-hero__grid--split {
     grid-template-columns: 1fr;
@@ -2196,10 +2263,14 @@ img[data-lightbox] {
     padding-top: 0;
   }
 
-  /* the diagram wraps: arrows point down the stacked column */
+  /* the diagram becomes a vertical flow: each stage on its own centered
+     row, the arrows rotated to point down the column. They are flow
+     items between the stages (DOM order: inputs → arrow → core →
+     arrow → outputs), so they stay glued to their cards at any width
+     rather than floating wherever flex-wrap drops them. */
   .model__row {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 16px;
   }
 

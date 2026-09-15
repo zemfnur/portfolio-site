@@ -274,7 +274,7 @@
       c2r1Text: 'The production line simulator was designed, built and released as a working demo in production.',
       c2r2Name: 'Bottlenecks became visible',
       c2r2Text:
-        'The production bottleneck became a clear visual element across the interface, helping users quickly identify the limiting station and understand its impact.',
+        'Made the production bottleneck a clear visual element across the interface, helping users quickly identify the limiting station and understand its impact.',
       c2r3Name: 'Production data became actionable',
       c2r3Text:
         'Structured large volumes of interconnected production data into clear tables, KPIs and visualisations, making key performance indicators easier to interpret.',
@@ -545,7 +545,7 @@
       c2r1Text: 'Симулятор производственной линии спроектирован, разработан и выпущен в виде рабочего демо.',
       c2r2Name: 'Узкие места стали видимыми',
       c2r2Text:
-        'Узкое место стало заметным визуальным элементом интерфейса: пользователь сразу видит ограничивающую станцию и её влияние.',
+        'Узкое место производства сделано наглядным визуальным элементом интерфейса: пользователь сразу видит ограничивающую станцию и её влияние.',
       c2r3Name: 'Данные стали основой для решений',
       c2r3Text:
         'Большие объёмы взаимозависимых производственных данных структурированы в понятные таблицы, KPI и визуализации.',
@@ -680,10 +680,37 @@
   var image = lightbox.querySelector('.lightbox__image');
   var lastTrigger = null;
 
+  /* Size the image to the largest rectangle its aspect ratio allows
+     inside the overlay's content box — small sources (solution-card
+     thumbnails) scale up, large ones scale down. The element box must
+     equal the painted bitmap, or the CSS border-radius and box-shadow
+     land on the letterbox instead of the image (object-fit: contain
+     alone cannot guarantee that). Runs on open, on load (the src swap
+     may still be decoding) and on window resize. */
+  function fit() {
+    var nw = image.naturalWidth;
+    var nh = image.naturalHeight;
+    if (!nw || !nh) return; /* src not decoded yet — the CSS clamp holds */
+
+    var styles = getComputedStyle(lightbox);
+    var availW = lightbox.clientWidth
+      - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight);
+    var availH = lightbox.clientHeight
+      - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom);
+    var scale = Math.min(availW / nw, availH / nh);
+
+    image.style.width = Math.round(nw * scale) + 'px';
+    image.style.height = Math.round(nh * scale) + 'px';
+  }
+
+  image.addEventListener('load', fit);
+  window.addEventListener('resize', fit);
+
   function open(trigger) {
     image.src = trigger.currentSrc || trigger.src;
     image.alt = trigger.alt;
     lastTrigger = trigger;
+    fit();
     lightbox.classList.add('lightbox--open');
 
     /* Freeze the page. Pad the layout by the scrollbar's width so the
@@ -702,7 +729,10 @@
   }
 
   document.querySelectorAll('img[data-lightbox]').forEach(function (img) {
-    img.addEventListener('click', function () {
+    img.addEventListener('click', function (event) {
+      /* an image may sit inside a link (e.g. the solution-card thumbs):
+         zooming in must not also fire the link's anchor jump */
+      event.preventDefault();
       open(img);
     });
   });
