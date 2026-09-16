@@ -9,11 +9,11 @@
   <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
   <link rel="manifest" href="assets/favicon/site.webmanifest">
 
-  <!-- Oswald is not loaded here: the display title and pull quote are
-       English-only, so the [lang="ru"] Cyrillic font swap never applies. -->
+  <!-- Oswald is loaded for the [lang="ru"] display swap: the title and
+       pull quote translate, and Barlow Semi Condensed has no Cyrillic. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&family=Inter:wght@400;600;700&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
   <script src="main.js" defer></script>
@@ -24,14 +24,14 @@
   <!-- ===================== About (Figma "About-1920", 1920×1342) =====================
        Two 940px columns: display title + centered pull quote on the left,
        links row + body copy on the right. The shared site footer closes
-       the page. The title and quote are English in both languages (as in
-       the design); only the body copy is translated.                     -->
+       the page. The title and quote translate with the page; the quote
+       swaps as HTML to keep its <br> line break in both languages.       -->
   <main class="about">
     <div class="container about__grid">
 
       <section class="about__intro">
-        <h1 class="about__title">About me</h1>
-        <p class="about__quote">&ldquo;I design systems<br>from research to scalable UI&rdquo;</p>
+        <h1 class="about__title" data-i18n="aboutTitle">About me</h1>
+        <p class="about__quote" data-i18n-html="aboutQuote">&ldquo;I design systems<br>from research to scalable UI&rdquo;</p>
       </section>
 
       <section class="about__main">

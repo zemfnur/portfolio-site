@@ -278,7 +278,7 @@ button.hero__link {
 .projects__grid {
   margin-top: 64px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr); /* one full-content-width card per row */
   gap: var(--gutter);
 }
 
@@ -368,12 +368,12 @@ button.hero__link {
   padding-bottom: 40px;
 }
 
-/* Same display type as .hero__display, but pinned to Barlow: the text
-   is English in both languages, so the [lang="ru"] Oswald swap (which
-   exists for Cyrillic display text) must not apply here. */
+/* Same display type as .hero__display. The title and quote translate, so
+   they follow --font-display: Barlow in EN, Oswald in RU (Barlow has no
+   Cyrillic — see the [lang="ru"] token swap at the top). */
 .about__title {
   margin: 0;
-  font-family: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--hero-title-size); /* 220px at 1920 */
   line-height: 1;
@@ -382,10 +382,11 @@ button.hero__link {
   color: var(--text-primary);
 }
 
-/* Figma "Quotes" style — same face and size as the hero services list. */
+/* Figma "Quotes" style — same face and size as the hero services list;
+   --font-display for the same EN-Barlow / RU-Oswald reason as .about__title. */
 .about__quote {
   margin-block: auto; /* centers between the title and the column bottom */
-  font-family: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(24px, 1.9vw, 36px); /* 36px at 1920 */
   line-height: 1.4;
@@ -704,7 +705,6 @@ button.about__link {
   }
 
   .projects__grid {
-    grid-template-columns: 1fr; /* card titles overflow a half-width column */
     margin-top: 48px;
   }
 
@@ -927,6 +927,16 @@ button.page-header__link {
   grid-template-columns: minmax(0, 900px) minmax(300px, 1fr);
   gap: 80px;
   align-items: start;
+}
+
+/* Below the 1920 design width the fixed 900px text track starves the image
+   (down to its 300px floor), so the two hero blocks drift far apart in width.
+   Split them exactly 50/50 — same pattern as case 2's --split hero — until
+   the ≤1024px stack takes over; ≥1920 keeps the Figma proportions. */
+@media (max-width: 1919px) {
+  .case-hero__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .case-hero__eyebrow {

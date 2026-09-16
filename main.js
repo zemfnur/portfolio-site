@@ -37,13 +37,15 @@
       copyEmailAria: 'Copy email address',
 
       /* ----- about page (about.html — Figma "About-1920") -----
-         The display title and pull quote are English in both languages
-         (they live in the markup without i18n attributes). The EN body
-         copy is a translation of the Russian mockup text. */
+         aboutQuote swaps as HTML (data-i18n-html) to carry the quote's
+         <br> line break. The EN copy is a translation of the Russian
+         mockup text. */
       aboutDocTitle: 'About me — Zemfira Nurgaleeva',
       aboutDocDescription:
         'About Zemfira Nurgaleeva — a UX/UI designer focused on design systems and complex digital products.',
       aboutContactLink: 'Contact me',
+      aboutTitle: 'About me',
+      aboutQuote: '“I design systems<br>from research to scalable UI”',
       aboutIntro:
         'I am a Product UX/UI designer focused on complex digital products and design systems, with 2 years of commercial experience.',
       aboutList:
@@ -318,6 +320,8 @@
       aboutDocDescription:
         'Обо мне — Земфира Нургалеева, UX/UI-дизайнер, специализирующийся на дизайн-системах и сложных цифровых продуктах.',
       aboutContactLink: 'Связаться со мной',
+      aboutTitle: 'Обо мне',
+      aboutQuote: '“Я проектирую системы<br>от исследований до масштабируемого интерфейса”',
       aboutIntro:
         'Я — Product UX/UI-дизайнер с фокусом на сложные цифровые продукты и дизайн-системы, у меня 2 года коммерческого опыта.',
       aboutList:
