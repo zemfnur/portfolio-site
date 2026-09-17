@@ -28,7 +28,7 @@
       card1Alt: 'Logistics CRM project preview',
       card2Title: 'Production Line Simulator',
       card2Desc:
-        'A B2B simulation interface for configuring production lines, analysing performance and comparing improvement scenarios.',
+        'Simulation interface for configuring production lines, analysing performance and comparing improvement scenarios.',
       card2Alt: 'Production Line Simulator project preview',
       heroMediaAria: 'Showreel',
       copyright: '© 2026 Zemfira Nurgaleeva',
@@ -307,7 +307,7 @@
       card1Alt: 'Превью проекта «Логистическая CRM»',
       card2Title: 'Симулятор производственной линии',
       card2Desc:
-        'B2B-интерфейс симуляции: настройка производственных линий, анализ показателей и сравнение сценариев улучшений.',
+        'Интерфейс симуляции: настройка производственных линий, анализ показателей и сравнение сценариев улучшений.',
       card2Alt: 'Превью проекта «Симулятор производственной линии»',
       heroMediaAria: 'Шоурил',
       copyright: '© 2026 Земфира Нургалеева',

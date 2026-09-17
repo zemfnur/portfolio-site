@@ -261,8 +261,8 @@ button.hero__link {
    Projects
    ============================================================ */
 .projects {
-  padding-top: 184px;   /* 152 + 32 from the design */
-  padding-bottom: 200px;
+  padding-top: 330px;   /* 298.5 + 32 from the design */
+  padding-bottom: 346px;
 }
 
 .projects__title {
@@ -279,7 +279,10 @@ button.hero__link {
   margin-top: 64px;
   display: grid;
   grid-template-columns: minmax(0, 1fr); /* one full-content-width card per row */
-  gap: var(--gutter);
+
+  /* deliberately larger than the design's --gutter (40px): extra breathing
+     room between full-width cards; single column, so no column gap needed */
+  gap: 96px;
 }
 
 .card {
@@ -322,7 +325,7 @@ button.hero__link {
 
 .card__image img {
   width: 100%;
-  aspect-ratio: 900 / 545; /* 545px tall at the 900px card width */
+  aspect-ratio: 1840 / 545; /* 545px tall at the 1840px full-content-width card */
   object-fit: cover;
 }
 
@@ -706,6 +709,7 @@ button.about__link {
 
   .projects__grid {
     margin-top: 48px;
+    gap: 64px;
   }
 
   .footer {
@@ -728,6 +732,13 @@ button.about__link {
     width: 100%;
     margin-left: 0;
     text-align: center;
+  }
+}
+
+/* card row gap keeps scaling down with the tighter mobile rhythm */
+@media (max-width: 720px) {
+  .projects__grid {
+    gap: 48px;
   }
 }
 

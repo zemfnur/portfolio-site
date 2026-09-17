@@ -26,7 +26,7 @@ When a new HTML file is added (e.g. case-study pages), add it to the `lint:html`
 
 ## Visual QA workflow
 
-- **Figma is the source of truth.** The page implements frame "Main-1920" (1920×2740) faithfully. Read measurements, variables, and screenshots via the Figma MCP (`get_design_context`, `get_screenshot`). CSS tokens in `:root` mirror Figma variables — when the design changes, update tokens first, then the layout that uses them.
+- **Figma is the source of truth.** The page implements frame "Main-1920" (1920×3648) faithfully. Read measurements, variables, and screenshots via the Figma MCP (`get_design_context`, `get_screenshot`). CSS tokens in `:root` mirror Figma variables — when the design changes, update tokens first, then the layout that uses them.
 - **Verify rendering with Playwright MCP** against the local server: screenshot at 1920×1080 (design size) and a mobile viewport, in **both languages** (toggle with the "Русский язык" button; the choice persists in `localStorage`, so clear it or click twice when switching).
 - **Hero invariants** (regression-prone, keep true at any viewport): the hero fits the first viewport (`100svh`, no initial scroll) and the hero links sit flush on the video's bottom edge. `.hero__media`'s `max-height` calc and the two `--hero-*` clamp tokens in `:root` are a coupled single-source-of-truth — change them together.
 - `.verify-hero.html` is a headless numeric harness that reports hero-fit + link/video alignment (usage comment inside).
