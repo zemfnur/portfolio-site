@@ -95,6 +95,133 @@
       </div>
     </section>
 
+    <!-- ===================== Research — interviews & hypotheses ===================== -->
+    <section class="research case-section" id="research">
+      <div class="container">
+        <h2 class="case-title" data-i18n="researchTitle">Research</h2>
+
+        <div class="research__intro">
+          <div class="research__summary">
+            <p data-i18n="researchP1">To understand the users' current workflow, I conducted interviews with potential users of the product.</p>
+            <p data-i18n="researchP2">The research showed that information about logistics processes was distributed across several tools. As a result, a single workflow required users to constantly switch between different sources of information.</p>
+          </div>
+
+          <div class="research__landscape">
+            <p class="research__tools-title" data-i18n="researchToolsTitle">Current tool landscape</p>
+            <ul class="research__tools">
+              <li class="research__tool">
+                <p class="research__tool-name" data-i18n="researchTool1">Excel</p>
+                <p class="research__tool-desc" data-i18n="researchTool1Desc">Main source of information about shipments and ongoing operations</p>
+              </li>
+              <li class="research__tool">
+                <p class="research__tool-name" data-i18n="researchTool2">Folders</p>
+                <p class="research__tool-desc" data-i18n="researchTool2Desc">Document storage</p>
+              </li>
+              <li class="research__tool">
+                <p class="research__tool-name" data-i18n="researchTool3">Messengers</p>
+                <p class="research__tool-desc" data-i18n="researchTool3Desc">Work communication</p>
+              </li>
+              <li class="research__tool">
+                <p class="research__tool-name" data-i18n="researchTool4">Email</p>
+                <p class="research__tool-desc" data-i18n="researchTool4Desc">Document exchange</p>
+              </li>
+            </ul>
+            <p class="research__callout" data-i18n="researchCallout">Based on the interviews, we formed the initial product hypotheses.</p>
+          </div>
+        </div>
+
+        <hr class="research__divider">
+
+        <p class="kicker research__label" data-i18n="researchHypLabel">Initial hypotheses</p>
+
+        <div class="research__group">
+          <article class="research__row">
+            <div class="research__row-head">
+              <p class="research__num">01</p>
+              <h3 class="research__row-title" data-i18n="hyp1Title">Unified Shipment Workspace</h3>
+            </div>
+            <div class="research__row-body">
+              <div class="research__row-rule" aria-hidden="true"></div>
+              <p class="research__row-text" data-i18n="hyp1Text">If the main shipment information is collected in one interface, users will need fewer switches between tools and operational tasks will become faster to complete.</p>
+              <div class="research__measure">
+                <p class="research__measure-title" data-i18n="measureLabel">How to measure</p>
+                <ul class="research__metrics">
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp1M1">Number of switches between tools during a scenario</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp1M2">Time to complete a typical scenario</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp1M3">Number of actions required to find the needed information</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="research__row research__row--divided">
+            <div class="research__row-head">
+              <p class="research__num">02</p>
+              <h3 class="research__row-title" data-i18n="hyp2Title">Documents in Shipment Context</h3>
+            </div>
+            <div class="research__row-body">
+              <div class="research__row-rule" aria-hidden="true"></div>
+              <p class="research__row-text" data-i18n="hyp2Text">If documents are available directly from the shipment card, users will find the required file faster and rely less on folders stored on their computer.</p>
+              <div class="research__measure">
+                <p class="research__measure-title" data-i18n="measureLabel">How to measure</p>
+                <ul class="research__metrics">
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp2M1">Time required to find a document</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp2M2">Number of actions required to open the required document</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp2M3">Percentage of documents successfully found without external assistance</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="research__iteration">
+          <p class="kicker" data-i18n="researchIterLabel">Hypotheses after iterations</p>
+          <p class="research__iteration-text" data-i18n="researchIterText">Additional hypotheses emerged during several prototype iterations and based on user feedback.</p>
+        </div>
+
+        <div class="research__group">
+          <article class="research__row research__row--divided">
+            <div class="research__row-head">
+              <p class="research__num">03</p>
+              <h3 class="research__row-title" data-i18n="hyp3Title">Urgency and Statuses as Priority Signals</h3>
+            </div>
+            <div class="research__row-body">
+              <div class="research__row-rule" aria-hidden="true"></div>
+              <p class="research__row-text" data-i18n="hyp3Text">If the shipment status communicates both its current state and its urgency, users will be able to identify which shipments require attention first more quickly.</p>
+              <div class="research__measure">
+                <p class="research__measure-title" data-i18n="measureLabel">How to measure</p>
+                <ul class="research__metrics">
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp3M1">Time required to identify the priority shipment</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp3M2">Number of errors when selecting a shipment that requires attention</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp3M3">Time required to identify the next action after opening the shipment list</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="research__row research__row--divided">
+            <div class="research__row-head">
+              <p class="research__num">04</p>
+              <h3 class="research__row-title" data-i18n="hyp4Title">All Shipments on One Screen</h3>
+            </div>
+            <div class="research__row-body">
+              <div class="research__row-rule" aria-hidden="true"></div>
+              <p class="research__row-text" data-i18n="hyp4Text">If all shipment numbers are available on one screen and users can quickly switch between them, it will be easier to work with multiple shipments without returning to the main list and losing context.</p>
+              <div class="research__measure">
+                <p class="research__measure-title" data-i18n="measureLabel">How to measure</p>
+                <ul class="research__metrics">
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp4M1">Time required to switch between shipments</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp4M2">Number of actions required to move from one shipment to another</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp4M3">Number of returns to the main list</span></li>
+                  <li class="research__metric"><span class="research__metric-arrow" aria-hidden="true">↗</span><span data-i18n="hyp4M4">Successful completion of a scenario that requires processing several shipments sequentially</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== Solutions — the three cards ===================== -->
     <section class="solutions case-section" id="solutions">
       <div class="container">
