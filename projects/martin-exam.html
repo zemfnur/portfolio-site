@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Martin Exam — Zemfira Nurgaleeva</title>
+  <meta name="description" content="Martin Exam case study — an AI-powered mobile app for independent exam preparation, designed by Zemfira Nurgaleeva.">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/favicon/favicon.svg">
+  <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400&family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700&family=Oswald:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../main.js" defer></script>
+</head>
+<!-- data-i18n-title/-description select this page's <title>/<meta> strings in main.js -->
+<body class="case-study case-study--no-break" data-i18n-title="case3DocTitle" data-i18n-description="case3DocDescription">
+
+  <!-- ===================== Page header (sticky) ===================== -->
+  <header class="page-header">
+    <a class="page-header__logo" href="../index.html" aria-label="Zemfira Nurgaleeva — home">
+      <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="50" height="50">
+    </a>
+
+    <nav class="page-header__nav" aria-label="Case study menu">
+      <button type="button" class="page-header__link" id="lang-switch" data-i18n="langSwitch">Русский язык</button>
+      <a class="page-header__link" href="../index.html#projects" data-i18n="projectsLink">Projects</a>
+      <a class="page-header__link" href="../about.html" data-i18n="aboutMe">About me</a>
+      <a class="page-header__link" href="#contacts" data-i18n="contactMe">Contacts</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== Hero ===================== -->
+    <section class="case-hero case-hero--band">
+      <div class="container">
+        <div class="case-tags">
+          <p class="case-tags__tag" data-i18n="c3Tag">EdTech · AI · Mobile</p>
+          <p class="case-tags__duration" data-i18n="c3Duration">2026 — Ongoing</p>
+        </div>
+
+        <div class="case-hero__grid case-hero__grid--split case-hero__grid--split-24">
+          <div class="case-hero__content">
+            <h1 class="case-title case-hero__title" data-i18n="c3Title">Martin Exam</h1>
+            <p class="case-hero__lead" data-i18n="c3Lead">AI-powered exam preparation for independent learning</p>
+
+            <div class="case-hero__goal">
+              <p class="case-hero__goal-text" data-i18n="c3Desc">Martin Exam is an AI-powered service for school students preparing independently for exams. The app helps students study material, complete textbook-based tasks, check their knowledge, and review difficult topics without constant teacher assistance.</p>
+            </div>
+
+            <div class="overview__grid">
+              <div class="role">
+                <p class="role__label" data-i18n="c3RoleLabel">UX</p>
+                <ul class="role__list">
+                  <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="c3Role1">Product Designer · UX/UI</span></li>
+                  <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="c3Role2">Design system</span></li>
+                </ul>
+              </div>
+
+              <div class="role">
+                <p class="role__label" data-i18n="c3TypeLabel">Product type</p>
+                <ul class="role__list">
+                  <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="c3Type1">EdTech</span></li>
+                  <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="c3Type2">AI · Mobile App</span></li>
+                </ul>
+              </div>
+
+              <div class="role">
+                <p class="role__label" data-i18n="c3StatusLabel">Status</p>
+                <ul class="role__list">
+                  <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="c3Status1">In testing</span></li>
+                  <li class="role__item"><span class="role__dash" aria-hidden="true">—</span><span data-i18n="c3Status2">Iteration</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-hero__media-wrap">
+            <div class="shot-frame shot-frame--strip shot-frame--hero">
+              <div class="shot-frame__slot">
+                <img data-lightbox src="../assets/images/martin-exam/hero-shot-1.png"
+                     alt="Martin Exam home screen with a daily study plan and a list of lessons with due dates"
+                     data-i18n-alt="c3HeroAlt1">
+              </div>
+              <div class="shot-frame__slot">
+                <img data-lightbox src="../assets/images/martin-exam/hero-shot-2.png"
+                     alt="Course screen with a list of lessons and their completion status"
+                     data-i18n-alt="c3HeroAlt2">
+              </div>
+              <div class="shot-frame__slot">
+                <img data-lightbox src="../assets/images/martin-exam/hero-shot-3.png"
+                     alt="Tasks screen with filters by date and task cards with deadlines"
+                     data-i18n-alt="c3HeroAlt3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Project goal ===================== -->
+    <section class="band" id="goal">
+      <div class="container">
+        <h2 class="case-heading" data-i18n="c3GoalTitle">Project goal</h2>
+
+        <div class="goal__grid">
+          <p class="goal__text" data-i18n="c3GoalText">Create a mobile app that lets a school student prepare for exams independently, moving step by step from studying the material to checking and reviewing knowledge.</p>
+
+          <div class="pillflow">
+            <p class="pillflow__pill pillflow__pill--accent" data-i18n="c3Stage1">Study</p>
+            <span class="pillflow__arrow" aria-hidden="true">→</span>
+            <p class="pillflow__pill" data-i18n="c3Stage2">Practice</p>
+            <span class="pillflow__arrow" aria-hidden="true">→</span>
+            <p class="pillflow__pill" data-i18n="c3Stage3">Check</p>
+            <span class="pillflow__arrow" aria-hidden="true">→</span>
+            <p class="pillflow__pill" data-i18n="c3Stage4">Review</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Research ===================== -->
+    <section class="band" id="research">
+      <div class="container">
+        <h2 class="case-title" data-i18n="researchTitle">Research</h2>
+
+        <div class="bench__grid">
+          <div class="bench__left">
+            <p class="bench__text" data-i18n="c3BenchText">I benchmarked direct and indirect competitors and analysed user reviews, exam content and question types.</p>
+
+            <div class="bench__cards">
+              <div class="bench__card">
+                <p class="bench__num">01</p>
+                <p class="bench__name" data-i18n="c3Bench1">Direct competitors</p>
+              </div>
+              <div class="bench__card">
+                <p class="bench__num">02</p>
+                <p class="bench__name" data-i18n="c3Bench2">Indirect competitors</p>
+              </div>
+              <div class="bench__card">
+                <p class="bench__num">03</p>
+                <p class="bench__name" data-i18n="c3Bench3">User reviews</p>
+              </div>
+              <div class="bench__card">
+                <p class="bench__num">04</p>
+                <p class="bench__name" data-i18n="c3Bench4">Exam content</p>
+              </div>
+              <div class="bench__card">
+                <p class="bench__num">05</p>
+                <p class="bench__name" data-i18n="c3Bench5">Question types</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bench__right">
+            <p class="bench__text" data-i18n="c3HypText1">Based on the research, I formed the first product hypotheses: how to connect preparation with learning materials, which task formats to use, how to organise the review of weak topics, and what role a game mechanic could play.</p>
+            <p class="bench__text" data-i18n="c3HypText2">The hypotheses were built into the first versions of the service and are being tested with real users. Testing results are used to iterate the scenarios and make the next product decisions.</p>
+
+            <div class="process">
+              <p class="kicker kicker--bar" data-i18n="c3ProcessLabel">Hypothesis-driven process</p>
+
+              <div class="process__chips">
+                <p class="process__chip process__chip--dark" data-i18n="c3Proc1">Research</p>
+                <span class="process__arrow" aria-hidden="true">→</span>
+                <p class="process__chip" data-i18n="c3Proc2">Hypotheses</p>
+                <span class="process__arrow" aria-hidden="true">→</span>
+                <p class="process__chip process__chip--dark" data-i18n="c3Proc3">Product versions</p>
+                <span class="process__arrow" aria-hidden="true">→</span>
+                <p class="process__chip" data-i18n="c3Proc4">User testing</p>
+                <span class="process__arrow" aria-hidden="true">→</span>
+                <p class="process__chip process__chip--dark" data-i18n="c3Proc5">Iteration</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== What I designed =====================
+         Card 01 carries the core-flow screenshots; cards 02–06 leave
+         their strip slots unfilled (white cards on the backdrop),
+         exactly as in the Figma frame — screenshots to follow. -->
+    <section class="band" id="designed">
+      <div class="container">
+        <h2 class="case-title" data-i18n="solutionsTitle">What I designed</h2>
+
+        <div class="designed__grid">
+          <article class="designed__card">
+            <p class="designed__num">01</p>
+            <h3 class="designed__title" data-i18n="c3D1Title">Information architecture &amp; core flows</h3>
+            <p class="designed__text" data-i18n="c3D1Text">Designed the app structure and core self-study scenarios: theory study, task completion, knowledge checks, weak topic review, and work with learning materials.</p>
+
+            <div class="shot-frame shot-frame--strip shot-frame--wide">
+              <div class="shot-frame__slot">
+                <img data-lightbox src="../assets/images/martin-exam/d1-flow-1.png"
+                     alt="Course overview with lesson cards and completion badges"
+                     data-i18n-alt="c3D1Alt1">
+              </div>
+              <div class="shot-frame__slot">
+                <img data-lightbox src="../assets/images/martin-exam/d1-flow-2.png"
+                     alt="Theory screen with lesson text and a continue button"
+                     data-i18n-alt="c3D1Alt2">
+              </div>
+              <div class="shot-frame__slot">
+                <img data-lightbox src="../assets/images/martin-exam/d1-flow-3.png"
+                     alt="Quiz screen with a multiple-choice question and answer options"
+                     data-i18n-alt="c3D1Alt3">
+              </div>
+              <div class="shot-frame__slot">
+                <img data-lightbox src="../assets/images/martin-exam/d1-flow-4.png"
+                     alt="Quiz screen with a multiple-choice question and answer options"
+                     data-i18n-alt="c3D1Alt4">
+              </div>
+              <span class="shot-frame__slot shot-frame__slot--empty" aria-hidden="true"></span>
+            </div>
+          </article>
+
+          <article class="designed__card">
+            <p class="designed__num">02</p>
+            <h3 class="designed__title" data-i18n="c3D2Title">Learning task formats</h3>
+            <p class="designed__text" data-i18n="c3D2Text">Developed varied task types and interface states for practice, theory, and exam scenarios — accounting for the specifics of real exam formats.</p>
+
+            <div class="shot-frame shot-frame--strip shot-frame--wide" aria-hidden="true">
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+            </div>
+          </article>
+
+          <article class="designed__card">
+            <p class="designed__num">03</p>
+            <h3 class="designed__title" data-i18n="c3D3Title">Learning materials</h3>
+            <p class="designed__text" data-i18n="c3D3Text">Designed a preparation scenario based on uploaded textbooks and other materials, so tasks are connected to the content the student is actually studying.</p>
+
+            <div class="shot-frame shot-frame--strip shot-frame--wide" aria-hidden="true">
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+            </div>
+          </article>
+
+          <article class="designed__card">
+            <p class="designed__num">04</p>
+            <h3 class="designed__title" data-i18n="c3D4Title">Review &amp; mistakes</h3>
+            <p class="designed__text" data-i18n="c3D4Text">Built scenarios where task results feed into subsequent review of difficult topics and additional practice sessions.</p>
+
+            <div class="shot-frame shot-frame--strip shot-frame--wide" aria-hidden="true">
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+            </div>
+          </article>
+
+          <article class="designed__card">
+            <p class="designed__num">05</p>
+            <h3 class="designed__title" data-i18n="c3D5Title">Gamification</h3>
+            <p class="designed__text" data-i18n="c3D5Text">Added a simple reward system: completing tasks earns loot boxes. The game mechanic acts as an additional motivation for regular study without becoming a standalone product feature.</p>
+
+            <div class="shot-frame shot-frame--strip shot-frame--wide" aria-hidden="true">
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+            </div>
+          </article>
+
+          <article class="designed__card">
+            <p class="designed__num">06</p>
+            <h3 class="designed__title" data-i18n="c3D6Title">Design system</h3>
+            <p class="designed__text" data-i18n="c3D6Text">Created the app design system: components, variants, states, and reusable UI patterns that enable consistent product growth and interface scaling.</p>
+
+            <div class="shot-frame shot-frame--strip shot-frame--wide" aria-hidden="true">
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+              <span class="shot-frame__slot shot-frame__slot--empty"></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Testing ===================== -->
+    <section class="band" id="testing">
+      <div class="container">
+        <h2 class="case-heading" data-i18n="c3TestingTitle">Testing</h2>
+
+        <div class="testing__row">
+          <div class="testing__stats">
+            <div class="stat">
+              <p class="stat__value">7</p>
+              <p class="stat__label" data-i18n="c3Stat1Label">school students</p>
+            </div>
+            <div class="stat">
+              <p class="stat__value">6-13</p>
+              <p class="stat__label" data-i18n="c3Stat2Label">years old</p>
+            </div>
+          </div>
+
+          <p class="testing__text" data-i18n="c3TestingText">The first versions of the service are being tested with a group of 7 school students aged 6-13. Testing helps verify how clear the scenarios are, how students interact with the tasks, and how they respond to different product mechanics.</p>
+        </div>
+
+        <div class="findings">
+          <div class="finding">
+            <p class="finding__num">01</p>
+            <p class="finding__text" data-i18n="c3Finding1">Testing checks how clear the scenarios are and how students interact with the tasks in real conditions of use.</p>
+          </div>
+          <div class="finding">
+            <p class="finding__num">02</p>
+            <p class="finding__text" data-i18n="c3Finding2">Users&rsquo; reactions to the product mechanics are recorded and feed into the following iterations.</p>
+          </div>
+          <div class="finding">
+            <p class="finding__num">03</p>
+            <p class="finding__text" data-i18n="c3Finding3">Testing results set the priorities for developing the product scenarios.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Product iteration ===================== -->
+    <section class="band" id="iteration">
+      <div class="container">
+        <h2 class="case-heading" data-i18n="c3IterationTitle">Product iteration</h2>
+
+        <p class="band__text" data-i18n="c3IterationText">Testing results are used to iterate the scenarios and make the next product decisions.</p>
+
+        <div class="flow">
+          <div class="flow__step">
+            <p class="flow__num">01</p>
+            <p class="flow__name" data-i18n="c3It1">Test</p>
+          </div>
+          <span class="flow__arrow" aria-hidden="true">→</span>
+          <div class="flow__step">
+            <p class="flow__num">02</p>
+            <p class="flow__name" data-i18n="c3It2">Observe</p>
+          </div>
+          <span class="flow__arrow" aria-hidden="true">→</span>
+          <div class="flow__step">
+            <p class="flow__num">03</p>
+            <p class="flow__name" data-i18n="c3It3">Learn</p>
+          </div>
+          <span class="flow__arrow" aria-hidden="true">→</span>
+          <div class="flow__step">
+            <p class="flow__num">04</p>
+            <p class="flow__name" data-i18n="c3It4">Iterate</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Constraints ===================== -->
+    <section class="band band--last" id="constraints">
+      <div class="container">
+        <h2 class="case-title" data-i18n="constraintsTitle">Constraints</h2>
+        <p class="band__text" data-i18n="c3ConstraintsText">The service is available to users who have their own access to the API of the AI model it uses.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== Footer =====================
+       Contact options live here; the header "Contacts" link anchors
+       to it (kept in sync with the homepage footer).                  -->
+  <footer class="footer" id="contacts">
+    <div class="footer__inner">
+      <a class="footer__logo" href="../index.html" aria-label="Zemfira Nurgaleeva — home">
+        <img src="../assets/icons/logo-zemnur.svg" alt="ZemNur logo" width="100" height="100">
+      </a>
+
+      <nav class="footer__links" aria-label="Footer links">
+        <a href="../index.html#projects" data-i18n="projectsLink">Projects</a>
+        <a href="https://www.linkedin.com/in/zemfira-nurgaleeva-32ba96295/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://t.me/zeffiria" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <span class="footer__email">
+          <button type="button" class="footer__copy" data-email="nzemfira33@gmail.com" aria-label="Copy email address" data-i18n="mailLabel" data-i18n-arialabel="copyEmailAria">Mail</button>
+          <span class="footer__copied" role="status" data-i18n="copiedLabel">Copied!</span>
+        </span>
+        <span class="footer__copyright" data-i18n="copyright">&copy; 2026 Zemfira Nurgaleeva</span>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ===================== Illustration lightbox =====================
+       Full-viewport overlay for examining the project illustrations in
+       detail. main.js copies the clicked img[data-lightbox] source and
+       alt in and toggles the --open modifier; closed with the X button,
+       a click on the darkened scrim, or Esc.                        -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Illustration view"
+       data-i18n-arialabel="lightboxLabel">
+    <!-- src/alt are filled in by main.js when an illustration is opened -->
+    <!-- [html-validate-disable-next element-required-attributes] -->
+    <img class="lightbox__image" alt="">
+    <button class="lightbox__close" type="button" aria-label="Close" data-i18n-arialabel="lightboxClose">
+      <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M4.5 4.5 15.5 15.5 M15.5 4.5 4.5 15.5" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ===================== Back to top =====================
+       Floating button, revealed by main.js while the footer is on
+       screen; scrolls back to the very top of the page.          -->
+  <button class="to-top" type="button" aria-label="Back to top" data-i18n-arialabel="backToTopAria">
+    <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+      <path d="M10 16 V5 M4.5 10.5 10 5 15.5 10.5" fill="none" stroke="currentColor"
+            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+</body>
+</html>
