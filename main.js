@@ -48,18 +48,18 @@
         'About Zemfira Nurgaleeva — a UX/UI designer focused on design systems and complex digital products.',
       aboutContactLink: 'Contact me',
       aboutTitle: 'About me',
-      aboutQuote: '“I design systems<br>from research to scalable UI”',
+      aboutQuote: '“I love designing systems.<br>I’m curious, systematic, pragmatic and thorough.”',
       aboutIntro:
         'I am a Product UX/UI designer focused on complex digital products and design systems, with 2 years of commercial experience.',
       aboutList:
-        '<p>— analyze requirements and constraints</p><p>— build user scenarios and information architecture</p><p>— design interfaces and states</p><p>— build prototypes</p><p>— design and develop design systems</p><p>— document components and their states</p><p>— work with typography, tokens and structure</p><p>— think about scalability and product maintenance</p><p>— simplify complex user journeys</p>',
+        '<p>— analyze requirements and constraints</p><p>— build user scenarios and information architecture</p><p>— design interfaces and states</p><p>— build prototypes</p><p>— design and develop design systems</p><p>— work with typography, tokens and structure</p><p>— think about scalability and product maintenance</p><p>— simplify complex user journeys</p>',
       aboutBody1:
         'My work often involves products with a lot of logic: customer portals, verification services, tables, forms and many states. In projects like these I pay special attention to structure and consistency, so the interface stays manageable as it grows.',
       aboutBody2:
         'Before design, I worked as a Chinese-language translator and in international trade. It is experience far removed from design, but exactly this background lets me structure large volumes of information, notice details and get up to speed in unfamiliar domains.',
       aboutBody3:
         "I am currently in my second year of a Graphic Design bachelor's programme, working on commercial digital products in parallel.",
-      aboutBody4: 'I work with Figma and its products, Affinity, and know the basics of HTML/CSS',
+      aboutBody4: 'I work with Figma and its products, Affinity, and know the basics of HTML/CSS. I actively use AI agents; this website was built by AI agents.',
       aboutBody5:
         'I enjoy building coherent systems: thinking through components, their states, logic and behaviour across scenarios. I treat interfaces as a construction kit — every detail must be clear, reusable and scalable.',
 
@@ -381,10 +381,10 @@
       c3D1Title: 'Information architecture & core flows',
       c3D1Text:
         'Designed the app structure and core self-study scenarios: theory study, task completion, knowledge checks, weak topic review, and work with learning materials.',
-      c3D1Alt1: 'Course overview with lesson cards and completion badges',
-      c3D1Alt2: 'Theory screen with lesson text and a continue button',
-      c3D1Alt3: 'Quiz screen with a multiple-choice question and answer options',
-      c3D1Alt4: 'Quiz screen with a multiple-choice question and answer options',
+      c3D1Alt1: 'Student profile screen',
+      c3D1Alt2: 'Student profile editing screen',
+      c3D1Alt3: 'Weekly study tasks screen',
+      c3D1Alt4: 'Empty tasks screen',
       c3D2Title: 'Learning task formats',
       c3D2Text:
         'Developed varied task types and interface states for practice, theory, and exam scenarios — accounting for the specifics of real exam formats.',
@@ -460,18 +460,18 @@
         'Обо мне — Земфира Нургалеева, UX/UI-дизайнер, специализирующийся на дизайн-системах и сложных цифровых продуктах.',
       aboutContactLink: 'Связаться со мной',
       aboutTitle: 'Обо мне',
-      aboutQuote: '“Я проектирую системы<br>от исследований до масштабируемого интерфейса”',
+      aboutQuote: '“Я люблю проектировать системы.<br>Я любознательна, системна, прагматична и дотошна”',
       aboutIntro:
         'Я — Product UX/UI-дизайнер с фокусом на сложные цифровые продукты и дизайн-системы, у меня 2 года коммерческого опыта.',
       aboutList:
-        '<p>— разбираю требования и ограничения</p><p>— строю пользовательские сценарии и информационную архитектуру</p><p>— проектирую интерфейсы и состояния</p><p>— собираю прототипы</p><p>— проектирую и развиваю дизайн-системы</p><p>— описываю компоненты и их состояния</p><p>— работаю с типографикой, токенами и структурой</p><p>— думаю про масштабируемость и поддержку продукта</p><p>— упрощаю сложные пользовательские пути</p>',
+        '<p>— разбираю требования и ограничения</p><p>— строю пользовательские сценарии и информационную архитектуру</p><p>— проектирую интерфейсы и состояния</p><p>— собираю прототипы</p><p>— проектирую и развиваю дизайн-системы</p><p>— работаю с типографикой, токенами и структурой</p><p>— думаю про масштабируемость и поддержку продукта</p><p>— упрощаю сложные пользовательские пути</p>',
       aboutBody1:
         'Часто мои задачи связаны с продуктами, в которых много логики: личные кабинеты, сервисы с верификацией, таблицы, формы и много состояний. В таких проектах я уделяю особое внимание структуре и консистентности, чтобы интерфейс оставался управляемым при росте.',
       aboutBody2:
         'До дизайна я работала переводчиком с китайского языка и в международной торговле. Это довольно далёкий от дизайна опыт, но именно благодаря этому опыту я могу структурировать большой объём информации, замечать детали и разбираться в незнакомой предметной области.',
       aboutBody3:
         'Сейчас я учусь на 2 курсе бакалавриата по направлению «Графический дизайн» и параллельно работаю над коммерческими цифровыми продуктами.',
-      aboutBody4: 'Знаю Figma и ее продукты, Affinity, основы HTML/CSS',
+      aboutBody4: 'Знаю Figma и ее продукты, Affinity, основы HTML/CSS, активно использую ИИ-агенты, данный сайт сверстан ИИ-агентами.',
       aboutBody5:
         'Мне интересно выстраивать целостные системы: продумывать компоненты, их состояния, логику и поведение в разных сценариях. Я работаю с интерфейсами как с конструктором — где каждая деталь должна быть понятной, переиспользуемой и масштабируемой.',
 
@@ -791,10 +791,10 @@
       c3D1Title: 'Информационная архитектура и основные сценарии',
       c3D1Text:
         'Спроектировала структуру приложения и основные сценарии самостоятельной подготовки: изучение теории, выполнение заданий, проверку знаний, повторение слабых тем и работу с учебными материалами.',
-      c3D1Alt1: 'Экран курса: карточки уроков со статусами прохождения',
-      c3D1Alt2: 'Экран теории: текст урока и кнопка продолжения',
-      c3D1Alt3: 'Экран квиза: вопрос с вариантами ответа',
-      c3D1Alt4: 'Экран квиза: вопрос с вариантами ответа',
+      c3D1Alt1: 'Экран профиля ученика',
+      c3D1Alt2: 'Редактирование профиля ученика',
+      c3D1Alt3: 'Задания на неделю',
+      c3D1Alt4: 'Пустой список заданий',
       c3D2Title: 'Форматы учебных заданий',
       c3D2Text:
         'Разработала разные типы заданий и состояния интерфейса для практики, теории и экзамена — с учётом специфики реальных форматов экзаменов.',
