@@ -15,7 +15,8 @@
       displayTitle: 'Zemfira Nurgaleeva',
       role: 'designer',
       svc1: 'Product UX & UI Design',
-      svc2: 'Complex B2B & SaaS Interfaces',
+      svc2: 'B2B, SaaS & Educational Products',
+      heroContact: 'Contact me',
       svc3: 'User Flows & Information Architecture',
       svc4: 'Design Systems & UI Libraries',
       svc5: 'Prototyping & Interaction Design',
@@ -33,6 +34,9 @@
       card3Title: 'Martin Exam — AI Exam Preparation',
       card3Desc: 'AI-powered mobile app for independent exam preparation.',
       card3Alt: 'Martin Exam project preview',
+      card4Title: 'Martin Exam — Product Growth',
+      card4Desc: 'Improving engagement through gamification and learning experiences.',
+      card4Alt: 'Martin Exam product growth project preview',
       heroMediaAria: 'Showreel',
       copyright: '© 2026 Zemfira Nurgaleeva',
       copiedLabel: 'Copied!',
@@ -419,6 +423,53 @@
       c3It4: 'Iterate',
       c3ConstraintsText:
         'The service is available to users who have their own access to the API of the AI model it uses.',
+      c4VideoProblem2: 'The homepage is intentionally focused on one priority scenario: quickly starting a task. Moving videos higher could compete with the main learning flow.',
+      c4ExperimentTitle: 'Experiment structure',
+      c4CompareBehavior: 'Compare behavior',
+      c4AltResult: 'Task results with a contextual video recommendation',
+      c4AltFloating: 'Home screen with the floating Martin video entry point',
+      c4AltVideoLibrary: 'Video lesson library reached from the recommendation',
+      case4DocTitle: 'Martin Exam — Product Growth — Zemfira Nurgaleeva',
+      case4DocDescription: 'Martin Exam case study: product growth through gamification and learning experiences.',
+      c4Tag: 'EdTech · AI · Mobile', c4Duration: '2026 — Ongoing',
+      c4Title: 'Martin Exam — Product Growth & Learning Experience',
+      c4Lead: 'Product Designer · UX/UI · EdTech · AI-powered exam preparation · Mobile',
+      c4Desc: 'Martin Exam is an AI-powered service for school students preparing independently for exams. The app helps students study material, complete textbook-based tasks, check their knowledge, and review difficult topics without constant teacher assistance.',
+      c4HeroAlt1: 'Martin Exam mobile app mockup', c4HeroAlt2: 'Martin Exam mobile app mockup',
+      c4ContextLabel: 'Context', c4ContextTitle: 'What it is',
+      c4ContextText: 'Martin Exam is an existing AI-powered exam preparation service for school students. At this stage, my task was not to create a product from scratch, but to identify growth opportunities based on real user behavior and testing new product solutions.',
+      c4GamificationTitle: 'Gamification', c4ProblemLabel: 'Problem',
+      c4ProblemText: 'During testing with school students, it became clear that some loot boxes and rewards did not generate enough interest. When a reward is not perceived as valuable, additional motivation to complete tasks decreases.',
+      c4HypothesisLabel: 'Hypothesis', c4HypothesisText: 'If we add more competition and interaction between users, the game mechanic will become more engaging and motivation to continue learning will increase.',
+      c4ValidateLabel: 'How to validate', c4ValidateText: 'Compare user groups using behavioral metrics such as return frequency, number of completed tasks, session duration, and interaction with the gamification mechanics.',
+      c4DoneLabel: 'What was done', c4DoneText: 'Redesigned the loot box mechanic around competition and social interaction. The reward became not only something the user receives, but also part of an interaction between users.',
+      c4Flow1Title: 'Interaction flow 1', c4Flow1Text: 'The social loot box mechanic turns a solitary reward into a shared interaction — users can send a «thief» to a friend’s collection, and the friend must complete a quick task to defend their loot. This creates a reason to return to the app even outside planned study sessions.',
+      c4Step1a: 'Collection', c4Step2a: 'Choose a friend', c4Step3a: 'Send a thief', c4Step4a: 'Loot at risk!',
+      c4AltCollection: 'Awards collection screen', c4AltFriends: 'Friends list', c4AltThief: 'Thief selection screen', c4AltWarning: 'Loot warning screen',
+      c4Flow2Title: 'Interaction flow 2', c4Flow2Text1: 'Students can earn cards by completing tasks or earn feathers as an in-app currency to purchase cards. They can then send collected cards as gifts to friends.',
+      c4Flow2Text2: 'Once a card is gifted, the student can earn it again by completing more tasks, creating a repeatable loop between learning, collecting, and social interaction.',
+      c4Step1b: 'Complete tasks', c4Step2b: 'Collect or purchase cards', c4Step3b: 'Gift a card to a friend', c4Step4b: 'Earn another card!',
+      c4AltTask: 'Completed task screen', c4AltAwards: 'Rewards page', c4AltGift: 'Sending a gift', c4AltGiftSent: 'Gift sent confirmation',
+      c4GamifyValidateTitle: 'How to validate',
+      c4GamifyValidateText1: 'The hypothesis can be evaluated through task completion, card collection and gifting activity, repeat engagement with the mechanic, and return sessions.',
+      c4GamifyValidateText2: 'The goal is to understand whether social gifting creates additional motivation to learn, rather than simply increasing interaction with rewards.',
+      c4VideoTitle: 'Video as an additional entry point to learning',
+      c4VideoProblem: 'The app contains video lessons that help students understand difficult topics, but the video section is placed below the main content and users rarely reach it.',
+      c4VideoHypothesis: 'If we add subtle entry points to video without changing the priority of the main scenario, video views will increase without negatively affecting task completion.',
+      c4ConceptsTitle: 'Two solution concepts', c4ConceptA: 'Contextual recommendation',
+      c4ConceptAText: 'After completing a task or test, the user receives a recommendation to watch a short video lesson related to the topic.',
+      c4ConceptB: 'Floating entry point', c4ConceptBText: 'A small floating Martin element appears on the homepage and recommends a relevant video lesson.',
+      c4AltConceptA: 'Contextual video recommendation', c4AltConceptB: 'Floating video entry point',
+      c4ABTitle: 'A/B test', c4ABText: 'Both solutions can be tested using an A/B test. Users are split into two equal groups and exposed to different entry points for the same content.',
+      c4AllUsers: 'All users', c4AfterTask: 'After task / test completion', c4OnHome: 'On homepage, always available',
+      c4MetricsTitle: 'Metrics framework', c4PrimaryMetric: 'Primary metric', c4VideoViews: 'Video views',
+      c4VideoViewsText: 'Unique video starts attributed to the entry point in each variant', c4Guardrail: 'Guardrail metrics',
+      c4TaskCompletion: 'Task completion rate', c4TaskCompletionText: 'Ensure the main flow is not disrupted', c4TaskStarts: 'Task starts',
+      c4TaskStartsText: 'Monitor intent to begin a learning session', c4ReturnSessions: 'Return sessions',
+      c4ReturnSessionsText: 'Track whether engagement is sustained',
+      c4Note: 'Note: The goal is not only to increase video views, but to make sure the additional video entry point does not negatively affect the main learning flow.',
+      c4ConclusionTitle: 'The decision is based on behavior, not preference',
+      c4ConclusionText: 'Both concepts solve the same problem from different moments in the user journey. Instead of choosing one based only on visual preference, the two approaches can be tested against the same product goal and compared using behavioral data.',
       lightboxLabel: 'Illustration view',
       lightboxClose: 'Close',
       backToTopAria: 'Back to top'
@@ -430,7 +481,8 @@
       displayTitle: 'Земфира Нургалеева',
       role: 'дизайнер',
       svc1: 'Продуктовый UX/UI-дизайн',
-      svc2: 'Сложные B2B- и SaaS-интерфейсы',
+      svc2: 'B2B, SaaS и образовательные продукты',
+      heroContact: 'Связаться со мной',
       svc3: 'Пользовательские сценарии и информационная архитектура',
       svc4: 'Дизайн-системы и UI-библиотеки',
       svc5: 'Прототипирование и интерактивные сценарии',
@@ -448,6 +500,9 @@
       card3Title: 'Martin Exam — подготовка к экзаменам с ИИ',
       card3Desc: 'Мобильное приложение с ИИ для самостоятельной подготовки к экзаменам.',
       card3Alt: 'Превью проекта «Martin Exam»',
+      card4Title: 'Martin Exam — Product Growth',
+      card4Desc: 'Повышение вовлечённости с помощью геймификации и улучшения учебного опыта.',
+      card4Alt: 'Превью проекта о развитии Martin Exam',
       heroMediaAria: 'Шоурил',
       copyright: '© 2026 Земфира Нургалеева',
       copiedLabel: 'Скопировано!',
@@ -829,6 +884,53 @@
       c3It4: 'Итерация',
       c3ConstraintsText:
         'Сервис доступен пользователям, у которых есть собственный доступ к API используемой ИИ-модели.',
+      c4VideoProblem2: 'Главная страница намеренно сосредоточена на одном приоритетном сценарии: быстро начать задание. Если поднять видео выше, оно может конкурировать с основным учебным сценарием.',
+      c4ExperimentTitle: 'Структура эксперимента',
+      c4CompareBehavior: 'Сравнить поведение',
+      c4AltResult: 'Результаты задания с контекстной рекомендацией видео',
+      c4AltFloating: 'Главный экран с плавающим входом в видеоурок через Martin',
+      c4AltVideoLibrary: 'Библиотека видеоуроков, открытая из рекомендации',
+      case4DocTitle: 'Martin Exam — Product Growth — Земфира Нургалеева',
+      case4DocDescription: 'Кейс Martin Exam: развитие продукта через геймификацию и улучшение учебного опыта.',
+      c4Tag: 'EdTech · ИИ · Мобильное приложение', c4Duration: '2026 — в разработке',
+      c4Title: 'Martin Exam — развитие продукта и учебного опыта',
+      c4Lead: 'Продуктовый дизайнер · UX/UI · EdTech · Подготовка к экзаменам с ИИ · Мобильное приложение',
+      c4Desc: 'Martin Exam — сервис с ИИ для школьников, которые готовятся к экзаменам самостоятельно. Приложение помогает изучать материал, выполнять задания по учебникам, проверять знания и повторять сложные темы без постоянной помощи учителя.',
+      c4HeroAlt1: 'Макет мобильного приложения Martin Exam', c4HeroAlt2: 'Макет мобильного приложения Martin Exam',
+      c4ContextLabel: 'Контекст', c4ContextTitle: 'О продукте',
+      c4ContextText: 'Martin Exam — существующий сервис с ИИ для подготовки школьников к экзаменам. На этом этапе моей задачей было не создавать продукт с нуля, а находить возможности для роста на основе поведения пользователей и проверки новых продуктовых решений.',
+      c4GamificationTitle: 'Геймификация', c4ProblemLabel: 'Проблема',
+      c4ProblemText: 'Во время тестирования со школьниками стало понятно, что некоторые лутбоксы и награды не вызывают достаточного интереса. Если награда не воспринимается как ценная, дополнительная мотивация выполнять задания снижается.',
+      c4HypothesisLabel: 'Гипотеза', c4HypothesisText: 'Если добавить больше соревнования и взаимодействия между пользователями, игровая механика станет интереснее, а мотивация продолжать обучение вырастет.',
+      c4ValidateLabel: 'Как проверить', c4ValidateText: 'Сравнить группы пользователей по поведенческим метрикам: частоте возвращений, количеству выполненных заданий, длительности сессий и взаимодействию с механиками геймификации.',
+      c4DoneLabel: 'Что было сделано', c4DoneText: 'Переработала механику лутбоксов, добавив соревнование и социальное взаимодействие. Награда стала не только тем, что получает пользователь, но и частью общения между пользователями.',
+      c4Flow1Title: 'Сценарий взаимодействия 1', c4Flow1Text: 'Социальная механика лутбоксов превращает одиночную награду в совместное взаимодействие: пользователь может отправить «воришку» в коллекцию друга, а другу нужно выполнить короткое задание, чтобы защитить добычу. Это создаёт повод вернуться в приложение вне запланированных занятий.',
+      c4Step1a: 'Коллекция', c4Step2a: 'Выбрать друга', c4Step3a: 'Отправить воришку', c4Step4a: 'Добыча под угрозой!',
+      c4AltCollection: 'Экран коллекции наград', c4AltFriends: 'Список друзей', c4AltThief: 'Выбор воришки', c4AltWarning: 'Предупреждение об угрозе коллекции',
+      c4Flow2Title: 'Сценарий взаимодействия 2', c4Flow2Text1: 'Ученики могут получать карточки за выполнение заданий или покупать их за перья — внутриигровую валюту. Собранные карточки можно отправлять друзьям в подарок.',
+      c4Flow2Text2: 'После отправки карточки ученик может получить её снова, выполняя новые задания. Так создаётся повторяемый цикл обучения, коллекционирования и социального взаимодействия.',
+      c4Step1b: 'Выполнить задания', c4Step2b: 'Собрать или купить карточки', c4Step3b: 'Подарить карточку другу', c4Step4b: 'Получить ещё одну карточку!',
+      c4AltTask: 'Экран выполненного задания', c4AltAwards: 'Страница наград', c4AltGift: 'Отправка подарка', c4AltGiftSent: 'Подтверждение отправки подарка',
+      c4GamifyValidateTitle: 'Как проверить',
+      c4GamifyValidateText1: 'Гипотезу можно оценить по выполнению заданий, сбору и отправке карточек, повторному взаимодействию с механикой и возвращениям в приложение.',
+      c4GamifyValidateText2: 'Важно понять, мотивируют ли социальные подарки учиться, а не просто увеличивают взаимодействие с наградами.',
+      c4VideoTitle: 'Видео как дополнительный вход в обучение',
+      c4VideoProblem: 'В приложении есть видеоуроки, которые помогают разобраться в сложных темах, но раздел с видео расположен ниже основного контента, и пользователи редко до него доходят.',
+      c4VideoHypothesis: 'Если добавить ненавязчивые точки входа в видео, не меняя приоритет основного сценария, просмотры видео вырастут без негативного влияния на выполнение заданий.',
+      c4ConceptsTitle: 'Два варианта решения', c4ConceptA: 'Контекстная рекомендация',
+      c4ConceptAText: 'После выполнения задания или теста пользователь получает рекомендацию посмотреть короткий видеоурок по теме.',
+      c4ConceptB: 'Плавающая точка входа', c4ConceptBText: 'На главной появляется небольшой плавающий элемент Martin с рекомендацией подходящего видеоурока.',
+      c4AltConceptA: 'Контекстная рекомендация видео', c4AltConceptB: 'Плавающий вход в видеоурок',
+      c4ABTitle: 'A/B-тест', c4ABText: 'Оба решения можно проверить с помощью A/B-теста. Пользователи делятся на две равные группы и видят разные точки входа к одному и тому же контенту.',
+      c4AllUsers: 'Все пользователи', c4AfterTask: 'После задания или теста', c4OnHome: 'На главной, доступно всегда',
+      c4MetricsTitle: 'Система метрик', c4PrimaryMetric: 'Основная метрика', c4VideoViews: 'Просмотры видео',
+      c4VideoViewsText: 'Уникальные запуски видео, связанные с точкой входа в каждом варианте', c4Guardrail: 'Защитные метрики',
+      c4TaskCompletion: 'Доля выполненных заданий', c4TaskCompletionText: 'Убедиться, что основной сценарий не нарушен', c4TaskStarts: 'Начало заданий',
+      c4TaskStartsText: 'Отслеживать намерение начать учебную сессию', c4ReturnSessions: 'Повторные сессии',
+      c4ReturnSessionsText: 'Проверять, сохраняется ли вовлечённость',
+      c4Note: 'Важно не только увеличить просмотры видео, но и убедиться, что дополнительная точка входа не мешает основному учебному сценарию.',
+      c4ConclusionTitle: 'Решение принимается по поведению, а не предпочтениям',
+      c4ConclusionText: 'Оба решения закрывают одну проблему в разные моменты пользовательского пути. Вместо выбора по визуальным предпочтениям оба подхода можно проверить относительно одной продуктовой цели и сравнить по поведенческим данным.',
       lightboxLabel: 'Просмотр иллюстрации',
       lightboxClose: 'Закрыть',
       backToTopAria: 'Наверх'
@@ -840,9 +942,67 @@
 
   var STORAGE_KEY = 'lang';
 
+  /* Keep short Russian function words with the following word. Work on
+     text nodes, including adjacent inline runs, never on serialized HTML.
+     Restore only our changes before switching languages. */
+  var typographyChanges = [];
+  var russianShortWord = /(?<![\p{L}\p{N}_-])(а|и|в|к|о|с|у|во|ко|со|об|обо|от|до|из|за|на|по|не|ни|но|да|или|без|для|над|под|при|про|из-за|из-под) (?=[«„“"(]*[\p{L}\p{N}])/giu;
+  var textBoundary = /^(ADDRESS|ARTICLE|ASIDE|BLOCKQUOTE|BR|BUTTON|DD|DIV|DL|DT|FIGCAPTION|FIGURE|FOOTER|FORM|H[1-6]|HEADER|HR|LI|MAIN|NAV|OL|P|SECTION|TABLE|TD|TH|TR|UL)$/;
+  var skipTypography = /^(SCRIPT|STYLE|NOSCRIPT|PRE|CODE|KBD|SAMP|TEXTAREA|INPUT|SELECT|SVG|MATH)$/;
+
+  function restoreTypography() {
+    typographyChanges.forEach(function (change) {
+      if (change.node.nodeValue === change.formatted) change.node.nodeValue = change.original;
+    });
+    typographyChanges = [];
+  }
+
+  function applyRussianTypography(root) {
+    var nodes = [];
+    function flush() {
+      var text = nodes.map(function (node) { return node.nodeValue; }).join('');
+      var positions = [];
+      russianShortWord.lastIndex = 0;
+      var match;
+      while ((match = russianShortWord.exec(text))) {
+        positions.push(match.index + match[0].length - 1);
+      }
+      var offset = 0;
+      nodes.forEach(function (node) {
+        var original = node.nodeValue;
+        var chars = original.split('');
+        positions.forEach(function (position) {
+          if (position >= offset && position < offset + original.length) chars[position - offset] = '\u00a0';
+        });
+        var formatted = chars.join('');
+        if (formatted !== original) {
+          typographyChanges.push({ node: node, original: original, formatted: formatted });
+          node.nodeValue = formatted;
+        }
+        offset += original.length;
+      });
+      nodes = [];
+    }
+    function visit(node) {
+      if (node.nodeType === 3) { nodes.push(node); return; }
+      if (node.nodeType !== 1) return;
+      if (skipTypography.test(node.tagName) || node.matches('[lang]:not([lang="ru"]), [contenteditable], [data-typography="off"]')) {
+        flush();
+        return;
+      }
+      var boundary = textBoundary.test(node.tagName);
+      if (boundary) flush();
+      node.childNodes.forEach(visit);
+      if (boundary) flush();
+    }
+    visit(root);
+    flush();
+  }
+
   function applyLang(lang) {
     if (!STRINGS[lang]) lang = 'en';
     var dict = STRINGS[lang];
+    restoreTypography();
 
     document.documentElement.lang = lang;
 
@@ -871,6 +1031,8 @@
 
     var sw = document.getElementById('lang-switch');
     if (sw) sw.textContent = SWITCH_LABEL[lang];
+
+    if (lang === 'ru') applyRussianTypography(document.body);
 
     /* <title>/<meta description> key — pages other than the homepage pick
        their own strings via data-i18n-title / data-i18n-description on <body>. */

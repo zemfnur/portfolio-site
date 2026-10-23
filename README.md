@@ -41,3 +41,9 @@ npm run lint        # html-validate + stylelint
   placeholder div for a `<video>` — the comment in `index.html` shows how).
 - **Russian display font**: Barlow Semi Condensed has no Cyrillic, so
   `[lang="ru"]` swaps `--font-display` to Oswald (see `styles.css`).
+- **Russian typography**: `main.js` applies non-breaking spaces after common
+  short Russian prepositions, conjunctions and particles when applying RU.
+  It processes text nodes across inline formatting and links, stopping at
+  block boundaries. Code, editable fields and explicitly non-Russian elements
+  are excluded. Use `data-typography="off"` for a text block that must retain
+  literal spacing. Switching back to EN restores spaces before localization.
