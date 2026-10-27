@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "npm run lint:html && npm run lint:css",
     "lint:html": "html-validate index.html about.html projects/*.html",
-    "lint:css": "stylelint styles.css"
+    "lint:css": "stylelint styles.css projects/production-line-simulator.css"
   },
   "devDependencies": {
     "html-validate": "^9.7.1",

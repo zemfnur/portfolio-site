@@ -1,0 +1,180 @@
+/* The SVG viewBox scales one 375 × 849 screen, including this 375 × 378
+   scene. Its illustration coordinates follow Figma 1878:4615. */
+.gaming-preview {
+  width: 276px;
+  max-width: 100%;
+  min-height: 0;
+  flex: 1;
+}
+
+.gaming-toggle {
+  flex: 0 0 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--bg-primary);
+  cursor: pointer;
+  font: 12px/1 var(--font-body);
+}
+
+.gaming-toggle:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 3px;
+}
+
+.gaming-scene {
+  position: relative;
+  width: 375px;
+  height: 378px;
+  overflow: hidden;
+  isolation: isolate;
+  visibility: hidden;
+  background: #fff1d1;
+}
+
+.gaming-scene--ready { visibility: visible; }
+
+.gaming-scene__sky,
+.gaming-scene__mountains,
+.gaming-scene__forest,
+.gaming-scene__path {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gaming-scene__mountains { left: -62px; }
+
+/* Keep the forest's path beneath the supplied transparent foreground so
+   the foreground's trimmed alpha contour defines the faster grass layer. */
+
+.gaming-scene__strip {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Override case4-steps' generic illustration sizing for scene assets. */
+.gaming-scene .gaming-scene__image {
+  display: block;
+  flex: none;
+  max-width: none;
+  min-height: 0;
+  aspect-ratio: auto;
+  cursor: default;
+  object-fit: fill;
+}
+
+.gaming-scene__strip .gaming-scene__image:nth-child(even) {
+  transform: scaleX(-1);
+}
+
+.gaming-scene__squirrel,
+.gaming-scene__card {
+  position: absolute;
+  inset: 0;
+}
+
+.gaming-scene__squirrel {
+  inset: 232px auto auto 44px;
+  width: 112px;
+  height: 112px;
+}
+
+.gaming-scene__squirrel .gaming-scene__image,
+.gaming-scene__card .gaming-scene__image {
+  position: absolute;
+  opacity: 0;
+}
+
+.gaming-scene__squirrel .gaming-scene__image:first-child,
+.gaming-scene__card .gaming-scene__image:first-child { opacity: 1; }
+
+.gaming-scene__thought {
+  position: absolute;
+  top: 195px;
+  left: 157px;
+  width: 73px;
+  height: 58px;
+  border-radius: 9999px;
+  background: white;
+  filter: drop-shadow(0 7px 9px rgb(0 0 0 / 8%));
+}
+
+.gaming-scene__thought::before,
+.gaming-scene__thought::after {
+  content: "";
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.gaming-scene__thought::before {
+  top: 58px;
+  left: 0;
+  width: 11px;
+  height: 11px;
+}
+
+.gaming-scene__thought::after {
+  top: 71px;
+  left: -13px;
+  width: 7px;
+  height: 7px;
+}
+
+.gaming-scene__card .gaming-scene__image {
+  top: 7px;
+  left: 21px;
+  width: 32.5px;
+  height: 45px;
+}
+
+.gaming-scene__sender,
+.gaming-scene__message {
+  position: absolute;
+  margin: 0;
+  font-family: "Rubik Dirt", sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+
+.gaming-scene__sender {
+  top: 25px;
+  left: 213px;
+  width: 159px;
+  color: #f59e0b;
+  font-size: 16px;
+  line-height: 24px;
+  white-space: nowrap;
+  transform: rotate(16.53deg);
+}
+
+.gaming-scene__message {
+  top: 59px;
+  left: 43px;
+  width: 289px;
+  color: #364f33;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+@media (max-width: 1279px) {
+  .gaming-preview {
+    width: 100%;
+    height: 420px;
+    flex: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .gaming-preview {
+    height: auto;
+    aspect-ratio: 276 / 520;
+  }
+}

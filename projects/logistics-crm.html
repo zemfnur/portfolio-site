@@ -473,7 +473,16 @@
           </div>
 
           <div class="scenario__figure">
-            <img class="shot shot--wide" data-lightbox src="../assets/images/logistics-crm/s2-intro.png" alt="Open transports panel with pill tabs">
+            <div class="scenario__video-frame">
+              <!-- [html-validate-disable-next no-autoplay] -->
+              <video class="shot shot--video" autoplay muted loop playsinline preload="metadata"
+                     poster="../assets/images/logistics-crm/s2-intro.png"
+                     title="Switching between open transports without losing working context">
+                <!-- Forward then reverse, with duplicate endpoint frames omitted for seamless looping. -->
+                <source src="../video/Transportation-drivers-ping-pong.mp4" type="video/mp4">
+                <img src="../assets/images/logistics-crm/s2-intro.png" alt="Open transports panel with pill tabs">
+              </video>
+            </div>
           </div>
         </div>
 
@@ -515,11 +524,7 @@
         <div class="result">
           <p class="result__label" data-i18n="resultLabel">Result</p>
           <p class="result__title" data-i18n="s2ResultTitle">Users can work with multiple transports while keeping their working context.</p>
-          <div class="result__grid">
-            <div class="result__item">
-              <h3 class="result__name" data-i18n="s2Result1Name">Open transports</h3>
-              <p class="result__text" data-i18n="s2Result1Text">Users can work with multiple transports without repeatedly returning to the main list.</p>
-            </div>
+          <div class="result__grid result__grid--two">
             <div class="result__item">
               <h3 class="result__name" data-i18n="s2Result2Name">Preserved context</h3>
               <p class="result__text" data-i18n="s2Result2Text">The current working context remains available.</p>
@@ -662,29 +667,31 @@
 
           <ul class="constraints__list">
             <li class="constraints__item">
-              <span class="constraints__num">01</span>
               <span class="constraints__value" data-i18n="cons1">Business requirements</span>
             </li>
             <li class="constraints__item">
-              <span class="constraints__num">02</span>
               <span class="constraints__value" data-i18n="cons2">Process analysis</span>
             </li>
             <li class="constraints__item">
-              <span class="constraints__num">03</span>
               <span class="constraints__value" data-i18n="cons3">Team discussions</span>
             </li>
             <li class="constraints__item">
-              <span class="constraints__num">04</span>
               <span class="constraints__value" data-i18n="cons4">Stakeholder feedback</span>
             </li>
             <li class="constraints__item">
-              <span class="constraints__num">05</span>
               <span class="constraints__value" data-i18n="cons5">Iterative design</span>
             </li>
           </ul>
         </div>
       </div>
     </section>
+
+    <nav class="project-nav container" aria-label="Project navigation" data-i18n-arialabel="projectNavigationAria">
+      <a class="project-nav__link project-nav__link--next" href="production-line-simulator.html" rel="next">
+        <span data-i18n="nextProject">Next Project</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </nav>
 
   </main>
 

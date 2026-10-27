@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squirrel parallax — animation preview</title>
+    <link rel="icon" href="../assets/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scene.css">
+    <script src="scene.js" defer></script>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg-primary: #30452e;
+        --font-body: system-ui, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 32px 16px;
+        background: #f5f3ed;
+        color: #30452e;
+        font: 15px/1.5 system-ui, sans-serif;
+      }
+
+      main { width: min(100%, 600px); margin: 0 auto; }
+      h1 { margin: 0; font-size: 24px; }
+      p { margin: 8px 0 20px; }
+      .preview__toolbar { display: flex; align-items: center; gap: 12px; }
+      .preview__status { flex: 1; margin: 16px 0; font-size: 13px; }
+      .preview__canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgb(48 69 46 / 12%);
+        background: #fff1d1;
+      }
+      .preview__note { margin-top: 20px; font-size: 13px; }
+      .preview__frames { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      .preview__frame {
+        padding: 6px;
+        border: 1px solid #c9cfc4;
+        border-radius: 8px;
+        background: #fff;
+        color: inherit;
+        cursor: pointer;
+        font: 12px/1.4 system-ui, sans-serif;
+      }
+      .preview__frame:focus-visible,
+      .preview__frame[aria-pressed="true"] { outline: 2px solid #30452e; }
+      .preview__frame img { display: block; width: 100%; height: auto; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 lang="en">Squirrel parallax</h1>
+      <div class="preview__toolbar">
+        <p class="preview__status" role="status" lang="en">Loading illustrations…</p>
+        <button class="gaming-toggle" type="button" aria-label="Pause or resume animation" aria-pressed="false" hidden>Ⅱ</button>
+      </div>
+      <svg class="preview__canvas" viewBox="0 0 375 378" width="375" height="378" role="img" aria-label="Бегущая белка на лесной тропинке думает о карточке-награде">
+        <foreignObject x="0" y="0" width="375" height="378">
+          <div class="gaming-scene" aria-hidden="true">
+            <div class="gaming-scene__sky"></div>
+            <div class="gaming-scene__mountains"></div>
+            <div class="gaming-scene__forest"></div>
+            <div class="gaming-scene__path"></div>
+            <div class="gaming-scene__squirrel"></div>
+            <div class="gaming-scene__thought"><div class="gaming-scene__card"></div></div>
+            <p class="gaming-scene__sender">отправлено Катей</p>
+            <p class="gaming-scene__message">Белка бежит украсть твою карточку!</p>
+          </div>
+        </foreignObject>
+      </svg>
+      <p class="preview__note" lang="en">8 separate poses · 0.96-second cycle · Choose a pose to pause and inspect it; use the play button to resume.</p>
+      <div class="preview__frames" role="group" aria-label="Inspect squirrel poses" lang="en"></div>
+    </main>
+    <script>
+      (function () {
+        var scene = document.querySelector('.gaming-scene');
+        var status = document.querySelector('.preview__status');
+        var button = document.querySelector('.gaming-toggle');
+        var motion = matchMedia('(prefers-reduced-motion: reduce)');
+        var labels = ['Far contact', 'Far down', 'Near passing', 'Near flight',
+          'Near contact', 'Near down', 'Far passing', 'Far flight'];
+        var descriptions = [
+          'Far foot ahead on ground, near leg behind; near arm forward.',
+          'Weight on far leg, near heel recovering; near arm returning down.',
+          'Far foot supports body, near bent knee passes forward; near hand by hip.',
+          'Near foot reaches ahead in flight; near arm back.',
+          'Near foot ahead on ground, far leg behind; near arm back.',
+          'Weight on near leg, far heel recovering; near arm returning down.',
+          'Near foot supports body, far bent knee passes forward; near hand by hip.',
+          'Far foot reaches ahead in flight, near heel raised behind; near arm forward.'
+        ];
+        var filmstrip = document.querySelector('.preview__frames');
+        labels.forEach(function (label, index) {
+          var frameButton = document.createElement('button');
+          frameButton.type = 'button';
+          frameButton.className = 'preview__frame';
+          frameButton.setAttribute('aria-pressed', 'false');
+          var image = new Image();
+          image.src = 'squirrel/run/frame-0' + (index + 1) + '.png';
+          image.alt = descriptions[index];
+          image.width = 512;
+          image.height = 512;
+          frameButton.appendChild(image);
+          frameButton.appendChild(document.createTextNode((index + 1) + '. ' + label));
+          frameButton.addEventListener('click', function () {
+            if (scene.dataset.state !== 'ready' || motion.matches) return;
+            if (button.getAttribute('aria-pressed') !== 'true') button.click();
+            scene.querySelector('.gaming-scene__squirrel').getAnimations({ subtree: true }).forEach(function (animation) {
+              animation.currentTime = index * 120 + 0.1;
+            });
+            filmstrip.querySelectorAll('button').forEach(function (item) {
+              item.setAttribute('aria-pressed', String(item === frameButton));
+            });
+            status.textContent = 'Paused · Frame ' + (index + 1) + ' · ' + label;
+          });
+          filmstrip.appendChild(frameButton);
+        });
+        function update() {
+          if (scene.dataset.state === 'error') {
+            status.textContent = 'An illustration could not load. Reload the preview to try again.';
+          } else if (scene.classList.contains('gaming-scene--ready')) {
+            var selected = filmstrip.querySelector('[aria-pressed="true"]');
+            status.textContent = motion.matches ? 'Ready · Reduced motion enabled' :
+              button.getAttribute('aria-pressed') === 'true' ?
+                'Paused' + (selected ? ' · ' + selected.textContent : '') : 'Playing · 8 poses / 0.96 s';
+            if (button.getAttribute('aria-pressed') !== 'true') {
+              filmstrip.querySelectorAll('button').forEach(function (item) { item.setAttribute('aria-pressed', 'false'); });
+            }
+          }
+        }
+        var observer = new MutationObserver(update);
+        observer.observe(scene, { attributes: true, attributeFilter: ['class', 'data-state'] });
+        observer.observe(button, { attributes: true, attributeFilter: ['aria-pressed'] });
+        motion.addEventListener('change', update);
+        update();
+      })();
+    </script>
+  </body>
+</html>

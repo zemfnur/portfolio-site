@@ -61,6 +61,11 @@ body {
   font-family: var(--font-body);
   color: var(--text-primary);
   background: var(--bg-primary);
+
+  /* Inherit whole-word wrapping on every page and in every language. */
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 img {
@@ -840,17 +845,6 @@ button.about__link {
   scroll-margin-top: 160px; /* sticky .page-header (106px) + breathing room */
 }
 
-/* RU copy carries long unbreakable words («спроектировала»,
-   «структурированное») that outrun the type clamp floors on narrow
-   screens. Both properties inherit — hyphenate when the lang
-   dictionary allows it, hard-break as a last resort. "anywhere" (not
-   "break-word") so the break also counts into min-content sizing and
-   grid/flex tracks can still shrink. */
-.case-study {
-  overflow-wrap: anywhere;
-  hyphens: auto;
-}
-
 /* ---------- Page header ---------- */
 .page-header {
   position: sticky;
@@ -912,8 +906,7 @@ button.page-header__link {
   text-transform: uppercase;
   color: var(--text-primary);
 
-  /* Headings opt out of the page-level hyphenation (.case-study above):
-     a word that does not fit moves to the next line whole —
+  /* A word that does not fit moves to the next line whole —
      "INFORMATION / ARCHITECTURE", never "INFORMATION-". */
   hyphens: none;
   overflow-wrap: normal;
@@ -1476,6 +1469,25 @@ a.case-card:hover .case-card__title {
   object-fit: contain;
 }
 
+.scenario__video-frame {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 928 / 394;
+  padding: 16px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: url("assets/images/logistics-crm/s2-video-background.png") center / cover;
+}
+
+.scenario__video-frame .shot--video {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  aspect-ratio: 1280 / 800;
+  border-radius: 14px;
+}
+
 .scenario__shots {
   margin-top: 56px;
   display: grid;
@@ -1833,6 +1845,10 @@ a.case-card:hover .case-card__title {
   gap: 40px;
 }
 
+.result__grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .result__item {
   border-top: 1px solid rgb(255 255 255 / 12%);
   padding-top: 20px;
@@ -1891,14 +1907,7 @@ a.case-card:hover .case-card__title {
   background: var(--bg-primary);
   border: 1px solid var(--border-soft);
   border-radius: 10px;
-  padding: 16px 18px;
-}
-
-.constraints__num {
-  font-family: var(--font-label);
-  font-size: 10px;
-  line-height: 1.5;
-  color: var(--accent);
+  padding: 31px 18px 16px;
 }
 
 .constraints__value {
@@ -2183,6 +2192,16 @@ img[data-lightbox] {
     font-size: 24px;
   }
 
+  /* These long words cannot fit whole at the usual mobile heading size. */
+  [lang="en"] #transportation-card > .container > .case-title,
+  [lang="en"] #status-updates > .container > .case-title {
+    font-size: min(36px, calc((100vw - 48px) * 0.11));
+  }
+
+  [lang="ru"] .case-card__title[data-i18n="out1Title"] {
+    font-size: min(24px, calc((100vw - 98px) * 0.083));
+  }
+
   .flow {
     gap: 0;
   }
@@ -2210,6 +2229,7 @@ img[data-lightbox] {
   /* tighter number column so the 28px titles keep usable width */
   .research__row-head {
     gap: 16px;
+    flex-wrap: wrap;
   }
 
   .research__num {
@@ -2677,16 +2697,19 @@ img[data-lightbox] {
   }
 }
 
+/* Below this width, a pair of input cards cannot hold the longest RU word. */
+@media (max-width: 430px) {
+  .model__inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ============================================================
    Case study — Martin Exam (projects/martin-exam.html)
    Faithful to Figma "Portfolio-case-3" (1920×9863).
    ============================================================ */
 
-/* The whole page opts out of the case-study hyphenation (see .case-study
-   in the shared section): no hyphenation and no mid-word breaks anywhere —
-   a word that doesn't fit its line moves down whole. Both properties
-   inherit, so this covers every element; compound selector so it wins
-   over the base rule regardless of source order. */
+/* Keep the explicit whole-word wrapping contract for this page. */
 .case-study.case-study--no-break {
   overflow-wrap: normal;
   hyphens: none;
@@ -3193,6 +3216,13 @@ img[data-lightbox] {
 }
 
 
+/* Stack cards when their padding leaves too little room for intact words. */
+@media (max-width: 448px) {
+  .bench__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Case 4 — measurements from Figma Portfolio-case-4 (1920px). */
 .case-study--growth {
   --case4-section-gap: 120px;
@@ -3456,7 +3486,7 @@ img[data-lightbox] {
 
 .case4-test-groups {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(min-content, 1fr));
   gap: 0 12px;
   margin-top: 32px;
   text-align: center;
@@ -3708,4 +3738,54 @@ img[data-lightbox] {
   .case4-structure,
   .case4-metrics { padding: 24px 0; }
   .case4-conclusion { min-height: 0; }
+}
+
+/* ---------- Adjacent case studies ---------- */
+.project-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-bottom: 80px;
+}
+
+.project-nav__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  max-width: 100%;
+  padding: 14px 24px;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  box-shadow: 0 2px 8px rgb(28 30 33 / 8%);
+  color: var(--accent);
+  font-family: var(--font-label);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project-nav__link:hover {
+  border-color: var(--accent);
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .project-nav {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    padding-bottom: 48px;
+  }
+
+  .project-nav__link {
+    padding-inline: 16px;
+  }
 }

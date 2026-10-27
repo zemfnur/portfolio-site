@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400&family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700&family=Oswald:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../gaming-animation/scene.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
+    <script src="../gaming-animation/scene.js" defer></script>
     <script src="../main.js" defer></script>
   </head>
   <body class="case-study case-study--no-break case-study--growth" data-i18n-title="case4DocTitle" data-i18n-description="case4DocDescription">
@@ -175,8 +178,23 @@
                 <div class="case4-steps__label">
                   <span>4</span>
                   <p data-i18n="c4Step4a">Loot at risk!</p>
+                  <button class="gaming-toggle" type="button" aria-pressed="false" aria-label="Pause or resume animation" data-i18n-arialabel="c4ToggleAnimation" hidden>Ⅱ</button>
                 </div>
-                <img data-lightbox src="../assets/images/case-4/gamification-warning.png" alt="Loot warning screen" data-i18n-alt="c4AltWarning">
+                <svg class="gaming-preview" viewBox="0 0 375 849" width="375" height="849" role="img" aria-label="Loot warning screen" data-i18n-arialabel="c4AltWarning">
+                  <image href="../assets/images/case-4/gamification-warning.png" width="375" height="849"/>
+                  <foreignObject x="0" y="183" width="375" height="378">
+                    <div class="gaming-scene" aria-hidden="true">
+                      <div class="gaming-scene__sky"></div>
+                      <div class="gaming-scene__mountains"></div>
+                      <div class="gaming-scene__forest"></div>
+                      <div class="gaming-scene__path"></div>
+                      <div class="gaming-scene__squirrel"></div>
+                      <div class="gaming-scene__thought"><div class="gaming-scene__card"></div></div>
+                      <p class="gaming-scene__sender" data-i18n="c4AnimationSender">sent by Katya</p>
+                      <p class="gaming-scene__message" data-i18n="c4AnimationMessage">A squirrel is running to steal your card!</p>
+                    </div>
+                  </foreignObject>
+                </svg>
               </div>
             </div>
           </div>
@@ -337,6 +355,13 @@
           </div>
         </div>
       </section>
+      <nav class="project-nav container" aria-label="Project navigation" data-i18n-arialabel="projectNavigationAria">
+        <a class="project-nav__link" href="martin-exam.html" rel="prev">
+          <span aria-hidden="true">&larr;</span>
+          <span data-i18n="previousProject">Previous Project</span>
+        </a>
+      </nav>
+
     </main>
     <footer class="footer" id="contacts">
       <div class="footer__inner">

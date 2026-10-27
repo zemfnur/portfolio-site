@@ -21,6 +21,9 @@
       svc4: 'Design Systems & UI Libraries',
       svc5: 'Prototyping & Interaction Design',
       projectsLink: 'Projects',
+      previousProject: 'Previous Project',
+      nextProject: 'Next Project',
+      projectNavigationAria: 'Project navigation',
       aboutMe: 'About me',
       contactMe: 'Contacts',
       projectsTitle: 'My projects',
@@ -52,7 +55,7 @@
         'About Zemfira Nurgaleeva — a UX/UI designer focused on design systems and complex digital products.',
       aboutContactLink: 'Contact me',
       aboutTitle: 'About me',
-      aboutQuote: '“I love designing systems.<br>I’m curious, systematic, pragmatic and thorough.”',
+      aboutQuote: '“I love designing systems.<br>I’m curious, pragmatic and thorough.”',
       aboutIntro:
         'I am a Product UX/UI designer focused on complex digital products and design systems, with 2 years of commercial experience.',
       aboutList:
@@ -247,9 +250,9 @@
       case2Eyebrow: 'UX/UI Design',
       case2Title: 'Production Line Simulator',
       case2Lead:
-        'A B2B simulation interface for configuring production lines, analysing performance and comparing improvement scenarios.',
+        'Twinity is a B2B product for simulating production lines. The MVP had already been launched and the product was in use. The next stage was to further develop the product and explore new use cases based on conversations with potential users.',
       case2Goal:
-        'Design a scalable simulation platform that helps production teams quickly configure production models, identify bottlenecks, evaluate key performance and cost metrics, and compare improvement scenarios',
+        'Identify valuable user needs and translate them into new product capabilities and use cases that could be integrated into the existing product.',
       case2RoleLabel: 'role',
       case2Role:
         'My role was to translate the logic of the calculation model into a usable product experience — from information architecture and data input to analysis, scenario comparison and UI patterns.',
@@ -302,39 +305,69 @@
       c2s1Shot2Alt: 'Calculation settings screen with the limiting station selector, shift duration and labour rates',
       c2s1Shot3Alt: 'Simulation results dashboard with KPI cards, a station throughput chart with the bottleneck highlighted in red and an indicators table',
       c2s1Shot4Alt: 'Improvement scenarios screen comparing the base scenario with alternatives and highlighting the recommended option',
-      c2s2Title: 'Three decisions that shaped the product experience',
+      c2s2Title: 'Outcome',
       c2d1Label: 'Decision 01',
       c2d1Title: 'Edit where you see the data',
       c2d1Text:
         'Production-line configuration contains many interdependent values. I used inline editing so users could modify data directly in context instead of opening separate dialogs.',
-      c2d1Alt: 'Results dashboard with KPI cards, a station throughput chart, utilisation panel and shift cost breakdown, the bottleneck marked in red',
+      c2d1Alt: 'Editable contractor resources and weekly production plan tables',
       c2d2Label: 'Decision 02',
       c2d2Title: 'Shorten the distance between action and result',
       c2d2TextA:
         'Because the model is intended for rapid experimentation, the workflow was designed around automatic recalculation.',
       c2d2TextB: 'Every change triggers an immediate update across KPIs, bottleneck indicators and charts.',
-      c2d2Alt: 'Bottleneck detail view with station utilisation bars, shift cost structure and a card showing the bottleneck at 100% utilisation',
+      c2d2Alt: 'Results dashboard with throughput chart, station utilisation and shift cost breakdown',
       c2d3Label: 'Decision 03',
       c2d3Title: 'Make the bottleneck visible',
       c2d3Text:
         'The bottleneck is a key output of the model: the station with the lowest throughput determines the production capacity. I surfaced it at three levels simultaneously — table, KPI and chart — so it becomes a visual anchor rather than a value hidden inside a calculation.',
-      c2d3Alt: 'Operations table with utilisation bars and bottleneck rows highlighted in red, with an auxiliary operations table below',
+      c2d3Alt: 'Bottleneck detail with utilisation bars, cost structure and bottleneck KPI',
       c2s2Shot1Alt: 'Operations view with the main and auxiliary operations tables and bottleneck rows highlighted in red',
       c2s2Shot2Alt: 'Calculation settings screen with the limiting station selector, shift duration and labour rates',
       c2s3Title: 'The result should explain what to do next',
       c2s3MediaAlt: 'Scenario comparison screen with a table of improvement scenarios and the recommended option highlighted',
       c2s3ResultTitle: 'Product Outcome',
       c2r1Name: 'Demo launched',
-      c2r1Text: 'The production line simulator was designed, built and released as a working demo in production.',
+      c2r1Text:
+        'Instead of building a new MVP, I designed new product capabilities for an already functioning platform.',
       c2r2Name: 'Bottlenecks became visible',
       c2r2Text:
-        'Made the production bottleneck a clear visual element across the interface, helping users quickly identify the limiting station and understand its impact.',
+        'One of the resulting scenarios enables users to analyze a production line, identify its bottleneck, and understand its impact on output, production time, and costs.',
       c2r3Name: 'Production data became actionable',
-      c2r3Text:
-        'Structured large volumes of interconnected production data into clear tables, KPIs and visualisations, making key performance indicators easier to interpret.',
+      c2r3Text: 'The work provided a foundation for discussing and developing further product scenarios.',
       c2r4Name: 'Predictable next actions',
       c2ConstraintsText:
         'The product was developed as a demo/MVP, so some calculation and optimisation mechanics were simplified. The interface still had to support realistic workflows, including large editable tables, Excel import, validation and automatic recalculation.',
+      c2RoleItem1: 'Analyzed the tasks and needs of potential users',
+      c2RoleItem2: 'Formed product hypotheses',
+      c2RoleItem3: 'Explored and developed possible product models',
+      c2RoleItem4: 'Translated hypotheses into concrete user scenarios',
+      c2RoleItem5: 'Designed UX/UI for new product capabilities',
+      c2ApproachTitle: 'Approach',
+      c2Approach1:
+        'Based on conversations with potential users, I worked with the team to form hypotheses about which problems the product could solve and which product models could provide value.',
+      c2Approach2:
+        'We then explored several possible directions for extending the product to understand how they could work in practice and which scenarios should be reflected in the interface.',
+      c2Approach3:
+        'One of the explored models focused on production line analysis. The scenario was built around identifying the bottleneck and evaluating its impact on key production metrics, including output per shift, production time, cost, and cost structure.',
+      c2TeamTitle: 'What our team did',
+      c2Team1: 'Formed hypotheses about new product directions',
+      c2Team2: 'Explored possible product models and use cases',
+      c2Team3: 'Designed a production line simulation scenario',
+      c2Team4: 'Defined how key production metrics should be presented',
+      c2Team5: 'Designed UX/UI and key interface states',
+      c2Team6: 'Integrated the new scenario into the logic of the existing product',
+      c2ComparisonLead:
+        'Made improvement scenarios easy to compare, helping users understand the expected impact of each change and choose the most effective option.',
+      c2Constraint1:
+        'The hypotheses were formed through conversations with potential users and required further validation with real users',
+      c2Constraint2:
+        'This case focuses on one of the explored product models rather than all possible directions for product development.',
+      c2Constraint3:
+        'The scenario was developed using simulated production data rather than data from real production environments.',
+
+
+
 
       /* ----- case study: Martin Exam (projects/martin-exam.html) ----- */
       case3DocTitle: 'Martin Exam — Zemfira Nurgaleeva',
@@ -445,6 +478,9 @@
       c4DoneLabel: 'What was done', c4DoneText: 'Redesigned the loot box mechanic around competition and social interaction. The reward became not only something the user receives, but also part of an interaction between users.',
       c4Flow1Title: 'Interaction flow 1', c4Flow1Text: 'The social loot box mechanic turns a solitary reward into a shared interaction — users can send a «thief» to a friend’s collection, and the friend must complete a quick task to defend their loot. This creates a reason to return to the app even outside planned study sessions.',
       c4Step1a: 'Collection', c4Step2a: 'Choose a friend', c4Step3a: 'Send a thief', c4Step4a: 'Loot at risk!',
+      c4AnimationSender: 'sent by Katya',
+      c4AnimationMessage: 'A squirrel is running to steal your card!',
+      c4ToggleAnimation: 'Pause or resume animation',
       c4AltCollection: 'Awards collection screen', c4AltFriends: 'Friends list', c4AltThief: 'Thief selection screen', c4AltWarning: 'Loot warning screen',
       c4Flow2Title: 'Interaction flow 2', c4Flow2Text1: 'Students can earn cards by completing tasks or earn feathers as an in-app currency to purchase cards. They can then send collected cards as gifts to friends.',
       c4Flow2Text2: 'Once a card is gifted, the student can earn it again by completing more tasks, creating a repeatable loop between learning, collecting, and social interaction.',
@@ -487,6 +523,9 @@
       svc4: 'Дизайн-системы и UI-библиотеки',
       svc5: 'Прототипирование и интерактивные сценарии',
       projectsLink: 'Проекты',
+      previousProject: 'Предыдущий проект',
+      nextProject: 'Следующий проект',
+      projectNavigationAria: 'Навигация по проектам',
       aboutMe: 'Обо мне',
       contactMe: 'Контакты',
       projectsTitle: 'Мои проекты',
@@ -515,7 +554,7 @@
         'Обо мне — Земфира Нургалеева, UX/UI-дизайнер, специализирующийся на дизайн-системах и сложных цифровых продуктах.',
       aboutContactLink: 'Связаться со мной',
       aboutTitle: 'Обо мне',
-      aboutQuote: '“Я люблю проектировать системы.<br>Я любознательна, системна, прагматична и дотошна”',
+      aboutQuote: '“Я люблю проектировать системы.<br>Я любознательна, прагматична и дотошна”',
       aboutIntro:
         'Я — Product UX/UI-дизайнер с фокусом на сложные цифровые продукты и дизайн-системы, у меня 2 года коммерческого опыта.',
       aboutList:
@@ -709,9 +748,9 @@
       case2Eyebrow: 'UX/UI-дизайн',
       case2Title: 'Симулятор производственной линии',
       case2Lead:
-        'B2B-интерфейс симуляции: настройка производственных линий, анализ показателей и сравнение сценариев улучшений.',
+        'Twinity — B2B-продукт для симуляции производственных линий. MVP уже был запущен, и продукт использовался. Следующим этапом стало развитие продукта и поиск новых сценариев использования на основе разговоров с потенциальными пользователями.',
       case2Goal:
-        'Спроектировать масштабируемую платформу симуляции, которая помогает производственным командам быстро настраивать модели производства, находить узкие места, оценивать ключевые показатели и затраты и сравнивать сценарии улучшений',
+        'Выявить значимые потребности пользователей и перевести их в новые возможности и сценарии использования, которые можно встроить в существующий продукт.',
       case2RoleLabel: 'роль',
       case2Role:
         'Моя задача — перевести логику расчётной модели в удобный продуктовый опыт: от информационной архитектуры и ввода данных до анализа, сравнения сценариев и UI-паттернов.',
@@ -764,38 +803,67 @@
       c2s1Shot2Alt: 'Экран настройки расчёта: выбор лимитирующей станции, длительность смены и ставки оплаты труда',
       c2s1Shot3Alt: 'Дашборд результатов симуляции: KPI-карточки, диаграмма пропускной способности станций с красным узким местом и таблица показателей',
       c2s1Shot4Alt: 'Экран сценариев улучшений: сравнение базового сценария с альтернативами и выделенная рекомендация',
-      c2s2Title: 'Три решения, которые сформировали продуктовый опыт',
+      c2s2Title: 'Результат',
       c2d1Label: 'Решение 01',
       c2d1Title: 'Редактирование там, где видны данные',
       c2d1Text:
         'Настройка производственной линии содержит много взаимозависимых значений. Я использовала инлайн-редактирование, чтобы менять данные прямо в контексте, не открывая отдельные диалоги.',
-      c2d1Alt: 'Дашборд результатов: KPI-карточки, диаграмма пропускной способности станций, панель утилизации и структура затрат смены; узкое место выделено красным',
+      c2d1Alt: 'Редактируемые таблицы ресурсов контрагентов и недельного производственного плана',
       c2d2Label: 'Решение 02',
       c2d2Title: 'Сократить путь от действия до результата',
       c2d2TextA: 'Модель создана для быстрых экспериментов, поэтому процесс построен вокруг автоматического пересчёта.',
       c2d2TextB: 'Каждое изменение сразу обновляет KPI, индикаторы узких мест и графики.',
-      c2d2Alt: 'Детализация узкого места: шкалы утилизации станций, структура затрат смены и карточка узкого места со 100% утилизацией',
+      c2d2Alt: 'Дашборд с графиком пропускной способности, загрузкой станций и структурой затрат смены',
       c2d3Label: 'Решение 03',
       c2d3Title: 'Сделать узкое место видимым',
       c2d3Text:
         'Узкое место — ключевой результат модели: станция с минимальной производительностью определяет мощность всей линии. Я показала его одновременно на трёх уровнях — в таблице, KPI и графике, — превратив в визуальный якорь, а не значение внутри расчёта.',
-      c2d3Alt: 'Таблица операций со шкалами утилизации и красными строками узкого места, ниже — таблица вспомогательных операций',
+      c2d3Alt: 'Детальный вид узкого места: загрузка станций, структура затрат и ключевой показатель',
       c2s2Shot1Alt: 'Экран операций: таблицы основных и вспомогательных операций, строки узкого места выделены красным',
       c2s2Shot2Alt: 'Экран настройки расчёта: выбор лимитирующей станции, длительность смены и ставки оплаты труда',
       c2s3Title: 'Результат должен подсказывать, что делать дальше',
       c2s3MediaAlt: 'Экран сравнения сценариев: таблица сценариев улучшений и выделенная рекомендация',
       c2s3ResultTitle: 'Продуктовый результат',
       c2r1Name: 'Демо запущено',
-      c2r1Text: 'Симулятор производственной линии спроектирован, разработан и выпущен в виде рабочего демо.',
+      c2r1Text: 'Вместо создания нового MVP я спроектировала новые возможности для уже работающей платформы.',
       c2r2Name: 'Узкие места стали видимыми',
       c2r2Text:
-        'Узкое место производства сделано наглядным визуальным элементом интерфейса: пользователь сразу видит ограничивающую станцию и её влияние.',
+        'Один из полученных сценариев позволяет анализировать производственную линию, находить её узкое место и понимать его влияние на выпуск, время производства и затраты.',
       c2r3Name: 'Данные стали основой для решений',
-      c2r3Text:
-        'Большие объёмы взаимозависимых производственных данных структурированы в понятные таблицы, KPI и визуализации.',
+      c2r3Text: 'Работа стала основой для обсуждения и развития дальнейших продуктовых сценариев.',
       c2r4Name: 'Предсказуемые дальнейшие действия',
       c2ConstraintsText:
         'Продукт разрабатывался как демо/MVP, поэтому часть расчётных и оптимизационных механик упрощена. При этом интерфейс должен был поддерживать реалистичные сценарии работы: большие редактируемые таблицы, импорт из Excel, валидацию и автоматический пересчёт.',
+      c2RoleItem1: 'Проанализировала задачи и потребности потенциальных пользователей',
+      c2RoleItem2: 'Сформировала продуктовые гипотезы',
+      c2RoleItem3: 'Исследовала и проработала возможные продуктовые модели',
+      c2RoleItem4: 'Перевела гипотезы в конкретные пользовательские сценарии',
+      c2RoleItem5: 'Спроектировала UX/UI новых возможностей продукта',
+      c2ApproachTitle: 'Подход',
+      c2Approach1:
+        'На основе разговоров с потенциальными пользователями мы с командой сформировали гипотезы о том, какие задачи может решать продукт и какие продуктовые модели могут быть полезны.',
+      c2Approach2:
+        'Затем мы исследовали несколько возможных направлений развития продукта, чтобы понять, как они могут работать на практике и какие сценарии нужно отразить в интерфейсе.',
+      c2Approach3:
+        'Одна из исследованных моделей была посвящена анализу производственной линии. Сценарий строился вокруг поиска узкого места и оценки его влияния на ключевые показатели: выпуск за смену, время производства, себестоимость и структуру затрат.',
+      c2TeamTitle: 'Что сделала наша команда',
+      c2Team1: 'Сформировали гипотезы о новых направлениях продукта',
+      c2Team2: 'Исследовали возможные продуктовые модели и сценарии использования',
+      c2Team3: 'Спроектировали сценарий симуляции производственной линии',
+      c2Team4: 'Определили способ представления ключевых производственных показателей',
+      c2Team5: 'Спроектировали UX/UI и ключевые состояния интерфейса',
+      c2Team6: 'Встроили новый сценарий в логику существующего продукта',
+      c2ComparisonLead:
+        'Сделала сценарии улучшения удобными для сравнения, чтобы пользователи могли понять ожидаемый эффект каждого изменения и выбрать наиболее эффективный вариант.',
+      c2Constraint1:
+        'Гипотезы были сформированы на основе разговоров с потенциальными пользователями и требовали дальнейшей проверки на реальных пользователях',
+      c2Constraint2:
+        'Кейс посвящён одной из исследованных продуктовых моделей, а не всем возможным направлениям развития продукта.',
+      c2Constraint3:
+        'Сценарий был разработан на смоделированных производственных данных, а не на данных реальных производств.',
+
+
+
 
       /* ----- case study: Martin Exam (projects/martin-exam.html) ----- */
       case3DocTitle: 'Martin Exam — Земфира Нургалеева',
@@ -906,6 +974,9 @@
       c4DoneLabel: 'Что было сделано', c4DoneText: 'Переработала механику лутбоксов, добавив соревнование и социальное взаимодействие. Награда стала не только тем, что получает пользователь, но и частью общения между пользователями.',
       c4Flow1Title: 'Сценарий взаимодействия 1', c4Flow1Text: 'Социальная механика лутбоксов превращает одиночную награду в совместное взаимодействие: пользователь может отправить «воришку» в коллекцию друга, а другу нужно выполнить короткое задание, чтобы защитить добычу. Это создаёт повод вернуться в приложение вне запланированных занятий.',
       c4Step1a: 'Коллекция', c4Step2a: 'Выбрать друга', c4Step3a: 'Отправить воришку', c4Step4a: 'Добыча под угрозой!',
+      c4AnimationSender: 'отправлено Катей',
+      c4AnimationMessage: 'Белка бежит украсть твою карточку!',
+      c4ToggleAnimation: 'Приостановить или продолжить анимацию',
       c4AltCollection: 'Экран коллекции наград', c4AltFriends: 'Список друзей', c4AltThief: 'Выбор воришки', c4AltWarning: 'Предупреждение об угрозе коллекции',
       c4Flow2Title: 'Сценарий взаимодействия 2', c4Flow2Text1: 'Ученики могут получать карточки за выполнение заданий или покупать их за перья — внутриигровую валюту. Собранные карточки можно отправлять друзьям в подарок.',
       c4Flow2Text2: 'После отправки карточки ученик может получить её снова, выполняя новые задания. Так создаётся повторяемый цикл обучения, коллекционирования и социального взаимодействия.',

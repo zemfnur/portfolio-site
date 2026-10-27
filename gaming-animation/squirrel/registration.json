@@ -1,0 +1,90 @@
+[
+  {
+    "frame": 1,
+    "source": "pose-01.png",
+    "headWidth": 149,
+    "neck": [
+      357,
+      248
+    ],
+    "footY": 432,
+    "baseline": 470
+  },
+  {
+    "frame": 2,
+    "source": "pose-02.png",
+    "headWidth": 149,
+    "neck": [
+      356,
+      253
+    ],
+    "footY": 435,
+    "baseline": 470
+  },
+  {
+    "frame": 3,
+    "source": "generated-03.png",
+    "headWidth": 408,
+    "neck": [
+      960,
+      634
+    ],
+    "footY": 1180,
+    "baseline": 470
+  },
+  {
+    "frame": 4,
+    "source": "pose-04.png",
+    "headWidth": 149,
+    "neck": [
+      345,
+      244
+    ],
+    "footY": 428,
+    "baseline": 456
+  },
+  {
+    "frame": 5,
+    "source": "generated-05.png",
+    "headWidth": 412,
+    "neck": [
+      976,
+      650
+    ],
+    "footY": 1168,
+    "baseline": 470
+  },
+  {
+    "frame": 6,
+    "source": "pose-06.png",
+    "headWidth": 149,
+    "neck": [
+      349,
+      227
+    ],
+    "footY": 412,
+    "baseline": 470
+  },
+  {
+    "frame": 7,
+    "source": "generated-07.png",
+    "headWidth": 400,
+    "neck": [
+      947,
+      682
+    ],
+    "footY": 1140,
+    "baseline": 470
+  },
+  {
+    "frame": 8,
+    "source": "generated-08.png",
+    "headWidth": 390,
+    "neck": [
+      985,
+      654
+    ],
+    "footY": 1090,
+    "baseline": 456
+  }
+]
