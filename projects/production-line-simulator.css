@@ -73,7 +73,7 @@
 
 .c2-approach__intro {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 40px;
 }
 
@@ -93,12 +93,13 @@
 }
 
 .c2-approach__intro .c2-body {
+  width: min(100%, 896px);
   padding-top: 44px;
 }
 
 .c2-main .model {
   margin-top: 0;
-  padding: 64px 0 32px;
+  padding: 104px 40px 32px;
   border: 0;
 }
 
@@ -379,6 +380,7 @@
 
   .c2-main .model {
     padding-top: 40px;
+    padding-inline: 0;
   }
 
   .c2-main .model__inputs {

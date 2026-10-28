@@ -55,7 +55,7 @@
         'About Zemfira Nurgaleeva — a UX/UI designer focused on design systems and complex digital products.',
       aboutContactLink: 'Contact me',
       aboutTitle: 'About me',
-      aboutQuote: '“I love designing systems.<br>I’m curious, pragmatic and thorough.”',
+      aboutQuote: '“She loves designing systems.<br>She is curious, pragmatic and thoroug”',
       aboutIntro:
         'I am a Product UX/UI designer focused on complex digital products and design systems, with 2 years of commercial experience.',
       aboutList:
@@ -65,7 +65,7 @@
       aboutBody2:
         'Before design, I worked as a Chinese-language translator and in international trade. It is experience far removed from design, but exactly this background lets me structure large volumes of information, notice details and get up to speed in unfamiliar domains.',
       aboutBody3:
-        "I am currently in my second year of a Graphic Design bachelor's programme, working on commercial digital products in parallel.",
+        "I am currently studying remotely in my second year of a Graphic Design bachelor's programme, working on commercial digital products in parallel.",
       aboutBody4: 'I work with Figma and its products, Affinity, and know the basics of HTML/CSS. I actively use AI agents; this website was built by AI agents.',
       aboutBody5:
         'I enjoy building coherent systems: thinking through components, their states, logic and behaviour across scenarios. I treat interfaces as a construction kit — every detail must be clear, reusable and scalable.',
@@ -341,7 +341,7 @@
       c2RoleItem1: 'Analyzed the tasks and needs of potential users',
       c2RoleItem2: 'Formed product hypotheses',
       c2RoleItem3: 'Explored and developed possible product models',
-      c2RoleItem4: 'Translated hypotheses into concrete user scenarios',
+      c2RoleItem4: 'Our team translated hypotheses into concrete user scenarios',
       c2RoleItem5: 'Designed UX/UI for new product capabilities',
       c2ApproachTitle: 'Approach',
       c2Approach1:
@@ -379,8 +379,8 @@
       c3Lead: 'AI-powered exam preparation for independent learning',
       c3Desc:
         'Martin Exam is an AI-powered service for school students preparing independently for exams. The app helps students study material, complete textbook-based tasks, check their knowledge, and review difficult topics without constant teacher assistance.',
-      c3HeroAlt1: 'Martin Exam home screen with a daily study plan and a list of lessons with due dates',
-      c3HeroAlt2: 'Course screen with a list of lessons and their completion status',
+      c3HeroAlt1: 'Martin Exam home screen with completed tasks and daily study progress',
+      c3HeroAlt2: 'Martin Exam home screen with missed questions and tasks to review',
       c3HeroAlt3: 'Tasks screen with date filters and task cards with deadlines',
       c3RoleLabel: 'UX',
       c3Role1: 'Product Designer · UX/UI',
@@ -554,7 +554,7 @@
         'Обо мне — Земфира Нургалеева, UX/UI-дизайнер, специализирующийся на дизайн-системах и сложных цифровых продуктах.',
       aboutContactLink: 'Связаться со мной',
       aboutTitle: 'Обо мне',
-      aboutQuote: '“Я люблю проектировать системы.<br>Я любознательна, прагматична и дотошна”',
+      aboutQuote: '“Она любит проектировать системы.<br>Она любознательна, прагматична и дотошна”',
       aboutIntro:
         'Я — Product UX/UI-дизайнер с фокусом на сложные цифровые продукты и дизайн-системы, у меня 2 года коммерческого опыта.',
       aboutList:
@@ -564,7 +564,7 @@
       aboutBody2:
         'До дизайна я работала переводчиком с китайского языка и в международной торговле. Это довольно далёкий от дизайна опыт, но именно благодаря этому опыту я могу структурировать большой объём информации, замечать детали и разбираться в незнакомой предметной области.',
       aboutBody3:
-        'Сейчас я учусь на 2 курсе бакалавриата по направлению «Графический дизайн» и параллельно работаю над коммерческими цифровыми продуктами.',
+        'Сейчас я учусь удаленно на 2 курсе бакалавриата по направлению «Графический дизайн» и параллельно работаю над коммерческими цифровыми продуктами.',
       aboutBody4: 'Знаю Figma и ее продукты, Affinity, основы HTML/CSS, активно использую ИИ-агенты, данный сайт сверстан ИИ-агентами.',
       aboutBody5:
         'Мне интересно выстраивать целостные системы: продумывать компоненты, их состояния, логику и поведение в разных сценариях. Я работаю с интерфейсами как с конструктором — где каждая деталь должна быть понятной, переиспользуемой и масштабируемой.',
@@ -837,7 +837,7 @@
       c2RoleItem1: 'Проанализировала задачи и потребности потенциальных пользователей',
       c2RoleItem2: 'Сформировала продуктовые гипотезы',
       c2RoleItem3: 'Исследовала и проработала возможные продуктовые модели',
-      c2RoleItem4: 'Перевела гипотезы в конкретные пользовательские сценарии',
+      c2RoleItem4: 'Наша команда перевела гипотезы в конкретные пользовательские сценарии',
       c2RoleItem5: 'Спроектировала UX/UI новых возможностей продукта',
       c2ApproachTitle: 'Подход',
       c2Approach1:
@@ -875,8 +875,8 @@
       c3Lead: 'Подготовка к экзаменам с ИИ для самостоятельного обучения',
       c3Desc:
         'Martin Exam — сервис с ИИ для школьников, которые готовятся к экзаменам самостоятельно. Приложение помогает изучать материал, выполнять задания по учебникам, проверять знания и повторять сложные темы без постоянной помощи учителя.',
-      c3HeroAlt1: 'Главный экран Martin Exam: план на день и список уроков с датами',
-      c3HeroAlt2: 'Экран курса со списком уроков и их статусом прохождения',
+      c3HeroAlt1: 'Главный экран Martin Exam: выполненные задания и прогресс за день',
+      c3HeroAlt2: 'Главный экран Martin Exam: пропущенные вопросы и задания для повторения',
       c3HeroAlt3: 'Экран заданий с фильтрами по датам и карточками заданий с дедлайнами',
       c3RoleLabel: 'UX',
       c3Role1: 'Продуктовый дизайнер · UX/UI',

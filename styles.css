@@ -247,7 +247,7 @@ button.hero__link {
   flex: 1;              /* fills the hero height, keeps the 624/781 ratio */
   min-height: 0;        /* may shrink below the intrinsic video height */
   width: auto;
-  aspect-ratio: 624 / 781;
+  aspect-ratio: 750 / 781;
   max-width: 100%;
 
   /* Cap at the space left inside one viewport — title + gap + the 69px of
@@ -588,11 +588,10 @@ button.about__link {
   flex: 1;
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   gap: 74px;
 
-  /* With the Projects link the row can outrun the 120px footer padding
-     on narrow desktops — wrap rather than overflow; row-gap only applies
-     once it wraps. */
+  /* Keep wrapped rows centered on narrow desktops. */
   flex-wrap: wrap;
   row-gap: 16px;
 }
@@ -723,6 +722,23 @@ button.about__link {
    ============================================================ */
 
 /* ---- ≤ 1024px: hero stacks, cards and footer go single-column ---- */
+@media (min-width: 1025px) {
+  .footer__inner {
+    position: relative;
+    justify-content: flex-start;
+  }
+
+  .footer__links {
+    position: absolute;
+    inset: auto 0 0;
+  }
+
+  .footer__copyright {
+    position: absolute;
+    right: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero__grid {
     flex-direction: column; /* hero stacks */
@@ -986,6 +1002,10 @@ button.page-header__link {
   grid-template-columns: minmax(0, 900px) minmax(300px, 1fr);
   gap: 80px;
   align-items: start;
+}
+
+.case-study--crm .case-hero__grid {
+  gap: 40px;
 }
 
 /* Below the 1920 design width the fixed 900px text track starves the image
@@ -1390,6 +1410,79 @@ button.page-header__link {
   width: 100%;
   aspect-ratio: 537 / 273;
   object-fit: cover;
+}
+
+.case-card:nth-child(3) .case-card__image img {
+  object-fit: contain;
+}
+
+/* Figma case 1: raw screenshot fills inside the 16px image frame. */
+.crm-hero-media,
+.crm-image-frame {
+  min-width: 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: url("assets/images/production-line-simulator/backdrop.jpg") center / cover;
+}
+
+.crm-hero-media {
+  aspect-ratio: 900 / 722.3;
+}
+
+.crm-hero-media .case-hero__media {
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.crm-image-frame {
+  position: relative;
+  aspect-ratio: 900 / 722.3;
+}
+
+.crm-image-frame--beach {
+  background-image: url("assets/images/logistics-crm/s2-video-background.png");
+}
+
+.case-study--crm .crm-image-frame .shot {
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.case-study--crm .crm-image-frame:first-child img {
+  object-fit: contain;
+}
+
+.crm-image-crop {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.case-study--crm .crm-image-crop .shot {
+  position: absolute;
+  left: -13.91%;
+  top: -0.03%;
+  width: 199.21%;
+  max-width: none;
+  object-fit: fill;
+}
+
+@media (min-width: 1280px) {
+  .case-study--crm .scenario__intro {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-study--crm #multiple-transports .scenario__intro,
+  .case-study--crm #status-updates .scenario__intro {
+    grid-template-columns: minmax(0, 872fr) minmax(0, 928fr);
+  }
 }
 
 .case-card__text {
@@ -2273,7 +2366,7 @@ img[data-lightbox] {
   padding: 16px;
   border-radius: 16px;
   background-color: #f4f4f6;
-  background-image: url("../assets/images/production-line-simulator/backdrop.jpg");
+  background-image: url("assets/images/production-line-simulator/backdrop.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2812,6 +2905,11 @@ img[data-lightbox] {
   padding: 16px 40px;
 }
 
+.martin-hero-shots {
+  padding: 32px 40px;
+  background-image: url("assets/images/production-line-simulator/backdrop.jpg");
+}
+
 /* Full-width "What I designed" screenshot strips. */
 .shot-frame--wide {
   aspect-ratio: 1840 / 647;
@@ -2828,6 +2926,22 @@ img[data-lightbox] {
   flex: 1 1 0;
 }
 
+.shot-frame--641 {
+  aspect-ratio: 1840 / 641;
+}
+
+.shot-frame--pebbles {
+  background-image: url("assets/images/case-4/hero-backdrop.png");
+}
+
+.shot-frame--shore {
+  background-image: url("assets/images/case-4/concepts-backdrop.png");
+}
+
+.shot-frame--rewards {
+  gap: 0;
+}
+
 .shot-frame__slot {
   flex: 1 1 0;
   min-width: 0;
@@ -2838,6 +2952,10 @@ img[data-lightbox] {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.shot-frame__slot .shot-frame__image--cover {
+  object-fit: cover;
 }
 
 .shot-frame--hero .shot-frame__slot img {
@@ -2994,7 +3112,7 @@ img[data-lightbox] {
   margin-top: 88px;
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 120px;
 }
 
 .designed__card {
@@ -3003,10 +3121,15 @@ img[data-lightbox] {
   gap: 24px;
 }
 
+/* Give consecutive screenshot blocks their own breathing room. */
+.designed__card > .shot-frame + .shot-frame {
+  margin-top: 24px;
+}
+
 .designed__card--split {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 48px 24px;
+  gap: 64px 24px;
   align-items: start;
 }
 
@@ -3183,7 +3306,7 @@ img[data-lightbox] {
 
   .designed__grid {
     margin-top: 56px;
-    gap: 48px;
+    gap: 80px;
   }
 
   .designed__card--split {
@@ -3205,6 +3328,10 @@ img[data-lightbox] {
 
 /* ---- ≤ 720px: card-scale headings, strips keep their proportions ---- */
 @media (max-width: 720px) {
+  .designed__grid {
+    gap: 64px;
+  }
+
   .case-heading,
   .designed__title {
     font-size: 24px;
@@ -3350,11 +3477,16 @@ img[data-lightbox] {
   gap: 16px;
 }
 
+.case4-steps > div:last-child {
+  gap: 24px;
+}
+
 .case4-steps__label {
   display: flex;
   align-items: center;
   gap: 8px;
   min-height: 38px;
+  height: 38px;
   flex-shrink: 0;
   padding: 0 0 16px 16px;
 }
@@ -3373,7 +3505,7 @@ img[data-lightbox] {
   margin: 0;
   color: var(--bg-primary);
   font-size: 16px;
-  line-height: 28px;
+  line-height: 22px;
 }
 
 .case4-steps img {
