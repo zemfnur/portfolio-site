@@ -1,0 +1,94 @@
+/* Self-hosted Google Fonts. License files are in this directory.
+ * Source: https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&family=Lato:wght@400&family=Oswald:wght@400;600&family=Rubik+Dirt&display=swap
+ */
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(35e524ce153940c87513.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(b8ede9032fbe5af8a375.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(38f8abefb8f859c48db2.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(4da63a1b968e240dc30c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(0569c822cab6c5100c1d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(a699af1dea30b799318e.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(87e867b52640b3b397a9.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(6f49e1b28bce7339f484.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(6d83b1a12212ea9e5ba8.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(bb6b2b677a0d1c1dfb21.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(dd945c631ae3903e866d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(57baaaa1a3428f26ee32.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Rubik Dirt';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(2de2b09814c9cad8d0b6.ttf) format('truetype');
+}

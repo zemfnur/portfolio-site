@@ -1,0 +1,3923 @@
+/* ============================================================
+   Portfolio — Zemfira Nurgaleeva
+   Desktop-first, faithful to Figma "Main-1920" (1920×2740).
+   Tokens mirror the Figma variables.
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
+:root {
+  /* color */
+  --text-primary: #1c1e21;
+  --text-secondary: #6b7280;
+  --text-disabled: #9ca3af;
+  --border: #9ca3af;
+  --accent: #776ef8;      /* Figma variable "Aquamarine" */
+  --copyright: #6d6d6d;
+  --bg-primary: #fffefc;  /* Figma variable "Neatral primary" */
+  --border-soft: #d8d5fd; /* Figma variable "Neatral Aquamarine" (case-study cards) */
+  --surface-tint: #f0eee9; /* Figma variable "Neatral light" (compare "before" rows) */
+  --surface-dark: #1c1e21; /* case-study result blocks */
+
+  /* type */
+  --font-display: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-label: "DM Mono", "Courier New", monospace; /* case-study kickers/labels */
+
+  /* layout */
+  --container: 1840px;
+  --page-pad: 40px;
+  --gutter: 40px;
+
+  /* hero geometry — single source of truth for the two clamps, so the
+     video's viewport cap (.hero__media max-height) always tracks the
+     exact space the hero chrome occupies above and below the grid */
+  --hero-title-size: clamp(56px, 11.5vw, 220px); /* 220px at 1920 */
+  --hero-block-gap: clamp(48px, 5.3vw, 102px);   /* 102px at 1920 */
+}
+
+/* Barlow Semi Condensed has no Cyrillic subset — swap the display
+   font wholesale in Russian mode (Oswald is the closest condensed
+   grotesque that does). Inter already covers Cyrillic. */
+[lang="ru"] {
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+}
+
+/* Oswald runs ~7% wider than Barlow Semi Condensed — tighten tracking
+   so the Russian display title stays on one line (measured 1862px →
+   ~1787px vs the 1840px container). */
+[lang="ru"] .hero__display {
+  letter-spacing: -0.08em;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+
+  /* Inherit whole-word wrapping on every page and in every language. */
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* In-page anchor navigation (hero/footer → #projects, #about, #contacts)
+   scrolls smoothly on every page; reduced-motion users get the default jump. */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.container {
+  width: min(100% - 2 * var(--page-pad), var(--container));
+  margin-inline: auto;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hero-block-gap);
+  padding-top: 20px;
+  min-height: 100vh;  /* fallback for browsers without svh */
+  min-height: 100svh; /* hero fills the first viewport; grows if content needs more */
+}
+
+.hero__title-row {
+  padding-inline: var(--page-pad);
+}
+
+/* Display title — 220px Barlow Semi Condensed SemiBold, ls -6% */
+.hero__display {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--hero-title-size);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.hero__content {
+  flex: 1;
+  min-height: 0; /* let the hero compress the media below its intrinsic size */
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 48px;
+}
+
+/* Flex (not grid) so the column heights stay definite through the chain:
+   the video scales to the hero height instead of its intrinsic size
+   stretching the page beyond 100svh. Columns keep the 1170/750 ratio. */
+.hero__grid {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Left column — the text block (role title + services list) vertically
+   centered in the height available above the links; the gap below it adds
+   breathing room before the link row. No bottom padding: the links sit
+   flush against the grid's bottom edge, the same edge the video is
+   anchored to, so both stay aligned at any size. */
+.hero__profile {
+  flex: 1170 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  padding: 0 0 0 var(--page-pad);
+}
+
+.hero__role {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(36px, 3.33vw, 64px); /* 64px at 1920 */
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero__text {
+  flex: 1; /* fills the column above the link row */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically centers the text block in the available hero height */
+  gap: 41px;               /* role title → services list */
+}
+
+.hero__list-wrap {
+  display: flex;
+  justify-content: center; /* horizontally centered, as in Figma */
+}
+
+.hero__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 1.9vw, 36px); /* 36px at 1920 */
+  line-height: 1.4;                   /* Figma "Quotes" style */
+  color: var(--text-secondary);
+}
+
+.hero__links {
+  display: flex;
+  gap: 48px;
+
+  /* Wrap the links on narrow desktops; row-gap only applies once wrapped. */
+  flex-wrap: wrap;
+  row-gap: 16px;
+  white-space: nowrap;
+}
+
+.hero__link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+button.hero__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.hero__link:hover {
+  color: var(--accent);
+}
+
+/* Right column — showreel video, flush to the hero's bottom border
+   (624×781 at the 1920 design). Height-driven: the clip scales with the
+   hero (100svh) instead of stretching the page. The poster frame shows
+   until the mp4 exists. */
+.hero__media-wrap {
+  flex: 750 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: var(--page-pad);
+}
+
+.hero__media {
+  display: block;
+  flex: 1;              /* fills the hero height, keeps the 624/781 ratio */
+  min-height: 0;        /* may shrink below the intrinsic video height */
+  width: auto;
+  aspect-ratio: 750 / 781;
+  max-width: 100%;
+
+  /* Cap at the space left inside one viewport — title + gap + the 69px of
+     fixed hero chrome (20px top pad, 48px content bottom pad, 1px border).
+     Without this cap the clip's intrinsic 781px height wins in the auto
+     -height flex chain and pushes the hero past 100svh (initial scrolling). */
+  max-height: calc(100vh - var(--hero-title-size) - var(--hero-block-gap) - 69px);
+  max-height: calc(100svh - var(--hero-title-size) - var(--hero-block-gap) - 69px);
+  object-fit: cover;
+  background: var(--text-primary); /* dark frame while the poster loads */
+}
+
+/* ============================================================
+   Projects
+   ============================================================ */
+.projects {
+  padding-top: 330px;   /* 298.5 + 32 from the design */
+  padding-bottom: 346px;
+}
+
+.projects__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(36px, 3.33vw, 64px); /* 64px at 1920 */
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.projects__grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* one full-content-width card per row */
+
+  /* deliberately larger than the design's --gutter (40px): extra breathing
+     room between full-width cards; single column, so no column gap needed */
+  gap: 96px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-decoration: none;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card__number {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em; /* 0.24px at 12px */
+  color: var(--text-secondary);
+}
+
+.card__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.card__description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.card__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px 24px;
+}
+
+.card__year {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  color: var(--accent);
+}
+
+.card__image img {
+  width: 100%;
+  aspect-ratio: 1840 / 747; /* 747px tall at the 1840px full-content-width card
+                               (Figma: 900px card − 129px content − 24px gap) */
+  object-fit: cover;
+}
+
+.card:hover .card__title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   About page (about.html — Figma "About-1920", 1920×1342)
+   ============================================================ */
+
+/* The page fills the viewport: the about section grows above the
+   shared footer, so the columns' vertical centering always works
+   against the actual viewport height. */
+.about-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  /* fallback for browsers without svh */
+  min-height: 100svh;
+}
+
+.about {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px; /* hero top pad, as in Figma */
+}
+
+/* Two 940px columns at 1920: 900px of content each, 40px gutter. */
+.about__grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--gutter);
+}
+
+/* Left column — title at the top, pull quote centered in the height
+   below it (title → quote gap 41px, as in Figma). */
+.about__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  padding-bottom: 40px;
+}
+
+/* Same display type as .hero__display. The title and quote translate, so
+   they follow --font-display: Barlow in EN, Oswald in RU (Barlow has no
+   Cyrillic — see the [lang="ru"] token swap at the top). */
+.about__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--hero-title-size); /* 220px at 1920 */
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* Figma "Quotes" style — same face and size as the hero services list;
+   --font-display for the same EN-Barlow / RU-Oswald reason as .about__title. */
+.about__quote {
+  margin-block: auto; /* centers between the title and the column bottom */
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 1.9vw, 36px); /* 36px at 1920 */
+  line-height: 1.4;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* Right column — links row at the top, body copy below a 240px offset
+   at 1920 (40px below the links row + the design's pt-200 on the text
+   container). */
+.about__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__links {
+  display: flex;
+  justify-content: flex-end; /* right-aligned, as in Figma */
+  gap: 48px;
+  white-space: nowrap;
+}
+
+.about__link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+button.about__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.about__link:hover {
+  color: var(--accent);
+}
+
+.about__text-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(136px, 12.5vw, 240px); /* 240px at 1920: 40px links gap + the design's pt-200 */
+  padding-bottom: 40px;
+}
+
+/* Auto margins (not justify-content) center the copy when there is room
+   and simply let it sit high on short viewports — no clipping. */
+.about__text {
+  margin-block: auto;
+}
+
+.about__text p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.about__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* The body copy is three groups — intro, dash list, paragraphs — with
+   32px between groups; the dash lines sit 12px apart (as in Figma). */
+.about__text > p:first-child {
+  margin-bottom: 32px;
+}
+
+.about__list {
+  margin-bottom: 32px;
+}
+
+.about__list p {
+  margin-bottom: 12px;
+}
+
+.about__list p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- ≤ 1024px: columns stack ---- */
+@media (max-width: 1024px) {
+  .about {
+    padding-bottom: 64px;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__links {
+    justify-content: flex-start;
+  }
+
+  .about__text-wrap {
+    padding-top: 48px; /* the 200px desktop offset is page air here */
+  }
+}
+
+/* ---- ≤ 720px: links tighten like the hero links ---- */
+@media (max-width: 720px) {
+  .about__links {
+    gap: 24px;
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 64px 120px;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(40px, 27.2vw, 523px); /* 523px at 1920 */
+}
+
+.footer__logo {
+  flex-shrink: 0;
+}
+
+.footer__logo svg {
+  width: 100px;
+  height: 100px;
+}
+
+/* Embedded logo paths render without external SVG fragment requests and
+   inherit currentColor. Logos and navigation share one color transition. */
+.footer__logo,
+.page-header__logo,
+.hero__link,
+.page-header__link,
+.footer__links a,
+.footer__copy {
+  transition: color 0.15s ease;
+}
+
+.footer__logo,
+.page-header__logo {
+  color: var(--text-primary);
+}
+
+.footer__logo:hover,
+.page-header__logo:hover {
+  color: var(--accent);
+}
+
+.footer__logo svg,
+.page-header__logo svg {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__logo,
+  .page-header__logo,
+  .hero__link,
+  .page-header__link,
+  .footer__links a,
+  .footer__copy {
+    transition: none;
+  }
+}
+
+.footer__links {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 74px;
+
+  /* Keep wrapped rows centered on narrow desktops. */
+  flex-wrap: wrap;
+  row-gap: 16px;
+}
+
+/* The email "link" is a button (it copies to the clipboard instead of
+   navigating), so it shares the anchor styling to stay indistinguishable. */
+.footer__links a,
+.footer__copy {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+}
+
+.footer__copy {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.footer__email {
+  position: relative; /* anchor for the "Copied!" pill */
+  display: inline-flex;
+}
+
+.footer__links a:hover,
+.footer__copy:hover {
+  color: var(--accent);
+}
+
+/* "Copied!" pill — hidden until .is-copied is toggled by main.js. */
+.footer__copied {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  pointer-events: none;
+}
+
+.footer__copy.is-copied + .footer__copied {
+  visibility: visible;
+  opacity: 1;
+}
+
+.footer__copyright {
+  margin-left: auto;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  text-align: right;
+  color: var(--copyright);
+}
+
+/* ============================================================
+   Back to top — floating button (all pages)
+   main.js reveals it via .to-top--visible while the footer is on
+   screen (IntersectionObserver); the click scrolls to the top.
+   ============================================================ */
+.to-top {
+  position: fixed;
+  right: max(32px, env(safe-area-inset-right));
+  bottom: max(32px, env(safe-area-inset-bottom));
+  z-index: 150; /* above the sticky page-header (100), under the lightbox (200) */
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px; /* >= 44px tap target on touch */
+  padding: 0;
+  color: var(--accent);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgb(28 30 33 / 8%);
+  cursor: pointer;
+
+  /* hidden until the footer is reached — the "Copied!" pill's fade
+     idiom: visibility rides the opacity transition */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.to-top:hover {
+  border-color: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .to-top {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .to-top {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Responsive — desktop-first, largest breakpoint first
+   ============================================================ */
+
+/* ---- ≤ 1024px: hero stacks, cards and footer go single-column ---- */
+@media (min-width: 1025px) {
+  .footer__inner {
+    position: relative;
+    justify-content: flex-start;
+  }
+
+  .footer__links {
+    position: absolute;
+    inset: auto 0 0;
+  }
+
+  .footer__copyright {
+    position: absolute;
+    right: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero__grid {
+    flex-direction: column; /* hero stacks */
+  }
+
+  .hero__profile {
+    flex: none;
+    gap: 8px; /* stacked: back to the old list→links spacing; the links margin adds the rest */
+    padding-right: var(--page-pad);
+  }
+
+  .hero__text {
+    gap: 73px; /* keeps the old role→list distance: 41px gap + 32px margin */
+  }
+
+  /* Stacked hero: the links no longer sit flush with the video's bottom
+     edge, so separate them from the services list — the 8px hero__profile
+     gap alone reads as attached at mobile sizes. Scales with viewport
+     height so short phones stay compact while tall ones get air. */
+  .hero__links {
+    margin-top: clamp(40px, 6vh, 72px);
+  }
+
+  .hero__media-wrap {
+    flex: none;
+    padding: 40px var(--page-pad) 0;
+  }
+
+  .hero__media {
+    flex: none;         /* width-driven when stacked below the hero */
+    width: 100%;
+    max-width: 624px;
+    max-height: none;   /* the viewport cap only applies side-by-side */
+  }
+
+  .projects {
+    padding-top: 96px;
+    padding-bottom: 120px;
+  }
+
+  .projects__grid {
+    margin-top: 48px;
+    gap: 64px;
+  }
+
+  .footer {
+    padding: 40px var(--page-pad);
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .footer__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .footer__copyright {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+/* card row gap keeps scaling down with the tighter mobile rhythm */
+@media (max-width: 720px) {
+  .projects__grid {
+    gap: 48px;
+  }
+}
+
+/* ---- ≤ 720px: cards and footer stack ---- */
+@media (max-width: 720px) {
+  :root {
+    --page-pad: 24px;
+  }
+
+  .hero {
+    gap: 40px;
+  }
+
+  .hero__display {
+    font-size: 12.5vw;
+    letter-spacing: -0.04em;
+  }
+
+  .hero__links {
+    gap: 24px;
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+
+  /* RU case titles: the longest words («производственной» = 410px,
+     «спроектировала» = 350px at 36px) outrun the clamp floor on phone
+     widths. Headings never hyphenate (see .case-title), so scale the
+     type fluidly until the word fits whole; min() pins 36px from
+     ~514px up, where those words already fit. */
+  [lang="ru"] .case-title {
+    font-size: min(36px, 7vw);
+  }
+
+  [lang="ru"] .card__title {
+    font-size: min(32px, 7vw);
+  }
+}
+
+/* ============================================================
+   Case study — Logistics CRM (projects/logistics-crm.html)
+   Faithful to Figma "Portfolio-case1" (1920×11806).
+   ============================================================ */
+
+/* Section targets offset below the sticky page header (smooth scrolling
+   itself is global — see the Base section). */
+.case-study main section,
+.case-study .footer {
+  scroll-margin-top: 160px; /* sticky .page-header (106px) + breathing room */
+}
+
+/* ---------- Page header ---------- */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px var(--page-pad) 24px;
+
+  /* Figma: rgba(255,255,255,0.2) + blur(50). Alpha raised to 0.55 so the
+     dark result blocks scrolling under the frosted bar stay readable. */
+  background: rgb(255 254 252 / 55%);
+  backdrop-filter: blur(50px);
+}
+
+.page-header__logo {
+  flex-shrink: 0;
+}
+
+.page-header__logo svg {
+  width: 50px;
+  height: 50px;
+}
+
+.page-header__nav {
+  display: flex;
+  gap: 40px;
+}
+
+.page-header__link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: normal;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+button.page-header__link {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.page-header__link:hover {
+  color: var(--accent);
+}
+
+/* ---------- Shared: section title + kicker label ---------- */
+.case-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(36px, 3.33vw, 64px); /* 64px at 1920 */
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+
+  /* A word that does not fit moves to the next line whole —
+     "INFORMATION / ARCHITECTURE", never "INFORMATION-". */
+  hyphens: none;
+  overflow-wrap: normal;
+}
+
+.kicker {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.5;        /* 16.5px */
+  letter-spacing: 0.1em;   /* 1.1px at 11px */
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.kicker--bar {
+  border-left: 2px solid var(--accent);
+  padding-left: 16px;
+}
+
+/* Section rhythm: 200px between the content of consecutive sections,
+   as measured in the Figma frame. */
+.case-section {
+  padding-top: 200px;
+}
+
+/* The last section (Constraints) closes the page before the footer
+   hairline. The frame leaves only its 80px band padding there, which
+   reads cramped — close the page with the same rhythm that separates
+   the sections above (deliberate deviation from the frame). */
+.case-section--last {
+  padding-bottom: 200px;
+}
+
+/* ---------- "← Back to overview" control (end of each scenario section) ----------
+   Bottom-sticky: with the control placed at the section end, top-sticky
+   could never pin (an element below the viewport doesn't stick upward).
+   Sticky-from-bottom floats it near the viewport bottom while the user
+   scrolls through the section, settles into flow at the section end, and
+   is confined to its own section by the sticky containing block. */
+.back-link {
+  position: sticky;
+  bottom: 24px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: 48px;
+  padding: 10px 16px;
+  font-family: var(--font-label);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(28 30 33 / 8%);
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Hero ---------- */
+.case-hero {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.case-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 900px) minmax(300px, 1fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.case-study--crm .case-hero__grid {
+  gap: 40px;
+}
+
+/* Below the 1920 design width the fixed 900px text track starves the image
+   (down to its 300px floor), so the two hero blocks drift far apart in width.
+   Split them exactly 50/50 — same pattern as case 2's --split hero — until
+   the ≤1024px stack takes over; ≥1920 keeps the Figma proportions. */
+@media (max-width: 1919px) {
+  .case-hero__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.case-hero__eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--accent);
+}
+
+.case-hero__title {
+  margin-top: 24px;
+}
+
+.case-hero__lead {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.case-hero__goal {
+  margin-top: 32px;
+  border-left: 2px solid var(--accent);
+  padding-left: 16px;
+}
+
+.case-hero__goal-text {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.case-hero__media-wrap {
+  position: relative;
+}
+
+.case-hero__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 900 / 722;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* annotation chips pinned onto the hero screenshot (design positions) */
+.case-hero__chip {
+  position: absolute;
+  padding: 4px 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 7%);
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.case-hero__chip--status {
+  left: 0;
+  top: 23%;
+  transform: translateX(-35%);
+}
+
+.case-hero__chip--workspace {
+  left: 0;
+  top: 41%;
+  transform: translateX(-75%);
+}
+
+.case-hero__chip--card {
+  left: 76%;
+  top: 34%;
+}
+
+/* The card chip's desktop left: 76% drifts past the viewport on narrower
+   desktops (nothing clips the absolutely-positioned chips). Anchor it to
+   the image's right edge with the same slight overhang the left chips
+   keep, until the two-column hero is wide enough for the Figma position. */
+@media (max-width: 1599px) {
+  .case-hero__chip--card {
+    left: auto;
+    right: 0;
+    transform: translateX(10%);
+  }
+}
+
+/* ---------- Project overview (my role) ---------- */
+.overview {
+  padding-top: 72px;
+}
+
+.overview__grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.role {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.role__label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.12em; /* 1.32px at 11px */
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.role__list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.role__item {
+  display: flex;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.role__dash {
+  color: var(--accent);
+}
+
+/* ---------- Research (interviews & hypotheses) ---------- */
+
+/* Two equal halves with a 40px gutter, like the scenario intro rows. */
+.research__intro {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+.research__summary p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.research__summary p:last-child {
+  margin-bottom: 0;
+}
+
+.research__tools-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* Tool rows are 88px tall (16px padding + name + 8px + description),
+   20px apart, as measured in the frame. */
+.research__tools {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.research__tool {
+  padding: 16px 0;
+}
+
+.research__tool-name {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.research__tool-desc {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* Interview callout — tint box with the accent left bar (the goal-block
+   idiom, filled). Content-width, as in the frame. */
+.research__callout {
+  margin: 24px 0 0;
+  width: fit-content;
+  padding: 14px 20px;
+  background: var(--surface-tint);
+  border-left: 2px solid var(--accent);
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.research__divider {
+  margin: 72px 0 0;
+  border: 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Hypothesis kickers align with the row titles below (80px number
+   column + 32px gutter). */
+.research__label {
+  margin: 56px 0 0 112px;
+  font-weight: 500;
+}
+
+.research__group {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* Rows after the first of a group open with a hairline, 48px above. */
+.research__row--divided {
+  padding-top: 48px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.research__row-head {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Same accent number as the solution/outcome cards. */
+.research__num {
+  flex: 0 0 80px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.4;
+  color: var(--accent);
+}
+
+.research__row-title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.research__row-body {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+/* Short hairline under the row number, level with the measure rule. */
+.research__row-rule {
+  flex: 0 0 80px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.research__row-text {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  padding-top: 14px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* "How to measure" column — equal half, opened by a hairline rule. */
+.research__measure {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-left: 32px;
+  border-left: 1px solid var(--border-soft);
+}
+
+.research__measure-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.research__metrics {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.research__metric {
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.research__metric-arrow {
+  flex: 0 0 11px;
+  padding-top: 3px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--accent);
+}
+
+/* Interlude between the initial and iterated hypothesis groups. */
+.research__iteration {
+  margin: 80px 0 0 112px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.research__iteration-text {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* ---------- Cards (solutions + outcomes) ---------- */
+.solutions__grid,
+.outcomes__grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.case-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px 24px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+}
+
+.case-card__number {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.4;
+  color: var(--accent);
+}
+
+.case-card__title {
+  margin: 16px 0 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.case-card__image {
+  margin-top: 16px;
+  padding: 12px 0;
+  width: 100%;
+}
+
+.case-card__image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 537 / 273;
+  object-fit: cover;
+}
+
+.case-card:nth-child(3) .case-card__image img {
+  object-fit: contain;
+}
+
+/* Figma case 1: raw screenshot fills inside the 16px image frame. */
+.crm-hero-media,
+.crm-image-frame {
+  min-width: 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: url("assets/images/production-line-simulator/backdrop.jpg") center / cover;
+}
+
+.crm-hero-media {
+  aspect-ratio: 900 / 722.3;
+}
+
+.crm-hero-media .case-hero__media {
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.crm-image-frame {
+  position: relative;
+  aspect-ratio: 900 / 722.3;
+}
+
+.crm-image-frame--beach {
+  background-image: url("assets/images/logistics-crm/s2-video-background.png");
+}
+
+.case-study--crm .crm-image-frame .shot {
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.case-study--crm .crm-image-frame:first-child img {
+  object-fit: contain;
+}
+
+.crm-image-crop {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.case-study--crm .crm-image-crop .shot {
+  position: absolute;
+  left: -13.91%;
+  top: -0.03%;
+  width: 199.21%;
+  max-width: none;
+  object-fit: fill;
+}
+
+@media (min-width: 1280px) {
+  .case-study--crm .scenario__intro {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-study--crm #multiple-transports .scenario__intro,
+  .case-study--crm #status-updates .scenario__intro {
+    grid-template-columns: minmax(0, 872fr) minmax(0, 928fr);
+  }
+}
+
+.case-card__text {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* image card: 12px wrapper padding + 8px = the design's 20px gap */
+.case-card__image + .case-card__text {
+  margin-top: 8px;
+}
+
+a.case-card {
+  text-decoration: none;
+}
+
+a.case-card:hover {
+  border-color: var(--accent);
+}
+
+a.case-card:hover .case-card__title {
+  color: var(--accent);
+}
+
+/* ---------- Scenario sections ---------- */
+.scenario__intro {
+  margin-top: 56px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.scenario__text {
+  flex: 1 1 0; /* equal halves with the sibling column (figure, or the second text column in case 2), matching the decision rows */
+  min-width: 0;
+}
+
+.scenario__lead {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.scenario__subhead {
+  margin: 16px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.scenario__figure {
+  flex: 1 1 0; /* equal halves with the text column, as in case 2 */
+  min-width: 0;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.scenario__figure .shot {
+  aspect-ratio: 900 / 722;
+  object-fit: cover;
+}
+
+.scenario__figure .shot--wide {
+  aspect-ratio: 928 / 394;
+  object-fit: cover;
+}
+
+.scenario__figure .shot--video {
+  object-fit: contain;
+}
+
+.scenario__video-frame {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 928 / 394;
+  padding: 16px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: url("assets/images/logistics-crm/s2-video-background.png") center / cover;
+}
+
+.scenario__video-frame .shot--video {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  aspect-ratio: 1280 / 800;
+  border-radius: 14px;
+}
+
+.scenario__shots {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 40px;
+}
+
+.scenario__shots .shot {
+  aspect-ratio: 900 / 722;
+
+  /* contain, not cover: the shots' aspect ratios now vary per screenshot,
+     and the Figma frames fit them inside the backdrop without cropping */
+  object-fit: contain;
+}
+
+/* numbered "What I designed" steps */
+.steps {
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.steps__item {
+  display: flex;
+  gap: 14px;
+}
+
+.steps__num {
+  flex: 0 0 16px;
+  padding-top: 1px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em; /* 0.24px at 12px */
+  color: var(--accent);
+}
+
+.steps__name {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.steps__text {
+  margin: 3px 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+.steps__text--multi {
+  margin-bottom: 6px;
+}
+
+/* workflow / status-transition rows */
+.scenario__extra {
+  margin-top: 56px;
+}
+
+.flow {
+  margin-top: 24px;
+  display: flex;
+  align-items: stretch;
+}
+
+.flow__step {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 18px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.flow__num {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--accent);
+}
+
+.flow__name {
+  margin: 6px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.flow__arrow {
+  align-self: center;
+  padding: 0 8px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* status transition diagram (scenario 3) */
+.stateflow {
+  margin-top: 24px;
+  display: flex;
+  align-items: stretch;
+}
+
+.stateflow__card {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stateflow__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-inline: auto;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.stateflow__icon--current {
+  background: #fef9c3;
+  color: #f59e0b;
+}
+
+.stateflow__icon--action {
+  background: var(--border-soft);
+  color: var(--accent);
+}
+
+.stateflow__icon--new {
+  background: var(--border-soft);
+  color: #10b981;
+}
+
+.stateflow__type {
+  margin: 8px 0 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.stateflow__value {
+  margin: 4px 0 0;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.stateflow__connector {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+}
+
+.stateflow__line {
+  width: 20px;
+  height: 1px;
+  background: var(--border-soft);
+}
+
+.stateflow__glyph {
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--accent);
+}
+
+/* ---------- Before / Solution comparison ---------- */
+.compare {
+  margin-top: 160px;
+}
+
+.compare__inner {
+  max-width: 1152px;
+  margin: 24px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
+  align-items: center;
+}
+
+.compare__box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.compare__box--solution {
+  border: 2px solid var(--accent);
+}
+
+.compare__label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.compare__title {
+  margin: 16px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.compare__rows {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.compare__row {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.compare__row--tint {
+  background: var(--surface-tint);
+}
+
+.compare__arrow {
+  text-align: center;
+  font-size: 24px;
+  color: var(--text-secondary);
+}
+
+/* mini UI mockup inside the solution box */
+.miniui {
+  margin-top: 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+}
+
+.miniui__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.miniui__id {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.miniui__badge {
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: #fef9c3;
+  color: #854d0e;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.miniui__tabs {
+  display: flex;
+  flex-wrap: wrap; /* the tab row is the compare box's min-content floor — let it wrap on narrow screens */
+  gap: 2px;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.miniui__tab {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.miniui__tab--active {
+  background: var(--border-soft);
+  color: #2b4ecc;
+  font-weight: 500;
+}
+
+.miniui__content {
+  margin: 0;
+  padding: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ---------- Result block (end of each scenario) ---------- */
+.result {
+  margin: 64px clamp(0px, 2.6vw, 48px) 0; /* inset 48px at 1920 */
+  padding: 40px clamp(24px, 2.6vw, 48px);
+  background: var(--surface-dark);
+  border-radius: 16px;
+  color: #fff;
+}
+
+.result__label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.12em; /* 1.32px at 11px */
+  text-transform: uppercase;
+  color: var(--border-soft);
+}
+
+.result__title {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.result__grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.result__grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.result__item {
+  border-top: 1px solid rgb(255 255 255 / 12%);
+  padding-top: 20px;
+}
+
+.result__name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: #fff;
+}
+
+.result__text {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: rgb(255 255 255 / 50%);
+}
+
+/* ---------- Constraints ---------- */
+.constraints__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 720px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.constraints__text {
+  margin: 24px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.constraints__lead {
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+.constraints__list {
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.constraints__item {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 31px 18px 16px;
+}
+
+.constraints__value {
+  margin-top: 6px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   Case study — illustration lightbox
+   ============================================================ */
+
+/* zoomable illustrations hint the interaction */
+img[data-lightbox] {
+  cursor: zoom-in;
+}
+
+/* The scrim is the overlay element itself, so a click that lands on it
+   (not on the image or the close button) closes the lightbox. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200; /* above the sticky page-header (100) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(48px, 6vw, 96px) clamp(20px, 4vw, 64px);
+  background: rgb(28 30 33 / 92%); /* --surface-dark, subdued scrim */
+  opacity: 0;
+  visibility: hidden;
+
+  /* closing: fade out first, then leave the accessibility tree */
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.lightbox--open {
+  opacity: 1;
+  visibility: visible;
+
+  /* opening: become visible at once, then fade in */
+  transition: opacity 0.3s ease, visibility 0s;
+}
+
+/* The image is sized from main.js, not CSS: a full-box element
+   (width/height 100% + object-fit: contain) letterboxes the bitmap
+   inside a viewport-shaped box, which detaches the border-radius and
+   the box-shadow from the visible image — square corners, shadow cast
+   by the wrong rectangle. main.js instead measures the overlay's
+   content box on every open/load/resize and sets the element to the
+   contain-fitted pixel size, so the element box always equals the
+   painted bitmap: any aspect ratio, thumbnails scaled up as well as
+   full-size sources scaled down. The max-* clamp below is only the
+   pre-measure fallback (it keeps an undecoded src swap inside the
+   box); the fitted pixels never exceed it. */
+.lightbox__image {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 32px 80px rgb(0 0 0 / 45%);
+  transform: scale(0.97);
+  transition: transform 0.3s ease;
+}
+
+.lightbox--open .lightbox__image {
+  transform: none;
+}
+
+/* The button itself stays a 48×48 hit target on every screen (the touch
+   minimum); the visible disc is a smaller ::before inside it, so the
+   control reads compact on desktop without shrinking the tap area. */
+.lightbox__close {
+  position: absolute;
+  top: max(clamp(16px, 3vw, 40px), env(safe-area-inset-top));
+  right: max(clamp(16px, 3vw, 40px), env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  color: #fff;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.lightbox__close::before {
+  content: "";
+  position: absolute;
+  inset: 6px; /* 36px disc inside the 48px target on large screens */
+  background: rgb(255 255 255 / 6%);
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.lightbox__close:hover::before {
+  background: rgb(255 255 255 / 14%);
+  border-color: rgb(255 255 255 / 45%);
+}
+
+@media (max-width: 720px) {
+  .lightbox__close::before {
+    inset: 4px; /* 40px disc; the 48px button keeps the touch target */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .lightbox__image {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Case study — responsive
+   ============================================================ */
+
+/* ---- ≤ 1024px: columns stack, grids go single-column ---- */
+@media (max-width: 1024px) {
+  .case-section {
+    padding-top: 96px;
+  }
+
+  .case-section--last {
+    padding-bottom: 96px;
+  }
+
+  .case-hero {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .case-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* keep the overhanging chips inside the viewport once the hero stacks */
+  .case-hero__chip--status {
+    transform: translateX(-15%);
+  }
+
+  .case-hero__chip--workspace {
+    transform: translateX(-25%);
+  }
+
+  .overview__grid,
+  .solutions__grid,
+  .outcomes__grid,
+  .result__grid,
+  .scenario__shots {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .flow {
+    flex-wrap: wrap;
+    gap: 12px 0;
+  }
+
+  .flow__step {
+    flex: 1 1 160px;
+  }
+
+  .stateflow {
+    flex-wrap: wrap;
+    gap: 16px 0;
+  }
+
+  .stateflow__card {
+    flex: 1 1 240px;
+  }
+
+  .compare {
+    margin-top: 96px;
+  }
+
+  .compare__inner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .compare__arrow {
+    transform: rotate(90deg);
+  }
+
+  .constraints__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .constraints__list {
+    margin-top: 24px;
+  }
+
+  .result {
+    margin-inline: 0;
+  }
+
+  .research__intro {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .research__divider {
+    margin-top: 48px;
+  }
+
+  /* kickers lose the desktop indent once the rows stack below the
+     numbers' column rhythm */
+  .research__label {
+    margin: 40px 0 0;
+  }
+
+  .research__group {
+    margin-top: 40px;
+    gap: 40px;
+  }
+
+  .research__row--divided {
+    padding-top: 40px;
+  }
+
+  /* paragraph and "How to measure" stack; the measure column keeps its
+     hairline, moved to the top edge */
+  .research__row-body {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .research__row-rule {
+    display: none;
+  }
+
+  .research__row-text {
+    padding-top: 0;
+  }
+
+  .research__measure {
+    padding-left: 0;
+    padding-top: 24px;
+    border-left: 0;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .research__iteration {
+    margin: 56px 0 0;
+    padding-top: 32px;
+  }
+}
+
+/* ---- ≤ 720px: header and flows compact ---- */
+@media (max-width: 720px) {
+  .page-header {
+    padding-top: 20px;
+    padding-bottom: 16px;
+  }
+
+  .page-header__logo svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .page-header__nav {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .page-header__link {
+    font-size: 16px;
+  }
+
+  .case-hero__goal {
+    margin-top: 24px;
+  }
+
+  .case-card__title {
+    font-size: 24px;
+  }
+
+  /* These long words cannot fit whole at the usual mobile heading size. */
+  [lang="en"] #transportation-card > .container > .case-title,
+  [lang="en"] #status-updates > .container > .case-title {
+    font-size: min(36px, calc((100vw - 48px) * 0.11));
+  }
+
+  [lang="ru"] .case-card__title[data-i18n="out1Title"] {
+    font-size: min(24px, calc((100vw - 98px) * 0.083));
+  }
+
+  .flow {
+    gap: 0;
+  }
+
+  .flow__step {
+    flex: 1 1 100%;
+  }
+
+  .flow__arrow {
+    display: none;
+  }
+
+  .stateflow {
+    gap: 12px;
+  }
+
+  .stateflow__card {
+    flex: 1 1 100%;
+  }
+
+  .stateflow__connector {
+    display: none;
+  }
+
+  /* tighter number column so the 28px titles keep usable width */
+  .research__row-head {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .research__num {
+    flex-basis: 56px;
+  }
+}
+
+/* ============================================================
+   Case study — Production Line Simulator (projects/production-line-simulator.html)
+   Faithful to Figma "Portfolio-2" (1920×10877).
+   ============================================================ */
+
+/* Hero band: two equal 900px columns with the design's 40px gutter;
+   no bottom padding — the overview cards close the band before the
+   hairline (case 1's 80px gap hero does not apply here). */
+.case-hero--band {
+  padding-bottom: 0;
+}
+
+.case-hero__grid--split {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+/* Overview closes the first band: two meta cards + hairline below. */
+.overview--band {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.overview__grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ---------- Framed screenshots ----------
+   Case 2 wraps every screenshot in a 16px padded, 16px-rounded frame
+   with the design's backdrop image (cover, as the Figma image fill),
+   the shot itself rounding at 14px inside. */
+.shot-frame {
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #f4f4f6;
+  background-image: url("assets/images/production-line-simulator/backdrop.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.shot-frame .shot {
+  border-radius: 14px;
+}
+
+/* ---------- Product context band ---------- */
+.context__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+.context__title {
+  margin-top: 24px;
+}
+
+/* The paragraphs sit level with the big title's cap height (eyebrow
+   28px + 16px breathing room), as measured in the frame. */
+.context__body {
+  padding-top: 44px;
+}
+
+.context__body p {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.context__body p:first-child {
+  margin-top: 0;
+}
+
+.context--divided {
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* ---------- Calculation-model diagram ----------
+   inputs (2×2) → core model → outputs, centered on a hairline card. */
+.model {
+  margin-top: 80px;
+  padding: 48px 40px;
+  background: var(--bg-primary);
+  border: 1px solid var(--surface-tint);
+  border-radius: 16px;
+}
+
+.model__row {
+  max-width: 1070px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.model__inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 184px);
+  gap: 12px;
+}
+
+.model__input {
+  padding: 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.model__input-name {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-primary);
+}
+
+.model__input-caption {
+  margin: 4px 0 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--text-disabled);
+}
+
+.model__arrow {
+  flex-shrink: 0;
+  color: var(--text-disabled);
+}
+
+.model__core {
+  padding: 28px 24px;
+  background: var(--surface-dark);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.model__core-label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.model__core-name {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
+}
+
+.model__outputs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 180px;
+}
+
+.model__output {
+  padding: 8px 14px;
+  background: rgb(26 86 219 / 6%);
+  border: 1px solid rgb(26 86 219 / 25%);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--accent);
+}
+
+/* ---------- Core user flow (scenario 1) ----------
+   A full-width hairline, a mono label, then seven icon tiles —
+   the "Recalculate" tile inverted, "Find bottleneck" in alert red. */
+.userflow {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.userflow__label {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-disabled);
+}
+
+.userflow__row {
+  max-width: 1136px;
+  margin: 24px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.userflow__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  text-align: center;
+}
+
+.userflow__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-primary);
+  border: 1px solid var(--surface-tint);
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.userflow__icon--dark {
+  background: var(--surface-dark);
+  border-color: var(--surface-dark);
+  color: #fff;
+}
+
+.userflow__icon--alert {
+  background: #fef2f2;
+  border-color: #ffc9c9;
+  color: #fb2c36;
+}
+
+.userflow__num {
+  margin: 10px 0 0;
+  font-family: var(--font-label);
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--text-disabled);
+}
+
+.userflow__name {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-secondary);
+}
+
+.userflow__arrow {
+  align-self: flex-start;
+  margin-top: 16px; /* optically centered on the 44px icon tile */
+  color: var(--surface-tint);
+}
+
+/* Muted variant of the scenario lead (the design sets this copy in
+   Text/Secondary rather than primary). */
+.scenario__lead--muted {
+  color: var(--text-secondary);
+}
+
+/* ---------- Decision blocks (scenario 2) ----------
+   Text column + framed figure, alternating sides; 16px gutter and
+   56px between blocks, as in the frame. */
+.decision {
+  margin-top: 56px;
+}
+
+.decision__row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.decision__row--reverse {
+  flex-direction: row-reverse;
+}
+
+.decision__text {
+  flex: 1 1 0; /* equal halves with the figure, as in the frame */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 16px;
+}
+
+.decision__title {
+  margin: 12px 0 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.decision__body {
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+.decision__figure {
+  flex: 1 1 0; /* equal halves with the text column, as in the frame */
+  min-width: 0;
+}
+
+/* Full-width framed figure (scenario 3's wide shot above the result). */
+.case-figure {
+  margin-top: 56px;
+}
+
+/* Case 2's result band spans the full container (no side inset) and
+   carries four outcome columns. */
+.result--flush {
+  margin-inline: 0;
+}
+
+.result__grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* ============================================================
+   Case study — Production Line Simulator, responsive
+   ============================================================ */
+
+/* ---- ≤ 1279px: medium screens — description+image rows stack ----
+   One shared rule set for both cases: case 1's scenario intros
+   (.scenario__intro) and case 2's decision rows (.decision__row).
+   ≥1280 the pairs sit side by side at 50/50 (flex: 1 1 0, set at the
+   base rules above); below 1280 the row becomes a column and both
+   children go full width. Lives here, after the .decision base rules,
+   so these equal-specificity overrides win the cascade. */
+@media (max-width: 1279px) {
+  .scenario__intro {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* stacked children go full width — flex: none, not the basis-0
+     of the side-by-side row (which would collapse in a column) */
+  .scenario__text,
+  .scenario__figure {
+    flex: none;
+  }
+
+  .decision__row,
+  .decision__row--reverse {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* no two-column optical alignment once stacked */
+  .decision__text {
+    flex: none;
+    padding-top: 0;
+  }
+
+  .decision__figure {
+    flex: none;
+  }
+}
+
+/* ---- ≤ 1024px: diagram and flows stack ---- */
+@media (max-width: 1024px) {
+  .case-hero__grid--split {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .overview--band {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .overview__grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .context__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .context__body {
+    padding-top: 0;
+  }
+
+  /* the diagram becomes a vertical flow: each stage on its own centered
+     row, the arrows rotated to point down the column. They are flow
+     items between the stages (DOM order: inputs → arrow → core →
+     arrow → outputs), so they stay glued to their cards at any width
+     rather than floating wherever flex-wrap drops them. */
+  .model__row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .model__arrow {
+    transform: rotate(90deg);
+  }
+
+  .userflow__row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 16px;
+  }
+
+  .userflow__step {
+    flex: 0 1 140px;
+    width: auto;
+  }
+
+  .userflow__arrow {
+    display: none; /* connectors misread once the row wraps */
+  }
+
+  .decision__row,
+  .decision__row--reverse {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .decision__text {
+    flex: none;
+    padding-top: 0;
+  }
+
+  .decision__figure {
+    flex: none;
+  }
+
+  .result__grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- ≤ 720px: diagram inputs stretch, outcomes go single-column ---- */
+@media (max-width: 720px) {
+  .model {
+    padding: 32px 24px;
+  }
+
+  .model__inputs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .model__outputs {
+    width: 100%;
+  }
+
+  .result__grid--four {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Below this width, a pair of input cards cannot hold the longest RU word. */
+@media (max-width: 430px) {
+  .model__inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   Case study — Martin Exam (projects/martin-exam.html)
+   Faithful to Figma "Portfolio-case-3" (1920×9863).
+   ============================================================ */
+
+/* Keep the explicit whole-word wrapping contract for this page. */
+.case-study.case-study--no-break {
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+/* Section rhythm: unlike cases 1–2's 200px .case-section air, the case-3
+   frame is a stack of tight 80px bands separated by hairlines. */
+.band {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* The last band (Constraints) keeps the hairline rhythm above but closes
+   the page generously before the footer, as the other case pages do. */
+.band--last {
+  padding-bottom: 200px;
+  border-bottom: 0;
+}
+
+/* 28px bold section heading ("Project goal", "Testing", "Product
+   iteration") — the case-card title scale used as a section opener. */
+.case-heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+
+  /* headings opt out of the page-level hyphenation, like .case-title */
+  hyphens: none;
+  overflow-wrap: normal;
+}
+
+/* 16px secondary copy that opens a band (672px measure, as in the frame). */
+.band__text {
+  margin: 40px 0 0;
+  max-width: 672px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* Hero: two equal 908px columns with the frame's tighter 24px gutter
+   (case 2's --split hero keeps 40px). */
+.case-hero__grid--split-24 {
+  gap: 24px;
+}
+
+/* Tag row above the hero title: outlined accent pill + plain duration. */
+.case-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.case-tags__tag {
+  margin: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--accent);
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em; /* 0.24px at 12px */
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.case-tags__duration {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* ---------- Framed screenshot strips ----------
+   A row of phone screenshots on the shared .shot-frame backdrop (the
+   same asset as case 2 — verified byte-identical against the frame's
+   image fill). Slots are equal flex tracks; screenshots letterbox
+   inside them (object-fit: contain), and slots the frame leaves
+   unfilled render as flat white cards, exactly as in Figma. */
+.shot-frame--strip {
+  display: flex;
+  gap: 24px;
+
+  /* as a flex item (the .designed__card column), min-height:auto would let
+     the tallest screenshot's natural-ratio height override the frame's
+     aspect-ratio — clamp it so the strip keeps the designed proportions */
+  min-height: 0;
+}
+
+/* Hero strip: three shots on the tighter 16/40 pad. */
+.shot-frame--hero {
+  aspect-ratio: 908 / 708;
+  padding: 16px 40px;
+}
+
+.martin-hero-shots {
+  padding: 32px 40px;
+  background-image: url("assets/images/production-line-simulator/backdrop.jpg");
+}
+
+/* Full-width "What I designed" screenshot strips. */
+.shot-frame--wide {
+  aspect-ratio: 1840 / 647;
+  padding: 32px 100px;
+}
+
+/* The updated case-3 design uses one/two screenshots beside the card copy. */
+.shot-frame--side {
+  aspect-ratio: 908 / 800;
+  padding: 32px 100px;
+}
+
+.shot-frame--two .shot-frame__slot {
+  flex: 1 1 0;
+}
+
+.shot-frame--641 {
+  aspect-ratio: 1840 / 641;
+}
+
+.shot-frame--pebbles {
+  background-image: url("assets/images/case-4/hero-backdrop.png");
+}
+
+.shot-frame--shore {
+  background-image: url("assets/images/case-4/concepts-backdrop.png");
+}
+
+.shot-frame--rewards {
+  gap: 0;
+}
+
+.shot-frame__slot {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.shot-frame__slot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.shot-frame__slot .shot-frame__image--cover {
+  object-fit: cover;
+}
+
+.shot-frame--hero .shot-frame__slot img {
+  border-radius: 14px;
+}
+
+.shot-frame__slot--empty {
+  background: #fff;
+  border-radius: 14px;
+}
+
+/* ---------- Project goal band ---------- */
+.goal__grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+.goal__text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* Study-flow pills: the current step filled with the accent, the rest tinted. */
+.pillflow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pillflow__pill {
+  margin: 0;
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: var(--surface-tint);
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.pillflow__pill--accent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.pillflow__arrow {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* ---------- Research: benchmarking + hypothesis process ---------- */
+.bench__grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+.bench__text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* Left column: benchmarking cards, two per row (the fifth sits alone). */
+.bench__cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bench__card {
+  padding: 32px;
+  background: var(--surface-tint);
+  border-radius: 12px;
+}
+
+.bench__num {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+.bench__name {
+  margin: 16px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text-primary);
+}
+
+/* Right column: two copy blocks, then the process card. */
+.bench__right {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.process {
+  padding: 24px;
+  background: var(--surface-tint);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+}
+
+.process__chips {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.process__chip {
+  margin: 0;
+  padding: 6px 12px;
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.process__chip--dark {
+  background: var(--surface-dark);
+  border-color: var(--surface-dark);
+  color: var(--bg-primary);
+}
+
+.process__arrow {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* ---------- "What I designed" cards ---------- */
+.designed__grid {
+  margin-top: 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.designed__card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Give consecutive screenshot blocks their own breathing room. */
+.designed__card > .shot-frame + .shot-frame {
+  margin-top: 24px;
+}
+
+.designed__card--split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px 24px;
+  align-items: start;
+}
+
+.designed__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.designed__card--split > .shot-frame--side {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: stretch;
+}
+
+.designed__card--split > .shot-frame--wide {
+  grid-column: 1 / -1;
+}
+
+.designed__num {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+.designed__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-primary);
+
+  /* headings opt out of the page-level hyphenation, like .case-title */
+  hyphens: none;
+  overflow-wrap: normal;
+}
+
+.designed__text {
+  margin: 0;
+  max-width: 900px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* ---------- Testing ---------- */
+.testing__row {
+  margin-top: 40px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.testing__stats {
+  display: flex;
+  gap: 48px;
+}
+
+.stat__value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.4; /* Figma "Quotes" style, like the research numerals */
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.stat__label {
+  margin: 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.testing__text {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 672px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-secondary);
+}
+
+/* Findings cards — light aquamarine tint (#f6f5ff is a raw frame fill,
+   not a Figma variable; kept literal beside its only use). */
+.findings {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.finding {
+  min-height: 240px;
+  padding: 28px 32px;
+  background: #f6f5ff;
+  border-radius: 16px;
+}
+
+.finding__num {
+  margin: 0 0 16px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
+.finding__text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* ---------- Product iteration ----------
+   The four steps reuse the .flow component (case 1) verbatim. */
+.band .flow {
+  margin-top: 32px;
+}
+
+/* ============================================================
+   Case study — Martin Exam, responsive
+   ============================================================ */
+
+/* ---- ≤ 1024px: bands compact, two-column blocks stack ---- */
+@media (max-width: 1024px) {
+  .band {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .band--last {
+    padding-bottom: 96px;
+  }
+
+  /* back to the shared stacked-hero gutter (case 2's rule sits earlier
+     in the cascade, so restate it for the tighter desktop variant) */
+  .case-hero__grid--split-24 {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .case-tags {
+    margin-bottom: 16px;
+  }
+
+  .goal__grid,
+  .bench__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .testing__row {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .testing__text {
+    max-width: none;
+  }
+
+  .findings {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .designed__grid {
+    margin-top: 56px;
+    gap: 80px;
+  }
+
+  .designed__card--split {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+
+  .designed__card--split > .shot-frame--side,
+  .designed__card--split > .shot-frame--wide {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .shot-frame--side {
+    aspect-ratio: 4 / 3;
+    padding: 16px 24px;
+  }
+}
+
+/* ---- ≤ 720px: card-scale headings, strips keep their proportions ---- */
+@media (max-width: 720px) {
+  .designed__grid {
+    gap: 64px;
+  }
+
+  .case-heading,
+  .designed__title {
+    font-size: 24px;
+  }
+
+  .shot-frame--wide {
+    padding: 16px 24px;
+  }
+}
+
+
+/* Stack cards when their padding leaves too little room for intact words. */
+@media (max-width: 448px) {
+  .bench__cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Case 4 — measurements from Figma Portfolio-case-4 (1920px). */
+.case-study--growth {
+  --case4-section-gap: 120px;
+  --case4-block-gap: 80px;
+}
+
+.case-study--growth main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--case4-section-gap);
+}
+
+.case-study--growth .case-hero,
+.case-study--growth .band {
+  padding-block: var(--case4-block-gap);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.case4-hero .case-hero__grid { align-items: start; }
+
+.case4-hero .case-hero__media-wrap { padding-bottom: 30px; }
+
+.case4-hero .case-hero__title {
+  max-width: 800px;
+  line-height: 1.2;
+}
+
+.case4-hero .case-hero__lead {
+  max-width: 576px;
+  margin-top: 32px;
+  color: var(--text-primary);
+}
+
+.case4-hero .case-hero__goal {
+  max-width: 672px;
+  margin-top: 48px;
+  padding-top: 0;
+}
+.case4-hero .case-hero__goal-text { margin: 0; }
+.case4-hero .shot-frame { background-image: url("assets/images/case-4/hero-backdrop.png"); }
+.case4-hero .shot-frame--hero { padding: 32px 40px; }
+
+.case4-context {
+  max-width: 640px;
+  margin-top: 24px;
+  padding-top: 64px;
+}
+
+.case4-context .case-heading { line-height: 1.2; }
+.case4-context .band__text { margin-top: 20px; }
+
+.case-study--growth .band__text,
+.case-study--growth .bench__text,
+.case-study--growth .designed__text { color: var(--text-primary); }
+
+.case4-intro-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 40px;
+}
+
+.case4-insight {
+  min-width: 0;
+  padding: 28px 28px 32px;
+}
+
+.case4-insight .bench__text {
+  max-width: 349px;
+  margin: 16px 0 0;
+}
+.case4-insight .bench__text + .bench__text { margin-top: 24px; }
+
+.case4-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.case4-kicker::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.case4-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: var(--case4-block-gap);
+}
+
+.case4-feature__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.case4-feature__copy .designed__text,
+.case4-validation .designed__text {
+  max-width: 804px;
+  margin: 0;
+}
+
+.case4-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  height: 641px;
+  padding: 32px 100px;
+  background: url("assets/images/case-4/flow-backdrop.png") center / cover;
+  border-radius: 16px;
+}
+
+.case4-feature--gift .case4-steps { height: 593px; }
+
+.case4-steps > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  gap: 16px;
+}
+
+.case4-steps > div:last-child {
+  gap: 24px;
+}
+
+.case4-steps__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  padding: 0 0 16px 16px;
+}
+
+.case4-steps__label span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--border-soft);
+  font: 10px/15px var(--font-label);
+}
+
+.case4-steps__label p {
+  margin: 0;
+  color: var(--bg-primary);
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.case4-steps img {
+  width: 276px;
+  max-width: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.case4-validation {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: var(--case4-block-gap);
+}
+
+.case4-video-title {
+  max-width: 948px;
+  padding-top: 20px;
+  line-height: 1.2;
+}
+
+.case4-solutions {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin-top: 64px;
+}
+
+.case4-concepts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  height: 898px;
+  margin-top: 0;
+  padding: 32px 100px;
+  border-radius: 16px;
+  background: url("assets/images/case-4/concepts-backdrop.png") center / cover;
+}
+
+.case4-concepts article {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.case4-concepts__copy {
+  width: 336px;
+  max-width: 100%;
+  padding: 28px 32px;
+  border-radius: 16px;
+  background: #f6f5ff;
+}
+
+.case4-concepts h4 {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 4px 16px;
+  border-radius: 11px;
+  font: 10px/15px var(--font-label);
+  background: var(--border-soft);
+}
+.case4-concepts .bench__text { margin: 16px 0 0; }
+
+.case4-concepts__screens {
+  display: flex;
+  gap: 40px;
+  flex: 1;
+  min-height: 0;
+}
+
+.case4-concepts__screens img {
+  width: 276px;
+  max-width: calc((100% - 40px) / 2);
+  min-height: 0;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.case4-ab-intro {
+  display: flex;
+  align-items: start;
+  gap: 24px;
+  margin-top: 72px;
+}
+
+.case4-ab-intro > span {
+  font: 36px/1.4 var(--font-display);
+  color: var(--accent);
+}
+.case4-ab-intro .band__text { margin: 0; }
+
+.case4-experiment {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 1216px);
+  min-height: 748px;
+  margin: 24px auto 0;
+}
+
+.case4-structure,
+.case4-metrics {
+  min-width: 0;
+  padding: 48px 40px;
+}
+
+.case4-test-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, 1fr));
+  gap: 0 12px;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.case4-test-groups > p:first-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin: 0;
+  padding: 12px 28px;
+  border-radius: 12px;
+  color: white;
+  background: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.case4-test-groups__connector {
+  grid-column: 1 / -1;
+  height: 60px;
+  background: linear-gradient(var(--border), var(--border)) center top / 1px 30px no-repeat, linear-gradient(var(--border), var(--border)) center / 50% 1px no-repeat, linear-gradient(var(--border), var(--border)) 25% bottom / 1px 30px no-repeat, linear-gradient(var(--border), var(--border)) 75% bottom / 1px 30px no-repeat;
+}
+
+.case4-test-groups__connector--merge {
+  transform: rotate(180deg);
+  margin-top: 32px;
+}
+
+.case4-test-groups__variant > span {
+  display: block;
+  margin-bottom: 12px;
+  font: 11px/17px var(--font-label);
+  color: var(--text-secondary);
+}
+
+.case4-test-groups__variant > div {
+  height: calc(100% - 29px);
+  padding: 14px 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  background: var(--surface-tint);
+}
+
+.case4-test-groups__variant b {
+  font: 700 20px/30px var(--font-label);
+  color: var(--accent);
+}
+
+.case4-test-groups__variant p {
+  margin: 6px 0 4px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.case4-test-groups__variant small {
+  display: block;
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--text-secondary);
+}
+
+.case4-test-groups__compare {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin: 0;
+  padding: 12px 28px;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  background: var(--border-soft);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.case4-metrics__label {
+  margin: 28px 0 12px;
+  color: var(--text-secondary);
+}
+
+.case4-metrics__primary,
+.case4-guardrails article {
+  padding: 12px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+}
+.case4-metrics__primary { padding: 16px 20px; }
+
+.case4-metrics h3,
+.case4-conclusion h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.case4-metrics__primary p {
+  margin: 4px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--accent);
+}
+
+.case4-guardrails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.case4-guardrails article {
+  position: relative;
+  padding-left: 34px;
+}
+
+.case4-guardrails article::before {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+}
+
+.case4-guardrails p {
+  max-width: 215px;
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.case4-note {
+  margin-top: 28px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  background: var(--surface-tint);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.case4-conclusion {
+  max-width: 680px;
+  min-height: 195px;
+  margin-top: 24px;
+}
+
+.case4-conclusion .band__text {
+  max-width: none;
+  margin-top: 16px;
+}
+
+@media (max-width: 1024px) {
+  .case-study--growth {
+    --case4-section-gap: 64px;
+    --case4-block-gap: 48px;
+  }
+  .case4-intro-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .case4-steps {
+    height: auto;
+    padding: 24px;
+    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .case4-feature--gift .case4-steps { height: auto; }
+
+  .case4-steps img {
+    width: 100%;
+    height: 420px;
+    flex: none;
+  }
+
+  .case4-concepts {
+    height: auto;
+    padding: 24px;
+  }
+  .case4-concepts__screens { gap: 16px; }
+
+  .case4-concepts__screens img {
+    width: calc((100% - 16px) / 2);
+    max-width: none;
+    height: 400px;
+  }
+  .case4-experiment { min-height: 0; }
+
+  .case4-structure,
+  .case4-metrics { padding: 32px 16px; }
+}
+
+@media (max-width: 720px) {
+  .case-study--growth { --case4-section-gap: 48px; }
+
+  .case-study--growth .case-title { font-size: clamp(30px, 7vw, 48px); }
+
+  [lang="ru"] .case-study--growth .case-title {
+    font-size: min(36px, 7vw);
+  }
+
+  .case4-hero .shot-frame--hero {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .case4-context {
+    margin-top: 40px;
+    padding-top: 0;
+  }
+
+  .case4-intro-grid,
+  .case4-concepts,
+  .case4-experiment { grid-template-columns: 1fr; }
+  .case4-insight { padding: 20px 0; }
+  .case4-insight .bench__text { max-width: none; }
+
+  .case4-steps {
+    gap: 24px 12px;
+    padding: 16px;
+  }
+  .case4-steps__label { padding-left: 0; }
+
+  .case4-steps__label p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .case4-steps img {
+    height: auto;
+    aspect-ratio: 276 / 520;
+  }
+
+  .case4-concepts__copy {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .case4-concepts__screens img {
+    height: auto;
+    aspect-ratio: 276 / 580;
+  }
+
+  .case4-ab-intro {
+    margin-top: 40px;
+    gap: 16px;
+  }
+
+  .case4-structure,
+  .case4-metrics { padding: 24px 0; }
+  .case4-conclusion { min-height: 0; }
+}
+
+/* ---------- Adjacent case studies ---------- */
+.project-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-bottom: 80px;
+}
+
+.project-nav__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  max-width: 100%;
+  padding: 14px 24px;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  box-shadow: 0 2px 8px rgb(28 30 33 / 8%);
+  color: var(--accent);
+  font-family: var(--font-label);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project-nav__link:hover {
+  border-color: var(--accent);
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .project-nav {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    padding-bottom: 48px;
+  }
+
+  .project-nav__link {
+    padding-inline: 16px;
+  }
+}
