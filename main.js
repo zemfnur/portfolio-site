@@ -57,7 +57,7 @@
       aboutTitle: 'About me',
       aboutQuote: '“She loves designing systems.<br>She is curious, pragmatic and thoroug”',
       aboutIntro:
-        'I am a Product UX/UI designer focused on complex digital products and design systems, with 2 years of commercial experience.',
+        'I am a Product UX/UI designer focused on complex digital products and design systems, with 3 years of commercial experience.',
       aboutList:
         '<p>— analyze requirements and constraints</p><p>— build user scenarios and information architecture</p><p>— design interfaces and states</p><p>— build prototypes</p><p>— design and develop design systems</p><p>— work with typography, tokens and structure</p><p>— think about scalability and product maintenance</p><p>— simplify complex user journeys</p>',
       aboutBody1:
@@ -556,7 +556,7 @@
       aboutTitle: 'Обо мне',
       aboutQuote: '“Она любит проектировать системы.<br>Она любознательна, прагматична и дотошна”',
       aboutIntro:
-        'Я — Product UX/UI-дизайнер с фокусом на сложные цифровые продукты и дизайн-системы, у меня 2 года коммерческого опыта.',
+        'Я — Product UX/UI-дизайнер с фокусом на сложные цифровые продукты и дизайн-системы, у меня 3 года коммерческого опыта.',
       aboutList:
         '<p>— разбираю требования и ограничения</p><p>— строю пользовательские сценарии и информационную архитектуру</p><p>— проектирую интерфейсы и состояния</p><p>— собираю прототипы</p><p>— проектирую и развиваю дизайн-системы</p><p>— работаю с типографикой, токенами и структурой</p><p>— думаю про масштабируемость и поддержку продукта</p><p>— упрощаю сложные пользовательские пути</p>',
       aboutBody1:
