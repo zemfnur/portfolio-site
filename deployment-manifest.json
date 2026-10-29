@@ -1,0 +1,554 @@
+{
+  "pages": [
+    "index.html",
+    "about.html",
+    "projects/case-4.html",
+    "projects/logistics-crm.html",
+    "projects/martin-exam.html",
+    "projects/production-line-simulator.html"
+  ],
+  "bytes": 57101688,
+  "files": [
+    {
+      "path": "about.html",
+      "bytes": 29472
+    },
+    {
+      "path": "assets/favicon/apple-touch-icon.png",
+      "bytes": 10690
+    },
+    {
+      "path": "assets/favicon/favicon.svg",
+      "bytes": 22794
+    },
+    {
+      "path": "assets/favicon/favicon_192.svg",
+      "bytes": 22850
+    },
+    {
+      "path": "assets/favicon/favicon_512.svg",
+      "bytes": 22794
+    },
+    {
+      "path": "assets/favicon/site.webmanifest",
+      "bytes": 435
+    },
+    {
+      "path": "assets/fonts/0569c822cab6c5100c1d.ttf",
+      "bytes": 48280
+    },
+    {
+      "path": "assets/fonts/2de2b09814c9cad8d0b6.ttf",
+      "bytes": 1429160
+    },
+    {
+      "path": "assets/fonts/35e524ce153940c87513.ttf",
+      "bytes": 83864
+    },
+    {
+      "path": "assets/fonts/38f8abefb8f859c48db2.ttf",
+      "bytes": 44784
+    },
+    {
+      "path": "assets/fonts/4da63a1b968e240dc30c.ttf",
+      "bytes": 45308
+    },
+    {
+      "path": "assets/fonts/57baaaa1a3428f26ee32.ttf",
+      "bytes": 86444
+    },
+    {
+      "path": "assets/fonts/6d83b1a12212ea9e5ba8.ttf",
+      "bytes": 112172
+    },
+    {
+      "path": "assets/fonts/6f49e1b28bce7339f484.ttf",
+      "bytes": 326468
+    },
+    {
+      "path": "assets/fonts/87e867b52640b3b397a9.ttf",
+      "bytes": 326048
+    },
+    {
+      "path": "assets/fonts/a699af1dea30b799318e.ttf",
+      "bytes": 324820
+    },
+    {
+      "path": "assets/fonts/b8ede9032fbe5af8a375.ttf",
+      "bytes": 86708
+    },
+    {
+      "path": "assets/fonts/barlowsemicondensed-OFL.txt",
+      "bytes": 4377
+    },
+    {
+      "path": "assets/fonts/bb6b2b677a0d1c1dfb21.ttf",
+      "bytes": 72312
+    },
+    {
+      "path": "assets/fonts/dd945c631ae3903e866d.ttf",
+      "bytes": 86068
+    },
+    {
+      "path": "assets/fonts/dmmono-OFL.txt",
+      "bytes": 4484
+    },
+    {
+      "path": "assets/fonts/dmsans-OFL.txt",
+      "bytes": 4482
+    },
+    {
+      "path": "assets/fonts/fonts.css",
+      "bytes": 2482
+    },
+    {
+      "path": "assets/fonts/inter-OFL.txt",
+      "bytes": 4377
+    },
+    {
+      "path": "assets/fonts/jetbrainsmono-OFL.txt",
+      "bytes": 4399
+    },
+    {
+      "path": "assets/fonts/lato-OFL.txt",
+      "bytes": 4407
+    },
+    {
+      "path": "assets/fonts/oswald-OFL.txt",
+      "bytes": 4483
+    },
+    {
+      "path": "assets/fonts/rubikdirt-OFL.txt",
+      "bytes": 4406
+    },
+    {
+      "path": "assets/images/card-logistics-crm.png",
+      "bytes": 1947740
+    },
+    {
+      "path": "assets/images/card-martin-exam.png",
+      "bytes": 2735706
+    },
+    {
+      "path": "assets/images/card-production-line.png",
+      "bytes": 1633907
+    },
+    {
+      "path": "assets/images/case-4/concepts-backdrop.png",
+      "bytes": 555885
+    },
+    {
+      "path": "assets/images/case-4/flow-backdrop.png",
+      "bytes": 711350
+    },
+    {
+      "path": "assets/images/case-4/gamification-cards.png",
+      "bytes": 346758
+    },
+    {
+      "path": "assets/images/case-4/gamification-collection.png",
+      "bytes": 191237
+    },
+    {
+      "path": "assets/images/case-4/gamification-friends.png",
+      "bytes": 68523
+    },
+    {
+      "path": "assets/images/case-4/gamification-gift-sent.png",
+      "bytes": 237744
+    },
+    {
+      "path": "assets/images/case-4/gamification-task.png",
+      "bytes": 146059
+    },
+    {
+      "path": "assets/images/case-4/gamification-thief.png",
+      "bytes": 89263
+    },
+    {
+      "path": "assets/images/case-4/gamification-warning.png",
+      "bytes": 271869
+    },
+    {
+      "path": "assets/images/case-4/hero-backdrop.png",
+      "bytes": 667850
+    },
+    {
+      "path": "assets/images/hero-video-poster.png",
+      "bytes": 522880
+    },
+    {
+      "path": "assets/images/logistics-crm/card-multiple.png",
+      "bytes": 17670
+    },
+    {
+      "path": "assets/images/logistics-crm/card-status.png",
+      "bytes": 99913
+    },
+    {
+      "path": "assets/images/logistics-crm/card-transportation.png",
+      "bytes": 129057
+    },
+    {
+      "path": "assets/images/logistics-crm/hero-screen.png",
+      "bytes": 101130
+    },
+    {
+      "path": "assets/images/logistics-crm/s1-screen-1.png",
+      "bytes": 117148
+    },
+    {
+      "path": "assets/images/logistics-crm/s1-screen-2.png",
+      "bytes": 91293
+    },
+    {
+      "path": "assets/images/logistics-crm/s1-screen-3.png",
+      "bytes": 208592
+    },
+    {
+      "path": "assets/images/logistics-crm/s1-screen-4.png",
+      "bytes": 50868
+    },
+    {
+      "path": "assets/images/logistics-crm/s1-video-poster.png",
+      "bytes": 131825
+    },
+    {
+      "path": "assets/images/logistics-crm/s2-intro.png",
+      "bytes": 934259
+    },
+    {
+      "path": "assets/images/logistics-crm/s2-shot-2.png",
+      "bytes": 1670967
+    },
+    {
+      "path": "assets/images/logistics-crm/s2-video-background.png",
+      "bytes": 3699049
+    },
+    {
+      "path": "assets/images/logistics-crm/s2-video-poster.png",
+      "bytes": 96909
+    },
+    {
+      "path": "assets/images/logistics-crm/s3-intro.png",
+      "bytes": 526168
+    },
+    {
+      "path": "assets/images/logistics-crm/s3-shot-1.png",
+      "bytes": 1058772
+    },
+    {
+      "path": "assets/images/logistics-crm/s3-shot-2.png",
+      "bytes": 1141823
+    },
+    {
+      "path": "assets/images/martin-exam/d1-flow-3.png",
+      "bytes": 45426
+    },
+    {
+      "path": "assets/images/martin-exam/hero-shot-1.png",
+      "bytes": 155460
+    },
+    {
+      "path": "assets/images/martin-exam/hero-shot-2.png",
+      "bytes": 171232
+    },
+    {
+      "path": "assets/images/martin-exam/hero-shot-3.png",
+      "bytes": 52893
+    },
+    {
+      "path": "assets/images/martin-exam/loot-box-card.png",
+      "bytes": 397264
+    },
+    {
+      "path": "assets/images/production-line-simulator/backdrop.jpg",
+      "bytes": 711350
+    },
+    {
+      "path": "assets/images/production-line-simulator/d1-inline-editing.png",
+      "bytes": 68935
+    },
+    {
+      "path": "assets/images/production-line-simulator/d2-recalc.png",
+      "bytes": 138392
+    },
+    {
+      "path": "assets/images/production-line-simulator/d3-bottleneck.png",
+      "bytes": 99958
+    },
+    {
+      "path": "assets/images/production-line-simulator/hero-main.png",
+      "bytes": 111511
+    },
+    {
+      "path": "assets/images/production-line-simulator/results-main.png",
+      "bytes": 102408
+    },
+    {
+      "path": "assets/images/production-line-simulator/s2-shot-1.png",
+      "bytes": 89372
+    },
+    {
+      "path": "assets/images/production-line-simulator/s2-shot-2.png",
+      "bytes": 110957
+    },
+    {
+      "path": "assets/video/hero.mp4",
+      "bytes": 19514725
+    },
+    {
+      "path": "case-3/Colors — Guidelines & Rules.png",
+      "bytes": 50525
+    },
+    {
+      "path": "case-3/Colors — Status & Opacity.png",
+      "bytes": 83135
+    },
+    {
+      "path": "case-3/Profile.png",
+      "bytes": 25191
+    },
+    {
+      "path": "case-3/Review_saved.png",
+      "bytes": 54089
+    },
+    {
+      "path": "case-3/awards_collection.png",
+      "bytes": 244490
+    },
+    {
+      "path": "case-3/awards_page.png",
+      "bytes": 196851
+    },
+    {
+      "path": "case-3/card_pressed.png",
+      "bytes": 130744
+    },
+    {
+      "path": "case-3/ds-component.png",
+      "bytes": 107453
+    },
+    {
+      "path": "case-3/empty_loot-box_card.png",
+      "bytes": 23520
+    },
+    {
+      "path": "case-3/matching_listening_parts-1.png",
+      "bytes": 39879
+    },
+    {
+      "path": "case-3/matching_listening_parts.png",
+      "bytes": 41648
+    },
+    {
+      "path": "case-3/matching_listening_parts_chip_placed.png",
+      "bytes": 39172
+    },
+    {
+      "path": "case-3/matching_listening_parts_chip_pressed.png",
+      "bytes": 43156
+    },
+    {
+      "path": "case-3/math_long_task_answer_pressed.png",
+      "bytes": 98697
+    },
+    {
+      "path": "case-3/math_long_task_on_screen.png",
+      "bytes": 74585
+    },
+    {
+      "path": "case-3/math_long_task_on_screen_scrolling.png",
+      "bytes": 90096
+    },
+    {
+      "path": "case-3/math_long_task_theory_colapsed.png",
+      "bytes": 99917
+    },
+    {
+      "path": "case-3/profile_editing.png",
+      "bytes": 22826
+    },
+    {
+      "path": "case-3/recommended-success.png",
+      "bytes": 50096
+    },
+    {
+      "path": "case-3/recommended_failed.png",
+      "bytes": 57206
+    },
+    {
+      "path": "case-3/result_overview.png",
+      "bytes": 178334
+    },
+    {
+      "path": "case-3/saved-success.png",
+      "bytes": 58406
+    },
+    {
+      "path": "case-3/tasks_empty.png",
+      "bytes": 69057
+    },
+    {
+      "path": "case-3/using_vacabulary.png",
+      "bytes": 33464
+    },
+    {
+      "path": "case-3/using_vacabulary_btn_pressed.png",
+      "bytes": 34645
+    },
+    {
+      "path": "case-3/using_vacabulary_question_presses.png",
+      "bytes": 34286
+    },
+    {
+      "path": "case-3/using_vacabulary_topic_pressed.png",
+      "bytes": 37967
+    },
+    {
+      "path": "case-4/Main-missed-questions.png",
+      "bytes": 168855
+    },
+    {
+      "path": "case-4/Main-success.png",
+      "bytes": 146059
+    },
+    {
+      "path": "case-4/library_from_martin-for-video.png",
+      "bytes": 46332
+    },
+    {
+      "path": "case-4/mock-up1.png",
+      "bytes": 382107
+    },
+    {
+      "path": "case-4/mock-up2.png",
+      "bytes": 417189
+    },
+    {
+      "path": "case-4/result_normal.png",
+      "bytes": 179265
+    },
+    {
+      "path": "case_card_bg/case4.png",
+      "bytes": 1527426
+    },
+    {
+      "path": "gaming-animation/Background/foreground.png",
+      "bytes": 339844
+    },
+    {
+      "path": "gaming-animation/Background/mountain.png",
+      "bytes": 616952
+    },
+    {
+      "path": "gaming-animation/Background/sky.png",
+      "bytes": 1663509
+    },
+    {
+      "path": "gaming-animation/Background/trees.png",
+      "bytes": 1444231
+    },
+    {
+      "path": "gaming-animation/Card/Normal.png",
+      "bytes": 43552
+    },
+    {
+      "path": "gaming-animation/Card/Shimmer enters.png",
+      "bytes": 43334
+    },
+    {
+      "path": "gaming-animation/Card/Shimmer exits.png",
+      "bytes": 43217
+    },
+    {
+      "path": "gaming-animation/Card/Shimmer passes.png",
+      "bytes": 42719
+    },
+    {
+      "path": "gaming-animation/scene.css",
+      "bytes": 3680
+    },
+    {
+      "path": "gaming-animation/scene.js",
+      "bytes": 5634
+    },
+    {
+      "path": "gaming-animation/squirrel/run/frame-01.png",
+      "bytes": 286367
+    },
+    {
+      "path": "gaming-animation/squirrel/run/frame-02.png",
+      "bytes": 262507
+    },
+    {
+      "path": "gaming-animation/squirrel/run/frame-03.png",
+      "bytes": 218515
+    },
+    {
+      "path": "gaming-animation/squirrel/run/frame-04.png",
+      "bytes": 279042
+    },
+    {
+      "path": "gaming-animation/squirrel/run/frame-05.png",
+      "bytes": 237202
+    },
+    {
+      "path": "gaming-animation/squirrel/run/frame-06.png",
+      "bytes": 257569
+    },
+    {
+      "path": "gaming-animation/squirrel/run/frame-07.png",
+      "bytes": 209919
+    },
+    {
+      "path": "gaming-animation/squirrel/run/frame-08.png",
+      "bytes": 234429
+    },
+    {
+      "path": "index.html",
+      "bytes": 31776
+    },
+    {
+      "path": "main.js",
+      "bytes": 104712
+    },
+    {
+      "path": "projects/case-4.html",
+      "bytes": 68292
+    },
+    {
+      "path": "projects/logistics-crm.html",
+      "bytes": 85958
+    },
+    {
+      "path": "projects/martin-exam.html",
+      "bytes": 70170
+    },
+    {
+      "path": "projects/production-line-simulator.css",
+      "bytes": 6464
+    },
+    {
+      "path": "projects/production-line-simulator.html",
+      "bytes": 64864
+    },
+    {
+      "path": "styles.css",
+      "bytes": 85993
+    },
+    {
+      "path": "video/Transportation - drivers.mp4",
+      "bytes": 131746
+    },
+    {
+      "path": "video/Transportation-Overview-topza-case1.mp4",
+      "bytes": 141358
+    }
+  ],
+  "external": [
+    "https://t.me/zeffiria",
+    "https://www.linkedin.com/in/zemfira-nurgaleeva-32ba96295/"
+  ],
+  "warnings": []
+}

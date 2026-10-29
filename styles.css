@@ -196,6 +196,20 @@ html {
   color: var(--text-secondary);
 }
 
+.hero__experience {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 0.5em;
+}
+
+.hero__experience--first {
+  margin-top: 48px;
+}
+
+.hero__experience-specialty {
+  white-space: nowrap;
+}
+
 .hero__links {
   display: flex;
   gap: 48px;

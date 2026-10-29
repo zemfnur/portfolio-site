@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "Personal portfolio site for Zemfira Nurgaleeva — static HTML/CSS/JS, no build step",
   "scripts": {
+    "prepare:deploy": "node scripts/prepare-deploy.cjs",
     "lint": "npm run lint:html && npm run lint:css",
     "lint:html": "html-validate index.html about.html projects/*.html",
     "lint:css": "stylelint styles.css projects/production-line-simulator.css"

@@ -10,7 +10,17 @@ Open `index.html` directly in a browser, or serve the folder:
 python -m http.server 8000
 ```
 
-Deploy by uploading the folder to any static host (GitHub Pages, Netlify, etc.).
+For the hosting comparison, regional access evidence and publishing steps, see
+[DEPLOYMENT.md](DEPLOYMENT.md). The recommended provider is GitHub Pages.
+
+Prepare a clean upload folder without publishing anything:
+
+```
+npm.cmd run prepare:deploy
+```
+
+Upload only the contents of `dist/`. `deployment-manifest.json` lists every
+required file and external URL. Fonts are self-hosted in `assets/fonts/`.
 
 ## Lint
 
@@ -33,12 +43,9 @@ npm run lint        # html-validate + stylelint
   element a `data-i18n="key"` attribute and add the key to both language
   dicts in `main.js` (also `data-i18n-alt` / `data-i18n-arialabel` for
   attributes).
-- **Case-study links**: each project card has `href="#"` plus a
-  `data-page="projects/<slug>.html"` hint. When you create the page,
-  move the value into `href` and delete `data-page`.
-- **Placeholders to fill in**: footer social links (`HANDLE`, `EMAIL`),
-  hero showreel video (drop a file into `assets/video/` and swap the
-  placeholder div for a `<video>` — the comment in `index.html` shows how).
+- **Case-study links**: project cards link to the four HTML pages in `projects/`.
+- **Media**: the hero showreel is `assets/video/hero.mp4`; two CRM demo clips
+  live in `video/`. Keep their poster images as loading/autoplay fallbacks.
 - **Russian display font**: Barlow Semi Condensed has no Cyrillic, so
   `[lang="ru"]` swaps `--font-display` to Oswald (see `styles.css`).
 - **Russian typography**: `main.js` applies non-breaking spaces after common

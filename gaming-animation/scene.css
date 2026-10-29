@@ -19,6 +19,17 @@
   font: 12px/1 var(--font-body);
 }
 
+/* Keep the full-screen fallback and its lightbox inside the SVG coordinates. */
+.gaming-preview .case4-warning {
+  width: 375px;
+  max-width: none;
+  height: 849px;
+  aspect-ratio: auto;
+}
+
+/* Let clicks on the animated overlay reach the original lightbox image. */
+.gaming-preview > foreignObject:last-child { pointer-events: none; }
+
 .gaming-toggle:focus-visible {
   outline: 2px solid currentcolor;
   outline-offset: 3px;
